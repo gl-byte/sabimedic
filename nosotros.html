@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SABIMEDIC JESUS | Sobre Nosotros</title>
   <style>
+    /*
+      Esta pagina usa un estilo propio para mostrar la institucion en cuatro
+      bloques. Para personalizarla, normalmente solo tendras que cambiar:
+      las rutas de las imagenes, los textos de cada cuadrante y los colores.
+    */
+
     /* Reinicio basico */
     * {
       margin: 0;
@@ -13,14 +19,17 @@
     }
 
     body {
+      /* Fondo claro para que las tarjetas blancas se distingan sin verse pesadas. */
       font-family: Arial, sans-serif;
       background: #f8f8f8;
       color: #333;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     /* Navegacion principal */
     .main-nav {
+      /* La barra permanece arriba mientras se recorre la historia del consultorio. */
       background: white;
       padding: 20px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -42,10 +51,24 @@
 
     /* Logo del nav */
     .nav-logo {
+      /* Ajusta el tamaño del logo que aparece arriba a la izquierda. */
       font-size: 1.5rem;
       font-weight: bold;
       color: #1e40af;
       text-decoration: none;
+    }
+
+    /* En celular este boton guarda los enlaces para que la cabecera no se amontone. */
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 2px solid #1e40af;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #1e40af;
+      font-size: 1.35rem;
+      cursor: pointer;
     }
 
     /* Enlaces del nav */
@@ -65,6 +88,7 @@
     }
 
     .nav-links a:hover {
+      /* Indica visualmente cual enlace esta siendo señalado. */
       background: #1e40af;
       color: white;
     }
@@ -87,6 +111,7 @@
 
     /* Grilla de 4 cuadrantes (2x2) */
     .grid-4 {
+      /* Dos columnas en computadora; en movil se convierten en una. */
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 30px;
@@ -108,6 +133,7 @@
 
     /* Imagen dentro del cuadrante */
     .quadrant img {
+      /* Todas las fotos de la pagina comparten el mismo tamaño y recorte. */
       width: 100%;
       height: 300px;
       object-fit: cover;
@@ -168,6 +194,7 @@
     }
 
     .footer-socials a {
+      /* Cada circulo contiene un SVG de una red social. */
       width: 45px;
       height: 45px;
       border: 2px solid white;
@@ -194,18 +221,41 @@
 
     /* Responsive para movil */
     @media (max-width: 768px) {
+      .main-nav { padding: 10px 16px; }
+      .nav-container { position: relative; min-height: 54px; }
+      .nav-logo img { width: 58px; height: 58px; object-fit: contain; }
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; }
+      /* El panel flota sobre el contenido, por eso al abrirlo nada se mueve. */
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        z-index: 200;
+        display: none;
+        width: min(230px, calc(100vw - 32px));
+        padding: 8px;
+        gap: 0;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        box-shadow: 0 14px 28px rgba(15, 23, 42, 0.16);
+      }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { padding: 12px 14px; border-bottom: 1px solid #e2e8f0; }
+      .nav-links a:last-child { border-bottom: 0; }
       .grid-4 {
         grid-template-columns: 1fr;
-      }
-
-      .nav-links {
-        width: 100%;
-        justify-content: center;
+        gap: 18px;
       }
 
       .page-title {
-        font-size: 1.8rem;
+        font-size: clamp(1.65rem, 8vw, 2.2rem);
+        margin-bottom: 24px;
       }
+
+      .container { padding: 28px 16px 36px; }
 
       .quadrant img {
         height: 200px;
@@ -213,7 +263,7 @@
 
       /* En movil reducimos un poco el padding para aprovechar el ancho disponible. */
       .quadrant {
-        padding: 22px;
+        padding: 20px;
       }
     }
   </style>
@@ -226,16 +276,22 @@
         <!-- Aqui ponemos el logo en el main nav -->
         <img src="assets/img/logo.png" alt="Logo SABIMEDIC JESUS" width="80" height="80" style="vertical-align: middle; margin-right: 8px;">
       </a>
+      <!-- Al tocarlo se abre el menu movil sin cambiar la altura de la cabecera. -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu">☰</button>
       <div class="nav-links">
         <a href="index.html">Inicio</a>
         <a href="nosotros.html">Nosotros</a>
-        <a href="index.html">Especialidades</a>
+        <a href="especialidades.html">Especialidades</a>
         <a href="contacto.html">Contacto</a>
       </div>
     </div>
   </nav>
 
-  <!-- Contenido principal -->
+  <!--
+    Contenido principal.
+    Esta pagina presenta primero las imagenes y luego la informacion escrita.
+    Para editar la historia, busca los parrafos dentro de cada .quadrant.
+  -->
   <div class="container">
     <!-- Titulo central de la pagina institucional. -->
     <h1 class="page-title">Sobre SABIMEDIC JESUS</h1>
@@ -245,20 +301,20 @@
       <!-- Cuadrante 1: imagen del profesional responsable. -->
       <div class="quadrant">
         <img src="assets/img/profesional-responsable.jpg" alt="Foto del profesional responsable">
-        <p style="text-align: center; color: #999; font-size: 0.9rem;">Dr. Miguel Angel Escobar</p>
+        <p style="text-align: center; color: #646363; font-size: 0.9rem;">Dr. Miguel Angel Escobar</p>
       </div>
 
       <!-- Cuadrante 2: imagen de la institucion medica. -->
       <div class="quadrant">
         <img src="assets/img/consultorio-interior.jpg" alt="Foto del consultorio">
-        <p style="text-align: center; color: #999; font-size: 0.9rem;">SABIMEDIC JESUS - Oruro</p>
+        <p style="text-align: center; color: #646363; font-size: 0.9rem;">SABIMEDIC JESUS - ORURO </p>
       </div>
 
       <!-- Cuadrante 3: historia personal y profesional del fundador. -->
       <div class="quadrant">
         <h2>Dr. Miguel Angel Escobar</h2>
         <p><strong>Fundador y profesional responsable</strong></p>
-        <p><em>“Soy medico de vocacion y de corazon.”</em></p>
+        <p><em>“Soy medico de vocación y de corazón.”</em></p>
         <p>
           Desde niño supe que queria ayudar a las personas. Creci viendo de cerca el dolor,
           la preocupacion de las familias cuando un ser querido se enferma y tambien la esperanza
@@ -331,5 +387,28 @@
       </div>
     </div>
   </footer>
+  <script>
+    // Conectamos el boton con los enlaces que deben aparecer en el celular.
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mobileMenu = document.querySelector(".nav-links");
+
+    // Al tocar el boton, la clase is-open muestra u oculta el panel.
+    menuToggle.addEventListener("click", () => {
+      const menuIsOpen = mobileMenu.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", String(menuIsOpen));
+      menuToggle.setAttribute("aria-label", menuIsOpen ? "Cerrar menu" : "Abrir menu");
+      menuToggle.textContent = menuIsOpen ? "×" : "☰";
+    });
+
+    // Al navegar a otra pagina, cerramos el panel para no cubrir el nuevo contenido.
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menu");
+        menuToggle.textContent = "☰";
+      });
+    });
+  </script>
 </body>
 </html>

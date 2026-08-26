@@ -1,0 +1,236 @@
+/*
+  Esta hoja de estilos acompana a especialidades.html y a sus ocho paginas
+  de detalle. Al estar compartida, un cambio de color o de espacio se aplica
+  a todas ellas y no hay que repetirlo en cada archivo.
+*/
+
+:root {
+  --azul: #1e3a8a;
+  --turquesa: #06b6d4;
+  --fondo: #f8fafc;
+  --blanco: #ffffff;
+  --texto: #475569;
+  --borde: #e2e8f0;
+  --rojo-suave: #fee2e2;
+  --rojo: #991b1b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Cabecera comun: el logo identifica el consultorio y los enlaces llevan a cada seccion. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--blanco);
+  border-bottom: 1px solid var(--borde);
+  box-shadow: 0 3px 14px rgba(15, 23, 42, 0.07);
+}
+
+.header-inner {
+  width: min(1180px, calc(100% - 40px));
+  min-height: 84px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand img {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-nav a {
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: var(--texto);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  background: #eff6ff;
+  color: var(--azul);
+}
+
+/* El boton solo se ve en celular y permite guardar los enlaces en un espacio pequeno. */
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--azul);
+  border-radius: 8px;
+  background: var(--blanco);
+  color: var(--azul);
+  cursor: pointer;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.page-shell {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 54px 0 70px;
+}
+
+.page-intro {
+  max-width: 780px;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin-bottom: 8px;
+  color: var(--turquesa);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1, h2, h3 { color: var(--azul); line-height: 1.2; }
+
+.page-intro h1 { margin-bottom: 14px; font-size: clamp(2rem, 4vw, 3rem); }
+.page-intro p { font-size: 1.05rem; }
+
+/* Estas tarjetas presentan las ocho opciones de forma ordenada y facil de comparar. */
+.specialty-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.specialty-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: 0 7px 18px rgba(15, 23, 42, 0.06);
+}
+
+.specialty-number {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: var(--azul);
+  font-weight: 800;
+}
+
+.specialty-card h2 { min-height: 48px; margin-bottom: 10px; font-size: 1.15rem; }
+.specialty-card p { flex: 1; margin-bottom: 18px; font-size: 0.94rem; }
+
+.card-link,
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+}
+
+.card-link { border: 1px solid var(--azul); color: var(--azul); }
+.card-link:hover { background: #eff6ff; }
+
+/* Lugar y logo se muestran juntos, pero cada uno tiene su propia superficie. */
+.visit-section { margin-top: 52px; }
+.section-heading { margin-bottom: 18px; font-size: 1.55rem; }
+.visit-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 18px; }
+.surface { min-width: 0; padding: 22px; background: var(--blanco); border: 1px solid var(--borde); border-radius: 8px; box-shadow: 0 7px 18px rgba(15, 23, 42, 0.06); }
+.surface h3 { margin-bottom: 8px; font-size: 1.1rem; }
+.map-frame { overflow: hidden; aspect-ratio: 16 / 9; margin-top: 14px; border-radius: 8px; background: #e2e8f0; }
+.map-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+.logo-panel { display: grid; place-items: center; min-height: 100%; }
+.logo-panel img { display: block; width: min(220px, 80%); height: auto; object-fit: contain; }
+
+/* Encabezado de cada especialidad: primero se entiende el servicio y despues sus datos. */
+.detail-header { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 24px; margin-bottom: 24px; }
+.detail-header h1 { margin-bottom: 10px; font-size: clamp(2rem, 4vw, 3.1rem); }
+.detail-header p { max-width: 720px; }
+.detail-badge { padding: 12px 16px; border: 1px solid #a5f3fc; border-radius: 8px; background: #ecfeff; color: #155e75; font-weight: 800; text-align: center; white-space: nowrap; }
+
+.detail-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr); gap: 18px; }
+.detail-card { min-width: 0; padding: 26px; background: var(--blanco); border: 1px solid var(--borde); border-radius: 8px; box-shadow: 0 7px 18px rgba(15, 23, 42, 0.06); }
+.detail-card h2 { margin-bottom: 13px; font-size: 1.35rem; }
+.detail-card h2:not(:first-child) { margin-top: 26px; }
+.detail-card p { margin-bottom: 12px; }
+.detail-card ul { padding-left: 20px; }
+.detail-card li + li { margin-top: 7px; }
+.doctor-card { align-self: start; }
+.doctor-card .doctor-label { margin-bottom: 6px; color: var(--turquesa); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.doctor-card h2 { margin-bottom: 10px; }
+.doctor-card dl { margin: 20px 0; }
+.doctor-card dt { margin-top: 12px; color: var(--azul); font-size: 0.82rem; font-weight: 800; }
+.doctor-card dd { margin-left: 0; }
+.primary-button { width: 100%; border: 1px solid var(--turquesa); background: var(--turquesa); color: var(--blanco); }
+.primary-button:hover { background: #0891b2; }
+.notice { margin-top: 22px; padding: 14px 16px; border-left: 4px solid #f59e0b; border-radius: 8px; background: #fffbeb; color: #92400e; font-size: 0.92rem; }
+
+/* Pie comun: deja los iconos disponibles sin llenar de datos la pagina. */
+.site-footer { padding: 34px 20px; background: var(--azul); color: var(--blanco); }
+.footer-inner { width: min(1180px, 100%); margin: 0 auto; text-align: center; }
+.footer-inner strong { display: block; margin-bottom: 5px; }
+.footer-socials { display: flex; justify-content: center; gap: 12px; margin: 18px 0; }
+.footer-socials a { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,0.7); border-radius: 50%; background: var(--blanco); }
+.footer-socials img { width: 28px; height: 28px; }
+.footer-address { color: #dbeafe; font-size: 0.9rem; }
+
+@media (max-width: 900px) {
+  .specialty-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .header-inner, .page-shell { width: min(100% - 32px, 560px); }
+  .header-inner { min-height: 72px; }
+  .brand img { width: 58px; height: 58px; }
+  .menu-toggle { display: inline-grid; place-items: center; margin-left: auto; }
+  /* El menu se superpone debajo de la cabecera, por eso no desplaza el contenido. */
+  .site-nav { position: absolute; top: calc(100% + 8px); right: 16px; display: none; width: min(230px, calc(100vw - 32px)); padding: 8px; flex-direction: column; align-items: stretch; gap: 0; border: 1px solid var(--borde); border-radius: 8px; background: var(--blanco); box-shadow: 0 14px 28px rgba(15, 23, 42, 0.16); }
+  .site-nav.is-open { display: flex; }
+  .site-nav a { border-bottom: 1px solid var(--borde); }
+  .site-nav a:last-child { border-bottom: 0; }
+  .page-shell { padding: 36px 0 48px; }
+  .page-intro { margin-bottom: 26px; }
+  .page-intro h1 { font-size: 2rem; }
+  .specialty-grid, .visit-grid, .detail-grid { grid-template-columns: 1fr; }
+  .specialty-card h2 { min-height: auto; }
+  .visit-section { margin-top: 36px; }
+  .surface, .detail-card { padding: 20px; }
+  .detail-header { display: block; margin-bottom: 18px; }
+  .detail-header h1 { font-size: 2rem; }
+  .detail-badge { display: inline-block; margin-top: 8px; white-space: normal; }
+  .map-frame { aspect-ratio: 4 / 3; }
+}

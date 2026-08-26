@@ -1,6 +1,16 @@
+<!--
+  Icono de Instagram usado en los enlaces del consultorio.
+  Para cambiar su apariencia puedes editar los colores de fill y stroke.
+  El numero 64 del viewBox funciona como una hoja de dibujo interna; no
+  cambia el tamano visible, solo ayuda a que el logo no se deforme.
+-->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Instagram">
+  <!-- Circulo exterior que sirve como fondo claro del icono. -->
   <circle cx="32" cy="32" r="29" fill="#F8FAFC"/>
+  <!-- Marco redondeado que representa la camara de Instagram. -->
   <rect x="17" y="17" width="30" height="30" rx="9" fill="none" stroke="#1E3A8A" stroke-width="5"/>
+  <!-- Lente central de la camara. Puedes cambiar stroke para modificar su color. -->
   <circle cx="32" cy="32" r="7.5" fill="none" stroke="#06B6D4" stroke-width="5"/>
+  <!-- Pequeno punto que representa la luz o indicador de la camara. -->
   <circle cx="41" cy="23" r="3" fill="#1E3A8A"/>
 </svg>

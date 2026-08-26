@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SABIMEDIC JESUS | Menu Principal</title>
   <style>
+    /*
+      GUIA RAPIDA PARA MODIFICAR ESTA PAGINA
+      --------------------------------------
+      - Los colores principales aparecen como valores hexadecimales.
+      - Los tamaños se pueden aumentar o disminuir cambiando font-size, width o height.
+      - Los nombres de las clases conectan el HTML con estos estilos.
+      - La parte final del archivo contiene el menu, el titulo y el pie de pagina.
+      Si cambias una clase en el HTML, debes cambiarla tambien aqui para que
+      el diseño siga funcionando.
+    */
+
     /* Reinicio basico del navegador */
     * {
       margin: 0;
@@ -110,11 +121,13 @@
     }
 
     .nav-header.is-open {
+      /* JavaScript agrega esta clase cuando la persona toca la hamburguesa. */
       display: flex;
     }
     /* Cada enlace de la navegacion */
     
     .nav-header a {
+      /* Cada enlace hereda este mismo aspecto para que el menu se vea parejo. */
       text-decoration: none;
       color: #1E3A8A;
       font-weight: bold;
@@ -125,6 +138,7 @@
     }
 
     .nav-header a:hover {
+      /* Este efecto aparece solo al pasar el mouse por encima del enlace. */
       border-bottom-color: #06B6D4;
     }
 
@@ -155,6 +169,7 @@
     /* Este pseudo-elemento crea una linea turquesa sutil debajo del titulo.
        No es decoracion exagerada: sirve para anclar visualmente la marca. */
     .titulo-principal::after {
+      /* La linea de abajo es un detalle visual que refuerza el nombre de la marca. */
       content: "";
       display: block;
       width: min(520px, 72vw);
@@ -222,6 +237,7 @@
 
     /* Boton especial de reservar */
     .boton-reservar {
+      /* Este es el llamado a la accion principal del sitio. */
       background: #06B6D4;
       color: #FFFFFF;
       border-color: #06B6D4;
@@ -234,6 +250,7 @@
 
     /* Boton de emergencia */
     .boton-emergencia {
+      /* El rojo suave hace que esta opcion se entienda como algo diferente. */
       background: #FEE2E2;
       color: #991B1B;
       border-color: #FCA5A5;
@@ -267,6 +284,7 @@
     }
 
     .red-social {
+      /* El enlace es circular para parecer un icono independiente. */
       width: 45px;
       height: 45px;
       border: 2px solid #1E3A8A;
@@ -293,6 +311,7 @@
     }
 
     .info-contacto a {
+      /* Este bloque lleva al visitante a la pagina con los datos de contacto. */
       display: inline-block;
       padding: 12px 20px;
       background: #FFFFFF;
@@ -435,7 +454,10 @@
 </head>
 <body>
   <div class="main-container">
-    <!-- Header con fotos y navegacion -->
+    <!--
+      Header con fotos y navegacion.
+      Para cambiar las fotos, modifica solamente el valor de src de cada img.
+    -->
     <header class="header">
       <!-- Foto izquierda: consultorio -->
       <div>
@@ -450,10 +472,10 @@
         ☰
       </button>
 
-      <!-- Navegacion central -->
+      <!-- Navegacion central: los href indican a que pagina lleva cada opcion. -->
       <nav class="nav-header" aria-label="Navegacion principal">
         <a href="nosotros.html">Nosotros</a>
-        <a href="index.html">Especialidades</a>
+        <a href="especialidades.html">Especialidades</a>
         <a href="contacto.html">Contacto</a>
       </nav>
 
@@ -476,17 +498,24 @@
         <h1>JESUS</h1>
       </div>
 
-      <!-- Botones tipo rotulo -->
+      <!--
+        Botones tipo rotulo.
+        Si necesitas cambiar el texto de un boton, edita el texto entre <a> y </a>.
+        Si necesitas cambiar su destino, edita href="...".
+      -->
       <nav class="botones-menu">
         <a href="index.html" class="boton-menu">INICIO</a>
         <a href="nosotros.html" class="boton-menu">SOBRE NOSOTROS</a>
-        <a href="index.html" class="boton-menu">ESPECIALIDADES</a>
+        <a href="especialidades.html" class="boton-menu">ESPECIALIDADES</a>
         <a href="index.html" class="boton-menu boton-reservar">RESERVAR CITA</a>
         <a href="emergencia.html" class="boton-menu boton-emergencia">EMERGENCIA</a>
       </nav>
     </section>
 
-    <!-- Footer con redes sociales -->
+    <!--
+      Footer con redes sociales.
+      Los archivos SVG se cargan dentro de cada enlace mediante la etiqueta img.
+    -->
     <footer class="footer">
       <div class="footer-content">
         <!-- Redes sociales -->
@@ -522,17 +551,32 @@
       Al hacer clic, alterna la clase is-open del menu. CSS decide si se muestra
       o se oculta, mientras la cabecera permanece en el mismo sitio.
     */
+    // Buscamos el boton de tres lineas que la persona toca en el celular.
+    // Si quieres cambiar su aspecto, busca la clase .menu-toggle en los estilos.
     const menuToggle = document.querySelector(".menu-toggle");
+
+    // Buscamos el grupo de enlaces que debe aparecer u ocultarse.
+    // El nombre .nav-header conecta este codigo con el menu escrito arriba.
     const mobileMenu = document.querySelector(".nav-header");
 
+    // Cada vez que se toca el boton, se cambia el menu entre abierto y cerrado.
     menuToggle.addEventListener("click", () => {
+      // is-open es una marca que el CSS interpreta para mostrar el menu.
       const menuIsOpen = mobileMenu.classList.toggle("is-open");
+
+      // Este dato ayuda a lectores de pantalla a saber si el menu esta abierto.
       menuToggle.setAttribute("aria-expanded", String(menuIsOpen));
+
+      // Cambiamos la descripcion para que el boton diga lo que puede hacer ahora.
       menuToggle.setAttribute("aria-label", menuIsOpen ? "Cerrar menu" : "Abrir menu");
+
+      // Mostramos una X cuando esta abierto y volvemos a las tres lineas al cerrarlo.
       menuToggle.textContent = menuIsOpen ? "×" : "☰";
     });
 
+    // Cuando se elige una pagina, cerramos el menu para que no tape el contenido.
     mobileMenu.querySelectorAll("a").forEach((link) => {
+      // Esta accion se ejecuta solamente al tocar uno de los enlaces del menu.
       link.addEventListener("click", () => {
         mobileMenu.classList.remove("is-open");
         menuToggle.setAttribute("aria-expanded", "false");

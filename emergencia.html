@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SABIMEDIC JESUS | Emergencia</title>
   <style>
+    /*
+      GUIA PARA EDITAR EMERGENCIA
+      Esta pagina informa y orienta; no confirma que el consultorio atienda
+      emergencias. Los numeros generales se mantienen separados de los datos
+      del consultorio para que nadie los confunda.
+    */
+
     /* Reinicio basico */
     * {
       margin: 0;
@@ -17,6 +24,7 @@
       background: #f8f8f8;
       color: #333;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     /* Navegacion principal */
@@ -44,6 +52,19 @@
       font-weight: bold;
       color: #1e40af;
       text-decoration: none;
+    }
+
+    /* En pantallas pequenas este boton reemplaza los enlaces extendidos del menu. */
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 2px solid #1e40af;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #1e40af;
+      font-size: 1.35rem;
+      cursor: pointer;
     }
 
     .nav-links {
@@ -76,6 +97,7 @@
 
     /* Alerta de emergencia */
     .emergency-alert {
+      /* Bloque destacado para que el aviso se lea antes que el resto. */
       background: #fee2e2;
       border: 2px solid #dc2626;
       border-radius: 10px;
@@ -118,6 +140,7 @@
 
     /* Numeros de emergencia */
     .emergency-numbers {
+      /* Reparte las fichas de numeros en columnas y las adapta en movil. */
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
@@ -125,6 +148,7 @@
     }
 
     .number-card {
+      /* Cada tarjeta contiene un nombre y un enlace telefonico. */
       background: #f0f9ff;
       border-left: 4px solid #1e40af;
       padding: 20px;
@@ -149,6 +173,7 @@
 
     /* Boton de WhatsApp */
     .btn-whatsapp {
+      /* Este boton abre una conversacion; cambia su href si cambia el numero. */
       display: inline-block;
       padding: 15px 30px;
       background: #25d366;
@@ -214,8 +239,33 @@
 
     /* Responsive para movil */
     @media (max-width: 768px) {
+      .main-nav { padding: 10px 16px; }
+      .nav-container { position: relative; min-height: 54px; }
+      .nav-logo img { width: 58px; height: 58px; object-fit: contain; }
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; }
+      /* El panel flota debajo de la cabecera y no empuja el aviso de emergencia. */
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        z-index: 200;
+        display: none;
+        width: min(230px, calc(100vw - 32px));
+        padding: 8px;
+        gap: 0;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        box-shadow: 0 14px 28px rgba(15, 23, 42, 0.16);
+      }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { padding: 12px 14px; border-bottom: 1px solid #e2e8f0; }
+      .nav-links a:last-child { border-bottom: 0; }
+      .container { padding: 28px 16px 36px; }
       .emergency-alert h1 {
-        font-size: 1.8rem;
+        font-size: clamp(1.45rem, 7vw, 2rem);
       }
 
       .emergency-alert p {
@@ -223,12 +273,23 @@
       }
 
       .info-section h2 {
-        font-size: 1.4rem;
+        font-size: 1.35rem;
       }
 
-      .nav-links {
+      .emergency-alert,
+      .info-section {
+        padding: 20px;
+        margin-bottom: 18px;
+      }
+
+      .emergency-numbers {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .btn-whatsapp {
         width: 100%;
-        justify-content: center;
+        text-align: center;
       }
     }
   </style>
@@ -241,16 +302,22 @@
         <!-- Aqui ponemos el logo en el main nav -->
         <img src="assets/img/logo.png" alt="Logo SABIMEDIC JESUS" width="80" height="80" style="vertical-align: middle; margin-right: 8px;">
       </a>
+      <!-- Este boton mantiene la cabecera pequena y muestra las opciones solo cuando se necesitan. -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu">☰</button>
       <div class="nav-links">
         <a href="index.html">Inicio</a>
         <a href="nosotros.html">Nosotros</a>
-        <a href="index.html">Especialidades</a>
+        <a href="especialidades.html">Especialidades</a>
         <a href="contacto.html">Contacto</a>
       </div>
     </div>
   </nav>
 
-  <!-- Contenido principal -->
+  <!--
+    Contenido principal.
+    Primero se muestra el aviso, despues el contacto del consultorio,
+    luego los numeros generales y finalmente algunas señales de alerta.
+  -->
   <div class="container">
     <!-- Alerta de emergencia -->
     <div class="emergency-alert">
@@ -361,6 +428,28 @@
       </div>
     </div>
   </footer>
+  <script>
+    // Unimos el boton con el panel que contiene las opciones de navegacion.
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mobileMenu = document.querySelector(".nav-links");
+
+    // Al tocar el boton, el CSS muestra o esconde el panel usando la clase is-open.
+    menuToggle.addEventListener("click", () => {
+      const menuIsOpen = mobileMenu.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", String(menuIsOpen));
+      menuToggle.setAttribute("aria-label", menuIsOpen ? "Cerrar menu" : "Abrir menu");
+      menuToggle.textContent = menuIsOpen ? "×" : "☰";
+    });
+
+    // Cerramos la ventana despues de seleccionar un enlace.
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menu");
+        menuToggle.textContent = "☰";
+      });
+    });
+  </script>
 </body>
 </html>
-
