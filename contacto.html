@@ -1,10 +1,18 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SABIMEDIC JESUS | Contacto</title>
   <style>
+    /*
+      GUIA PARA EDITAR CONTACTO
+      Los datos visibles se encuentran mas abajo, dentro de los bloques
+      .contact-info. Cambia alli telefono, horarios, correo y direccion.
+      Los estilos de este bloque solo controlan la forma en que esos datos
+      aparecen en pantalla.
+    */
+
     /* Reinicio basico */
     * {
       margin: 0;
@@ -84,6 +92,7 @@
 
     /* Layout de dos columnas */
     .contact-layout {
+      /* Divide contacto en informacion a la izquierda y formulario a la derecha. */
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 30px;
@@ -92,6 +101,7 @@
 
     /* Seccion */
     .section {
+      /* Cada columna se presenta como una superficie blanca separada. */
       background: white;
       border-radius: 10px;
       padding: 30px;
@@ -111,10 +121,12 @@
 
     /* Formulario de contacto */
     .form-group {
+      /* Separa un campo del siguiente para que el formulario respire. */
       margin-bottom: 20px;
     }
 
     .form-group label {
+      /* El texto del label explica que dato debe escribir la persona. */
       display: block;
       color: #1e40af;
       font-weight: 600;
@@ -123,6 +135,7 @@
 
     .form-group input,
     .form-group textarea {
+      /* Regla comun para todos los campos del formulario. */
       width: 100%;
       padding: 12px;
       border: 2px solid #e5e7eb;
@@ -159,6 +172,7 @@
 
     /* Info de contacto */
     .contact-info {
+      /* Pequeña ficha para leer telefono, horario y otros datos rapidamente. */
       background: #f0f9ff;
       padding: 15px;
       border-left: 4px solid #1e40af;
@@ -174,6 +188,7 @@
 
     /* Mapa placeholder */
     .map-placeholder {
+      /* Aqui se muestra el mapa embebido de Google Maps. */
       width: 100%;
       height: 300px;
       background: #e5e7eb;
@@ -305,6 +320,7 @@
   </nav>
 
   <!-- Contenido principal -->
+  <!-- El contenido esta dividido en informacion y formulario para que sea facil de encontrar. -->
   <div class="container">
     <!-- Titulo de la pagina -->
     <h1 class="page-title">Contacto</h1>
@@ -422,4 +438,3 @@
   </footer>
 </body>
 </html>
-
