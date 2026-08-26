@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -249,6 +249,12 @@
         grid-template-columns: 1fr;
         gap: 18px;
       }
+
+      /* En movil alternamos los bloques para que cada foto quede seguida de su propia informacion. */
+      .grid-4 .quadrant:nth-child(1) { order: 1; }
+      .grid-4 .quadrant:nth-child(3) { order: 2; }
+      .grid-4 .quadrant:nth-child(2) { order: 3; }
+      .grid-4 .quadrant:nth-child(4) { order: 4; }
 
       .page-title {
         font-size: clamp(1.65rem, 8vw, 2.2rem);
