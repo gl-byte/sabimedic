@@ -30,7 +30,7 @@
       min-height: 100vh;
       display: grid;
       grid-template-rows: auto 1fr auto;
-      padding: 20px;
+      padding: clamp(12px, 2vw, 24px);
       max-width: 100%;
     }
 
@@ -45,6 +45,25 @@
       padding: 20px 0;
       border-bottom: 2px solid #E2E8F0;
       margin-bottom: 30px;
+      position: relative;
+      z-index: 20;
+    }
+
+    /*
+      Boton hamburguesa para celular.
+      En escritorio no se necesita porque los enlaces se muestran directamente.
+    */
+    .menu-toggle {
+      display: none;
+      border: 2px solid #1E3A8A;
+      border-radius: 8px;
+      background: #FFFFFF;
+      color: #1E3A8A;
+      cursor: pointer;
+      width: 48px;
+      height: 44px;
+      font-size: 1.4rem;
+      line-height: 1;
     }
 
     /* Foto izquierda (consultorio):
@@ -88,6 +107,10 @@
       gap: 15px;
       justify-content: center;
       flex-wrap: wrap;
+    }
+
+    .nav-header.is-open {
+      display: flex;
     }
     /* Cada enlace de la navegacion */
     
@@ -287,36 +310,116 @@
     }
 
     /* Responsive para moviles:
-       En pantallas pequenas ocultamos las fotos grandes del header para que
-       el titulo y los botones tengan espacio suficiente. */
+       En una pantalla pequena las tres partes del header se ordenan asi:
+       fotos arriba, navegacion debajo y luego el contenido principal.
+       No ocultamos las fotos, porque tambien forman parte de la identidad
+       visual del consultorio. */
     @media (max-width: 768px) {
       .header {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         text-align: center;
+        gap: 12px;
+        padding: 12px 0 18px;
+        margin-bottom: 12px;
+        overflow: visible;
+      }
+
+      .header > div {
+        width: 100%;
       }
 
       .foto-izquierda,
       .foto-derecha {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+      }
+
+      .foto-derecha {
+        object-fit: contain;
+        background: #FFFFFF;
+      }
+
+      /*
+        La cabecera conserva su altura al abrir el menu.
+        position: absolute saca los enlaces del flujo normal y evita que las
+        fotos o el titulo se muevan hacia abajo.
+      */
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 0;
+        bottom: 10px;
+      }
+
+      .nav-header {
+        position: absolute;
+        top: calc(100% - 2px);
+        right: 0;
+        z-index: 50;
         display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: min(240px, 82vw);
+        padding: 8px;
+        border: 1px solid #E2E8F0;
+        border-radius: 8px;
+        background: #FFFFFF;
+        box-shadow: 0 16px 30px rgba(15, 23, 42, 0.14);
+      }
+
+      .nav-header.is-open {
+        display: flex;
+      }
+
+      .nav-header a {
+        font-size: 0.95rem;
+        padding: 12px 14px;
+        text-align: left;
+        border-bottom: 1px solid #E2E8F0;
+      }
+
+      .nav-header a:last-child {
+        border-bottom: 0;
       }
 
       .titulo-principal h1 {
-        font-size: 3rem;
+        font-size: clamp(2.7rem, 13vw, 4.5rem);
       }
 
       .titulo-principal .consultorio,
       .titulo-principal .medico {
-        font-size: 1.8rem;
+        font-size: clamp(1.7rem, 8vw, 2.8rem);
+      }
+
+      .seccion-central {
+        gap: 22px;
+        padding: 16px 8px 28px;
+      }
+
+      .titulo-principal {
+        width: 100%;
+        padding: 8px 4px 18px;
+      }
+
+      .titulo-principal::after {
+        height: 4px;
+        margin-top: 14px;
       }
 
       .botones-menu {
         flex-direction: column;
         width: 100%;
+        gap: 11px;
       }
 
       .boton-menu {
         width: 100%;
         min-width: 100%;
+        padding: 13px 16px;
       }
 
       .footer-content {
@@ -339,8 +442,16 @@
         <img src="assets/img/consultorio.jpg" alt="Foto del consultorio" class="foto-izquierda">
       </div>
 
+      <!--
+        En celular este boton reemplaza a los enlaces visibles del nav.
+        aria-expanded comunica si el menu esta abierto o cerrado.
+      -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu">
+        ☰
+      </button>
+
       <!-- Navegacion central -->
-      <nav class="nav-header">
+      <nav class="nav-header" aria-label="Navegacion principal">
         <a href="nosotros.html">Nosotros</a>
         <a href="index.html">Especialidades</a>
         <a href="contacto.html">Contacto</a>
@@ -367,7 +478,7 @@
 
       <!-- Botones tipo rotulo -->
       <nav class="botones-menu">
-        <a href="nosotros.html" class="boton-menu">ENTRADA</a>
+        <a href="index.html" class="boton-menu">INICIO</a>
         <a href="nosotros.html" class="boton-menu">SOBRE NOSOTROS</a>
         <a href="index.html" class="boton-menu">ESPECIALIDADES</a>
         <a href="index.html" class="boton-menu boton-reservar">RESERVAR CITA</a>
@@ -404,6 +515,31 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    /*
+      Este pequeño script controla la hamburguesa.
+      Al hacer clic, alterna la clase is-open del menu. CSS decide si se muestra
+      o se oculta, mientras la cabecera permanece en el mismo sitio.
+    */
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mobileMenu = document.querySelector(".nav-header");
+
+    menuToggle.addEventListener("click", () => {
+      const menuIsOpen = mobileMenu.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", String(menuIsOpen));
+      menuToggle.setAttribute("aria-label", menuIsOpen ? "Cerrar menu" : "Abrir menu");
+      menuToggle.textContent = menuIsOpen ? "×" : "☰";
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menu");
+        menuToggle.textContent = "☰";
+      });
+    });
+  </script>
 </body>
 </html>
-
