@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SABIMEDIC JESUS | Emergencia</title>
+  <style>
+    /* Reinicio basico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Navegacion principal */
+    .main-nav {
+      background: white;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1e40af;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover {
+      background: #1e40af;
+      color: white;
+    }
+
+    /* Contenedor principal */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      min-height: 60vh;
+    }
+
+    /* Alerta de emergencia */
+    .emergency-alert {
+      background: #fee2e2;
+      border: 2px solid #dc2626;
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .emergency-alert h1 {
+      color: #dc2626;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .emergency-alert p {
+      font-size: 1.2rem;
+      color: #991b1b;
+      margin-bottom: 10px;
+    }
+
+    /* Seccion de informacion */
+    .info-section {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .info-section h2 {
+      color: #1e40af;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .info-section p {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    /* Numeros de emergencia */
+    .emergency-numbers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .number-card {
+      background: #f0f9ff;
+      border-left: 4px solid #1e40af;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .number-card h3 {
+      color: #1e40af;
+      margin-bottom: 10px;
+    }
+
+    .number-card a {
+      color: #06b6d4;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .number-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* Boton de WhatsApp */
+    .btn-whatsapp {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #25d366;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 20px;
+      transition: all 0.3s;
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      background: #1e40af;
+      color: white;
+      padding: 40px 20px;
+      margin-top: 50px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .footer-socials a {
+      width: 45px;
+      height: 45px;
+      border: 2px solid white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .footer-socials a:hover {
+      background: white;
+      color: #1e40af;
+    }
+
+    .footer-info {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    /* Responsive para movil */
+    @media (max-width: 768px) {
+      .emergency-alert h1 {
+        font-size: 1.8rem;
+      }
+
+      .emergency-alert p {
+        font-size: 1rem;
+      }
+
+      .info-section h2 {
+        font-size: 1.4rem;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navegacion principal -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <!-- Aqui ponemos el logo en el main nav -->
+        <img src="assets/img/logo.png" alt="Logo SABIMEDIC JESUS" width="80" height="80" style="vertical-align: middle; margin-right: 8px;">
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="index.html">Especialidades</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <!-- Alerta de emergencia -->
+    <div class="emergency-alert">
+      <h1>INFORMACION DE EMERGENCIA</h1>
+      <p>
+        Si presenta una emergencia medica grave, acuda inmediatamente al centro
+        de salud mas cercano o comuniquese con los servicios de emergencia.
+      </p>
+      
+    </div>
+
+    <!-- Informacion del consultorio -->
+    <div class="info-section">
+      <h2>Contacto del Consultorio</h2>
+      <p>
+        Para consultas urgentes o solicitar informacion sobre nuestros servicios,
+        puede contactarnos por los siguientes medios:
+      </p>
+
+      <div class="emergency-numbers">
+        <div class="number-card">
+          <h3>Telefono</h3>
+          <a href="tel:+59172347510">+591 72332350</a>
+        </div>
+
+        <div class="number-card">
+          <h3>WhatsApp</h3>
+          <a href="https://wa.me/59172332350">+591 72332350</a>
+        </div>
+
+        <div class="number-card">
+          <h3>Direccion</h3>
+          <p style="color: #667;">Urbanización Paraiso II, Oruro</p>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="https://wa.me/59172332350" class="btn-whatsapp">
+          Contactar por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Numeros de emergencia generales -->
+    <div class="info-section">
+      <h2>Numeros de Emergencia Generales</h2>
+      <p>
+        En caso de emergencia medica grave, contacte inmediatamente a:
+      </p>
+
+      <div class="emergency-numbers">
+        <div class="number-card">
+          <h3>Ambulancia</h3>
+          <a href="tel:118">118</a>
+        </div>
+
+        <div class="number-card">
+          <h3>Policia</h3>
+          <a href="tel:110">110</a>
+        </div>
+
+        <div class="number-card">
+          <h3>Bomberos</h3>
+          <a href="tel:119">119</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recomendaciones -->
+    <div class="info-section">
+      <h2>Â¿Cuando acudir a emergencias?</h2>
+      <ul style="line-height: 2; font-size: 1.05rem; margin-left: 20px;">
+        <li>Dolor de pecho intenso o dificultad para respirar</li>
+        <li>Perdida de conciencia o convulsiones</li>
+        <li>Sangrado abundante que no se detiene</li>
+        <li>Traumatismos graves o fracturas expuestas</li>
+        <li>Quemaduras severas</li>
+        <li>Sintomas de accidente cerebrovascular (ACV)</li>
+        <li>Reacciones alergicas graves</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer: es el pie de pagina que muestra informacion de contacto y redes sociales -->
+   <footer class="footer">
+    <div class="footer-content">
+      <!-- Redes sociales -->
+      <div class="footer-socials">
+        <a href="https://wa.me/59172332350" title="WhatsApp" aria-label="WhatsApp">
+          <img src="assets/icons/whatsapp.svg" alt="" width="26" height="26">
+        </a>
+        <a href="https://www.facebook.com/sabimedic.jesus" title="Facebook" aria-label="Facebook">
+          <img src="assets/icons/facebook.svg" alt="" width="26" height="26">
+        </a>
+        <a href="#" title="TikTok" aria-label="TikTok">
+          <img src="assets/icons/tiktok.svg" alt="" width="26" height="26">
+        </a>
+        <a href="#" title="Instagram" aria-label="Instagram">
+          <img src="assets/icons/instagram.svg" alt="" width="26" height="26">
+        </a>
+      </div>
+
+      <!-- Informacion de contacto -->
+      <div class="footer-info">
+        <p><strong>Consultorio Medico SABIMEDIC JESUS</strong></p>
+        <p>Telefono: +591 72332350 | WhatsApp: +591 72332350</p>
+        <p>Direccion: Urbanización Paraiso II, Oruro </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+

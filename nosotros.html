@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SABIMEDIC JESUS | Sobre Nosotros</title>
+  <style>
+    /* Reinicio basico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Navegacion principal */
+    .main-nav {
+      background: white;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* Contenedor del nav */
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    /* Logo del nav */
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1e40af;
+      text-decoration: none;
+    }
+
+    /* Enlaces del nav */
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover {
+      background: #1e40af;
+      color: white;
+    }
+
+    /* Contenedor principal */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Titulo de la pagina */
+    .page-title {
+      text-align: center;
+      color: #1e40af;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+    }
+
+    /* Grilla de 4 cuadrantes (2x2) */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    /* Cada cuadrante */
+    .quadrant {
+      background: white;
+      border-radius: 10px;
+      /*
+        Espacio interno de la card.
+        Este padding evita que el texto quede pegado al borde y crea una
+        lectura mas comoda, especialmente en los bloques largos de historia.
+      */
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Imagen dentro del cuadrante */
+    .quadrant img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    /* Titulo dentro del cuadrante */
+    .quadrant h2 {
+      color: #1e40af;
+      margin: 0 0 22px;
+      font-size: 1.5rem;
+      line-height: 1.2;
+    }
+
+    /* Texto del cuadrante */
+    .quadrant p {
+      color: #666;
+      margin: 0 0 16px;
+      line-height: 1.75;
+    }
+
+    /*
+      La lista de promesas tambien necesita separacion propia. Si no se define,
+      el navegador la deja demasiado cerca del texto anterior y de la card.
+    */
+    .quadrant ol,
+    .quadrant ul {
+      margin: 18px 0 20px;
+      padding-left: 24px;
+    }
+
+    .quadrant li {
+      margin-bottom: 10px;
+      padding-left: 4px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #1e40af;
+      color: white;
+      padding: 40px 20px;
+      margin-top: 50px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Redes sociales en footer */
+    .footer-socials {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .footer-socials a {
+      width: 45px;
+      height: 45px;
+      border: 2px solid white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .footer-socials a:hover {
+      background: white;
+      color: #1e40af;
+    }
+
+    .footer-info {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    /* Responsive para movil */
+    @media (max-width: 768px) {
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .page-title {
+        font-size: 1.8rem;
+      }
+
+      .quadrant img {
+        height: 200px;
+      }
+
+      /* En movil reducimos un poco el padding para aprovechar el ancho disponible. */
+      .quadrant {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navegacion principal -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <!-- Aqui ponemos el logo en el main nav -->
+        <img src="assets/img/logo.png" alt="Logo SABIMEDIC JESUS" width="80" height="80" style="vertical-align: middle; margin-right: 8px;">
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="index.html">Especialidades</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <!-- Titulo central de la pagina institucional. -->
+    <h1 class="page-title">Sobre SABIMEDIC JESUS</h1>
+
+    <!-- Grilla de 4 cuadrantes -->
+    <div class="grid-4">
+      <!-- Cuadrante 1: imagen del profesional responsable. -->
+      <div class="quadrant">
+        <img src="assets/img/profesional-responsable.jpg" alt="Foto del profesional responsable">
+        <p style="text-align: center; color: #999; font-size: 0.9rem;">Dr. Miguel Angel Escobar</p>
+      </div>
+
+      <!-- Cuadrante 2: imagen de la institucion medica. -->
+      <div class="quadrant">
+        <img src="assets/img/consultorio-interior.jpg" alt="Foto del consultorio">
+        <p style="text-align: center; color: #999; font-size: 0.9rem;">SABIMEDIC JESUS - Oruro</p>
+      </div>
+
+      <!-- Cuadrante 3: historia personal y profesional del fundador. -->
+      <div class="quadrant">
+        <h2>Dr. Miguel Angel Escobar</h2>
+        <p><strong>Fundador y profesional responsable</strong></p>
+        <p><em>“Soy medico de vocacion y de corazon.”</em></p>
+        <p>
+          Desde niño supe que queria ayudar a las personas. Creci viendo de cerca el dolor,
+          la preocupacion de las familias cuando un ser querido se enferma y tambien la esperanza
+          que da una buena atencion. Esa mezcla me marco. Decidi estudiar medicina porque queria
+          ser parte de la solucion, no solo ver el problema.
+        </p>
+        <p>
+          La carrera fue dura, con noches sin dormir, guardias y mucha responsabilidad. Pero cada
+          paciente que se iba mejor de mi consulta me recordaba por que estaba ahi. Me forme con
+          una idea clara: la medicina no es solo recetar, es escuchar, explicar y acompañar.
+        </p>
+        <p>
+          Con los años gane experiencia en hospitales y centros de salud. Ahi atendi de todo:
+          niños con fiebre, adultos con presion alta y abuelitos que solo necesitaban que alguien
+          les tuviera paciencia. Aprendi que en Oruro la gente necesita un doctor cercano,
+          que hable claro, sin tecnicismos y que no haga sentir a nadie menos por no entender.
+        </p>
+        <p>
+          Pero tambien vi algo que me dolio: mucha gente posterga ir al medico por miedo, por el
+          costo o porque las consultas son muy frias e impersonales. Y pense: “si yo puedo hacer
+          un lugar distinto, lo voy a hacer”.
+        </p>
+      </div>
+
+      <!-- Cuadrante 4: origen, significado y mision de la institucion. -->
+      <div class="quadrant">
+        <h2>La historia de SABIMEDIC JESUS</h2>
+        <p>
+          SABIMEDIC JESUS nacio en Oruro en el año 2024 del sueño de servir y del amor de una familia.
+          Como medico vi que muchas personas necesitaban algo mas que una receta: necesitaban ser
+          escuchadas. Por eso decidi abrir un consultorio donde la medicina sea cercana, clara y humana.
+        </p>
+        <p><strong>¿Por que ese nombre?</strong></p>
+        <p><strong>SABIMEDIC</strong> representa una medicina con sabiduria, ciencia y humanidad. <strong>SABI</strong> nace de Sabina, mi madre, quien me enseño el cuidado, la paciencia y la calidez humana.</p>
+        <p><strong>JESUS</strong> representa a Jesus, mi padre, quien me enseño el trabajo, la honestidad y el compromiso de servir a los demas. Este consultorio es un homenaje a su ejemplo.</p>
+        <p><strong>Nuestra mision:</strong> prevenir, explicar y acompañar, honrando el nombre que llevamos.</p>
+        <ol>
+          <li><strong>Atencion humana:</strong> el paciente es persona, no un numero.</li>
+          <li><strong>Explicar bien:</strong> salir de la consulta entendiendo y con tranquilidad.</li>
+          <li><strong>Compromiso:</strong> estar presentes en la prevencion, no solo cuando ya existe un problema.</li>
+        </ol>
+        <p><strong>SABIMEDIC JESUS - Tu salud, nuestra prioridad.</strong></p>
+      </div>
+    </div>
+  </div>
+
+ <footer class="footer">
+    <div class="footer-content">
+      <!-- Redes sociales -->
+      <div class="footer-socials">
+        <a href="https://wa.me/59172332350" title="WhatsApp" aria-label="WhatsApp">
+          <img src="assets/icons/whatsapp.svg" alt="" width="26" height="26">
+        </a>
+        <a href="https://www.facebook.com/sabimedic.jesus" title="Facebook" aria-label="Facebook">
+          <img src="assets/icons/facebook.svg" alt="" width="26" height="26">
+        </a>
+        <a href="#" title="TikTok" aria-label="TikTok">
+          <img src="assets/icons/tiktok.svg" alt="" width="26" height="26">
+        </a>
+        <a href="#" title="Instagram" aria-label="Instagram">
+          <img src="assets/icons/instagram.svg" alt="" width="26" height="26">
+        </a>
+      </div>
+
+      <!-- Informacion de contacto -->
+      <div class="footer-info">
+        <p><strong>Consultorio Medico SABIMEDIC JESUS</strong></p>
+        <p>Telefono: +591 72332350 | WhatsApp: +591 72332350</p>
+        <p>Direccion: Urbanización Paraiso II, Oruro </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

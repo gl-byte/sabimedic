@@ -1,0 +1,425 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SABIMEDIC JESUS | Contacto</title>
+  <style>
+    /* Reinicio basico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Navegacion principal */
+    .main-nav {
+      background: white;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1e40af;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover {
+      background: #1e40af;
+      color: white;
+    }
+
+    /* Contenedor principal */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Titulo de la pagina */
+    .page-title {
+      text-align: center;
+      color: #1e40af;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+    }
+
+    /* Layout de dos columnas */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    /* Seccion */
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .section h2 {
+      color: #1e40af;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .section p {
+      margin-bottom: 15px;
+      color: #666;
+    }
+
+    /* Formulario de contacto */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      color: #1e40af;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #06b6d4;
+    }
+
+    /* Boton de enviar */
+    .btn-enviar {
+      width: 100%;
+      padding: 15px;
+      background: #06b6d4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-enviar:hover {
+      background: #0891b2;
+      transform: translateY(-2px);
+    }
+
+    /* Info de contacto */
+    .contact-info {
+      background: #f0f9ff;
+      padding: 15px;
+      border-left: 4px solid #1e40af;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+
+    .contact-info strong {
+      color: #1e40af;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    /* Mapa placeholder */
+    .map-placeholder {
+      width: 100%;
+      height: 300px;
+      background: #e5e7eb;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-weight: 600;
+      margin-top: 20px;
+    }
+
+    /* Boton WhatsApp */
+    .btn-whatsapp {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #25d366;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+      transition: all 0.3s;
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      background: #1e40af;
+      color: white;
+      padding: 40px 20px;
+      margin-top: 50px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .footer-socials a {
+      width: 45px;
+      height: 45px;
+      border: 2px solid white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .footer-socials a:hover {
+      background: white;
+      color: #1e40af;
+    }
+
+    .footer-info {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    /* Mensaje de confirmacion */
+    .mensaje-confirmacion {
+      display: none;
+      padding: 15px;
+      background: #dcfce7;
+      color: #166534;
+      border-radius: 8px;
+      margin-top: 15px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .mensaje-confirmacion.show {
+      display: block;
+    }
+
+    /* Responsive para movil */
+    @media (max-width: 768px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .page-title {
+        font-size: 1.8rem;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .map-placeholder {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navegacion principal -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <!-- Aqui ponemos el logo en el main nav -->
+        <img src="assets/img/logo.png" alt="Logo SABIMEDIC JESUS" width="80" height="80" style="vertical-align: middle; margin-right: 8px;">
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="index.html">Especialidades</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <!-- Titulo de la pagina -->
+    <h1 class="page-title">Contacto</h1>
+
+    <!-- Layout de dos columnas -->
+    <div class="contact-layout">
+      <!-- Informacion de contacto -->
+      <div class="section">
+        <h2>Datos de Contacto</h2>
+
+        <div class="contact-info">
+          <strong>Direccion:</strong>
+          Urbanización Paraiso II, Oruro
+        </div>
+
+        <div class="contact-info">
+          <strong>Horarios de Atencion:</strong>
+          Lunes a Viernes: 8:00 AM - 7:00 PM<br>
+          Sabados: 9:00 AM - 2:00 PM<br>
+          Domingos: Cerrado
+        </div>
+
+        <div class="contact-info">
+          <strong>Telefono:</strong>
+          +59172332350
+        </div>
+
+        <div class="contact-info">
+          <strong>WhatsApp:</strong>
+          +59172332350
+        </div>
+
+        <div class="contact-info">
+          <strong>Correo Electronico:</strong>
+          contacto@sabimedic.com
+        </div>
+
+        <a href="https://wa.me/59172332350" class="btn-whatsapp">
+          Contactar por WhatsApp
+        </a>
+
+        <!-- Mapa de ubicacion -->
+        <div class="map-placeholder">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d237.1611009004426!2d-67.10341517049739!3d-17.99837797882836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93e2b1263502f99d%3A0x22f268fdb9ab49da!2sUrbanizaci%C3%B3n%20Paraiso%20II%2C%20Oruro!5e0!3m2!1ses!2sbo!4v1787727765925!5m2!1ses!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+
+      <!-- Formulario de contacto -->
+      <div class="section">
+        <h2>Formulario de Contacto</h2>
+        <p>Envianos un mensaje y nos pondremos en contacto contigo a la brevedad posible.</p>
+
+        <form id="contactForm">
+          <!-- Nombre completo -->
+          <div class="form-group">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
+
+          <!-- Telefono -->
+          <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="tel" id="telefono" name="telefono">
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Correo Electronico</label>
+            <input type="email" id="email" name="email">
+          </div>
+
+          <!-- Mensaje -->
+          <div class="form-group">
+            <label for="mensaje">Mensaje *</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Escribe tu mensaje aqui..."></textarea>
+          </div>
+
+          <!-- Boton enviar -->
+          <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+
+          <!-- Mensaje de confirmacion -->
+          <div id="mensajeConfirmacion" class="mensaje-confirmacion">
+            Â¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <!-- Redes sociales -->
+      <div class="footer-socials">
+        <a href="https://wa.me/59172332350" title="WhatsApp" aria-label="WhatsApp">
+          <img src="assets/icons/whatsapp.svg" alt="" width="26" height="26">
+        </a>
+        <a href="https://www.facebook.com/sabimedic.jesus" title="Facebook" aria-label="Facebook">
+          <img src="assets/icons/facebook.svg" alt="" width="26" height="26">
+        </a>
+        <a href="#" title="TikTok" aria-label="TikTok">
+          <img src="assets/icons/tiktok.svg" alt="" width="26" height="26">
+        </a>
+        <a href="#" title="Instagram" aria-label="Instagram">
+          <img src="assets/icons/instagram.svg" alt="" width="26" height="26">
+        </a>
+      </div>
+
+      <!-- Informacion de contacto -->
+      <div class="footer-info">
+        <p><strong>Consultorio Medico SABIMEDIC JESUS</strong></p>
+        <p>Telefono: +591 72332350 | WhatsApp: +591 72332350</p>
+        <p>Direccion: Urbanización Paraiso II, Oruro </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+

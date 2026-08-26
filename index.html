@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SABIMEDIC JESUS | Menu Principal</title>
+  <style>
+    /* Reinicio basico del navegador */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Configuracion del body:
+       Aqui se define la fuente general, el color base del texto y el fondo.
+       Como es un consultorio medico, usamos un fondo claro para que se vea limpio. */
+    body {
+      font-family: Arial, sans-serif;
+      background: #F8FAFC;
+      color: #475569;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Contenedor principal que ocupa toda la pantalla:
+       Se divide en 3 filas: header arriba, contenido central y footer abajo.
+       Esto ayuda a que el menu principal no se vea amontonado. */
+    .main-container {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 20px;
+      max-width: 100%;
+    }
+
+    /* Header con navegacion y fotos:
+       grid-template-columns: auto 1fr auto deja foto a la izquierda,
+       menu al centro y logo a la derecha. */
+    .header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 2px solid #E2E8F0;
+      margin-bottom: 30px;
+    }
+
+    /* Foto izquierda (consultorio):
+       Esta imagen da contexto visual del lugar. Se mantiene grande para que
+       el usuario identifique rapido que se trata de un centro medico real. */
+    .foto-izquierda {
+      width: 230px;
+      height: 205px;
+      background: #E2E8F0;
+      border: 2px solid #1E3A8A;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      font-size: 0.75rem;
+      text-align: center;
+      padding: 3px;
+    }
+    /* Foto derecha (logo):
+       Es el espacio para la identidad del consultorio. El object-fit de img
+       se controla con el propio tamaño de la imagen y el marco definido aqui. */
+    .foto-derecha {
+     width: 230px;
+      height: 205px;
+      background: #E2E8F0;
+      border: 2px solid #1E3A8A;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      font-size: 0.75rem;
+      text-align: center;
+      padding: 3px;
+    }
+
+    /* Navegacion central del header */
+    .nav-header {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    /* Cada enlace de la navegacion */
+    
+    .nav-header a {
+      text-decoration: none;
+      color: #1E3A8A;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s;
+      font-size: 1.5rem;
+    }
+
+    .nav-header a:hover {
+      border-bottom-color: #06B6D4;
+    }
+
+    /* Seccion central con titulo y botones:
+       Esta es la parte mas importante del menu principal. Por eso se centra
+       vertical y horizontalmente. */
+    .seccion-central {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    /* Titulo principal grande:
+       El ancho maximo evita que el texto se estire demasiado en pantallas grandes. */
+    .titulo-principal {
+      text-align: center;
+      color: #1E3A8A;
+      line-height: 0.92;
+      max-width: 950px;
+      position: relative;
+      padding: 10px 18px 22px;
+      text-shadow: 0 2px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    /* Este pseudo-elemento crea una linea turquesa sutil debajo del titulo.
+       No es decoracion exagerada: sirve para anclar visualmente la marca. */
+    .titulo-principal::after {
+      content: "";
+      display: block;
+      width: min(520px, 72vw);
+      height: 6px;
+      margin: 18px auto 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, #06B6D4, transparent);
+    }
+
+    /* h1 se usa para SABIMEDIC y JESUS, las palabras con mas jerarquia. */
+    .titulo-principal h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    /* CONSULTORIO y MEDICO son parte del nombre visual, pero un poco menores. */
+    .titulo-principal .consultorio {
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .titulo-principal .medico {
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    /* Contenedor de botones tipo rotulo:
+       flex-wrap permite que los botones bajen de linea si la pantalla es chica. */
+    .botones-menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      max-width: 900px;
+    }
+
+    /* Estilo de cada boton tipo rotulo:
+       Fondo blanco + borde azul mantiene el estilo institucional.
+       La sombra turquesa da sensacion de boton sin abusar del color de acento. */
+    .boton-menu {
+      padding: 14px 25px;
+      background: #FFFFFF;
+      color: #1E3A8A;
+      border: 2px solid #1E3A8A;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.95rem;
+      min-width: 160px;
+      text-align: center;
+      transition: all 0.3s;
+      box-shadow: 4px 4px 0 rgba(6, 182, 212, 0.2);
+    }
+
+    .boton-menu:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 rgba(6, 182, 212, 0.3);
+      background: #F8FAFC;
+    }
+
+    /* Boton especial de reservar */
+    .boton-reservar {
+      background: #06B6D4;
+      color: #FFFFFF;
+      border-color: #06B6D4;
+    }
+
+    .boton-reservar:hover {
+      background: #0891B2;
+      box-shadow: 6px 6px 0 rgba(6, 182, 212, 0.4);
+    }
+
+    /* Boton de emergencia */
+    .boton-emergencia {
+      background: #FEE2E2;
+      color: #991B1B;
+      border-color: #FCA5A5;
+    }
+
+    .boton-emergencia:hover {
+      background: #FECACA;
+    }
+
+    /* Footer con redes sociales:
+       Se separa del contenido central con una linea clara para ordenar la lectura. */
+    .footer {
+      padding: 20px 0;
+      border-top: 2px solid #E2E8F0;
+      margin-top: 30px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* Iconos de redes sociales:
+       Aqui solo se ordenan los enlaces; los dibujos reales son SVG en assets/icons. */
+    .redes-sociales {
+      display: flex;
+      gap: 12px;
+    }
+
+    .red-social {
+      width: 45px;
+      height: 45px;
+      border: 2px solid #1E3A8A;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #1E3A8A;
+      font-weight: bold;
+      background: #FFFFFF;
+      transition: all 0.3s;
+    }
+
+    .red-social:hover {
+      background: #06B6D4;
+      color: #FFFFFF;
+      border-color: #06B6D4;
+    }
+
+    /* Informacion de contacto en footer */
+    .info-contacto {
+      text-align: right;
+    }
+
+    .info-contacto a {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #FFFFFF;
+      color: #1E3A8A;
+      border: 2px solid #1E3A8A;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .info-contacto a:hover {
+      background: #1E3A8A;
+      color: #FFFFFF;
+    }
+
+    /* Responsive para moviles:
+       En pantallas pequenas ocultamos las fotos grandes del header para que
+       el titulo y los botones tengan espacio suficiente. */
+    @media (max-width: 768px) {
+      .header {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .foto-izquierda,
+      .foto-derecha {
+        display: none;
+      }
+
+      .titulo-principal h1 {
+        font-size: 3rem;
+      }
+
+      .titulo-principal .consultorio,
+      .titulo-principal .medico {
+        font-size: 1.8rem;
+      }
+
+      .botones-menu {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .boton-menu {
+        width: 100%;
+        min-width: 100%;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .info-contacto {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <!-- Header con fotos y navegacion -->
+    <header class="header">
+      <!-- Foto izquierda: consultorio -->
+      <div>
+        <img src="assets/img/consultorio.jpg" alt="Foto del consultorio" class="foto-izquierda">
+      </div>
+
+      <!-- Navegacion central -->
+      <nav class="nav-header">
+        <a href="nosotros.html">Nosotros</a>
+        <a href="index.html">Especialidades</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <!-- Foto derecha: logo -->
+      <div>
+        <img src="assets/img/logo.png" alt="Logo de SABIMEDIC JESUS" class="foto-derecha">
+      </div>
+    </header>
+
+    <!-- Seccion central con titulo y botones -->
+    <section class="seccion-central">
+      <!-- Titulo principal:
+           Estas cuatro lineas forman la marca visual del menu principal.
+           CONSULTORIO y MEDICO explican el tipo de institucion;
+           SABIMEDIC JESUS es el nombre que debe tener mas fuerza visual. -->
+      <div class="titulo-principal">
+        <p class="consultorio">CONSULTORIO</p>
+        <p class="medico">MEDICO</p>
+        <h1>SABIMEDIC</h1>
+        <h1>JESUS</h1>
+      </div>
+
+      <!-- Botones tipo rotulo -->
+      <nav class="botones-menu">
+        <a href="nosotros.html" class="boton-menu">ENTRADA</a>
+        <a href="nosotros.html" class="boton-menu">SOBRE NOSOTROS</a>
+        <a href="index.html" class="boton-menu">ESPECIALIDADES</a>
+        <a href="index.html" class="boton-menu boton-reservar">RESERVAR CITA</a>
+        <a href="emergencia.html" class="boton-menu boton-emergencia">EMERGENCIA</a>
+      </nav>
+    </section>
+
+    <!-- Footer con redes sociales -->
+    <footer class="footer">
+      <div class="footer-content">
+        <!-- Redes sociales -->
+        <div class="redes-sociales">
+          <a href="https://wa.me/59172332350" class="red-social" title="WhatsApp" aria-label="WhatsApp">
+            <img src="assets/icons/whatsapp.svg" alt="" width="26" height="26">
+          </a>
+          <a href="https://www.facebook.com/sabimedic.jesus" class="red-social" title="Facebook" aria-label="Facebook">
+            <img src="assets/icons/facebook.svg" alt="" width="26" height="26">
+          </a>
+          <a href="#" class="red-social" title="TikTok" aria-label="TikTok">
+            <img src="assets/icons/tiktok.svg" alt="" width="26" height="26">
+          </a>
+          <a href="#" class="red-social" title="Instagram" aria-label="Instagram">
+            <img src="assets/icons/instagram.svg" alt="" width="26" height="26">
+          </a>
+        </div>
+
+        <!-- Informacion de contacto -->
+        <div class="info-contacto">
+          <a href="contacto.html">
+            <strong>Numero del Consultorio: 72332350</strong><br>
+            <span style="font-size: 0.9rem;">Contactanos</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+
