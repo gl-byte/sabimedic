@@ -148,7 +148,8 @@
     }
 
     .form-group input,
-    .form-group textarea {
+    .form-group textarea,
+    .form-group select {
       /* Regla comun para todos los campos del formulario. */
       width: 100%;
       padding: 12px;
@@ -160,7 +161,8 @@
     }
 
     .form-group input:focus,
-    .form-group textarea:focus {
+    .form-group textarea:focus,
+    .form-group select:focus {
       outline: none;
       border-color: #06b6d4;
     }
@@ -303,6 +305,51 @@
       display: block;
     }
 
+    /* Los avisos aparecen debajo del campo que hay que corregir. */
+    .field-error {
+      display: block;
+      color: #991b1b;
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+
+    .field-error:empty {
+      display: none;
+    }
+
+    .form-group [aria-invalid="true"] {
+      border-color: #b91c1c;
+    }
+
+    .mensaje-confirmacion[data-state="error"] {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    /* El verde indica que los datos estan listos, no que la cita ya este confirmada. */
+    .section .mensaje-confirmacion {
+      color: #166534;
+    }
+
+    .section .mensaje-confirmacion[data-state="error"] {
+      color: #991b1b;
+    }
+
+    .mensaje-confirmacion a {
+      display: block;
+      margin-top: 8px;
+      color: #1e3a8a;
+    }
+
+    .reservation-fields[hidden] {
+      display: none;
+    }
+
+    #formulario {
+      scroll-margin-top: 130px;
+      min-width: 0;
+    }
+
     /* Responsive para movil */
     @media (max-width: 768px) {
       .main-nav { padding: 10px 16px; }
@@ -387,7 +434,7 @@
 
         <div class="contact-info">
           <strong>Direccion:</strong>
-          Urbanización Paraiso II, Oruro
+          PEDRO FERRARI ORURO
         </div>
 
         <div class="contact-info">
@@ -399,12 +446,12 @@
 
         <div class="contact-info">
           <strong>Telefono:</strong>
-          +59172332350
+          +59172347510
         </div>
 
         <div class="contact-info">
           <strong>WhatsApp:</strong>
-          +59172332350
+          +59172347510
         </div>
 
         <div class="contact-info">
@@ -412,53 +459,94 @@
           contacto@sabimedic.com
         </div>
 
-        <a href="https://wa.me/59172332350" class="btn-whatsapp">
+        <a href="https://wa.me/59172347510" class="btn-whatsapp">
           Contactar por WhatsApp
         </a>
 
         <!-- Mapa de ubicacion -->
         <div class="map-placeholder">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d237.1611009004426!2d-67.10341517049739!3d-17.99837797882836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93e2b1263502f99d%3A0x22f268fdb9ab49da!2sUrbanizaci%C3%B3n%20Paraiso%20II%2C%20Oruro!5e0!3m2!1ses!2sbo!4v1787727765925!5m2!1ses!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <iframe src="https://www.google.com/maps?q=-17.9698045,-67.0841865&z=17&output=embed" title="Ubicacion del consultorio en PEDRO FERRARI ORURO" width="600" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
+        <a href="https://maps.app.goo.gl/fabpyxtggT1Txyvb6?g_st=aw" target="_blank" rel="noopener noreferrer">Ver ubicacion en Google Maps</a>
       </div>
 
       <!-- Formulario de contacto -->
-      <div class="section">
-        <h2>Formulario de Contacto</h2>
-        <p>Envianos un mensaje y nos pondremos en contacto contigo a la brevedad posible.</p>
+      <div class="section" id="formulario">
+        <h2>Reservas y consultas</h2>
+        <p>Solicita una cita o realiza una consulta. La reserva queda sujeta a confirmacion del consultorio.</p>
 
+        <!-- Los datos se preparan para WhatsApp; el envio se completa dentro de la conversacion. -->
         <form id="contactForm">
+          <div class="form-group">
+            <label for="tipo">Motivo de contacto *</label>
+            <select id="tipo" name="tipo" required aria-describedby="tipo-error">
+              <option value="consulta">Realizar una consulta</option>
+              <option value="reserva">Solicitar una cita</option>
+            </select>
+            <span class="field-error" id="tipo-error"></span>
+          </div>
+
           <!-- Nombre completo -->
           <div class="form-group">
             <label for="nombre">Nombre completo *</label>
-            <input type="text" id="nombre" name="nombre" required>
+            <input type="text" id="nombre" name="nombre" required minlength="2" maxlength="100" autocomplete="name" aria-describedby="nombre-error">
+            <span class="field-error" id="nombre-error"></span>
           </div>
 
           <!-- Telefono -->
           <div class="form-group">
-            <label for="telefono">Telefono</label>
-            <input type="tel" id="telefono" name="telefono">
+            <label for="telefono">Telefono *</label>
+            <input type="tel" id="telefono" name="telefono" required maxlength="25" autocomplete="tel" inputmode="tel" aria-describedby="telefono-error">
+            <span class="field-error" id="telefono-error"></span>
           </div>
 
           <!-- Email -->
           <div class="form-group">
             <label for="email">Correo Electronico</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" maxlength="254" autocomplete="email" aria-describedby="email-error">
+            <span class="field-error" id="email-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="especialidad">Especialidad</label>
+            <select id="especialidad" name="especialidad" aria-describedby="especialidad-error">
+              <option value="">Selecciona una especialidad</option>
+              <option value="medicina-general">Medicina General</option>
+              <option value="cirugia-general">Cirugia General y Laparoscopia</option>
+              <option value="ortopedia-traumatologia">Ortopedia y Traumatologia</option>
+              <option value="ginecologia-obstetricia">Ginecologia y Obstetricia</option>
+              <option value="neurociencia">Neurociencia</option>
+              <option value="medicina-interna">Medicina Interna</option>
+              <option value="pediatria">Pediatria</option>
+              <option value="fisioterapia-kinesiologia">Fisioterapia y Kinesiologia</option>
+            </select>
+            <span class="field-error" id="especialidad-error"></span>
+          </div>
+
+          <!-- La fecha solo se pide cuando se solicita una cita, y es una preferencia por confirmar. -->
+          <div class="reservation-fields" id="reservationFields" hidden>
+            <div class="form-group">
+              <label for="fecha">Fecha preferida *</label>
+              <input type="date" id="fecha" name="fecha" disabled aria-describedby="fecha-error">
+              <span class="field-error" id="fecha-error"></span>
+            </div>
           </div>
 
           <!-- Mensaje -->
           <div class="form-group">
             <label for="mensaje">Mensaje *</label>
-            <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Escribe tu mensaje aqui..."></textarea>
+            <textarea id="mensaje" name="mensaje" rows="5" required minlength="10" maxlength="2000" placeholder="Escribe tu consulta o el motivo de tu cita..." aria-describedby="mensaje-error"></textarea>
+            <span class="field-error" id="mensaje-error"></span>
           </div>
 
           <!-- Boton enviar -->
-          <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+          <button type="submit" class="btn-enviar">Continuar en WhatsApp</button>
 
           <!-- Mensaje de confirmacion -->
-          <div id="mensajeConfirmacion" class="mensaje-confirmacion">
-            Â¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.
-          </div>
+          <div id="mensajeConfirmacion" class="mensaje-confirmacion" role="status" aria-live="polite" aria-atomic="true"></div>
+          <noscript>
+            <p>Para realizar tu consulta o solicitar una cita, <a href="https://wa.me/59172347510">contactanos por WhatsApp</a>.</p>
+          </noscript>
         </form>
       </div>
     </div>
@@ -468,7 +556,7 @@
     <div class="footer-content">
       <!-- Redes sociales -->
       <div class="footer-socials">
-        <a href="https://wa.me/59172332350" title="WhatsApp" aria-label="WhatsApp">
+        <a href="https://wa.me/59172347510" title="WhatsApp" aria-label="WhatsApp">
           <img src="assets/icons/whatsapp.svg" alt="" width="26" height="26">
         </a>
         <a href="https://www.facebook.com/sabimedic.jesus" title="Facebook" aria-label="Facebook">
@@ -485,8 +573,8 @@
       <!-- Informacion de contacto -->
       <div class="footer-info">
         <p><strong>Consultorio Medico SABIMEDIC JESUS</strong></p>
-        <p>Telefono: +591 72332350 | WhatsApp: +591 72332350</p>
-        <p>Direccion: Urbanización Paraiso II, Oruro </p>
+        <p>Telefono: +591 72347510 | WhatsApp: +591 72347510</p>
+        <p>Direccion: PEDRO FERRARI ORURO </p>
       </div>
     </div>
   </footer>
@@ -513,5 +601,6 @@
       });
     });
   </script>
+  <script src="assets/js/contact-form.js"></script>
 </body>
 </html>
