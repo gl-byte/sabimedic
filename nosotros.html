@@ -1,420 +1,462 @@
 ﻿<!DOCTYPE html>
+
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SABIMEDIC JESUS | Sobre Nosotros</title>
-  <style>
-    /*
-      Esta pagina usa un estilo propio para mostrar la institucion en cuatro
-      bloques. Para personalizarla, normalmente solo tendras que cambiar:
-      las rutas de las imagenes, los textos de cada cuadrante y los colores.
-    */
+  <head>
+    <meta charset="UTF-8" />
 
-    /* Reinicio basico */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    body {
-      /* Fondo claro para que las tarjetas blancas se distingan sin verse pesadas. */
-      font-family: Arial, sans-serif;
-      background: #f8f8f8;
-      color: #333;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    <title>SABIMEDIC JESUS | Sobre Nosotros</title>
 
-    /* Navegacion principal */
-    .main-nav {
-      /* La barra permanece arriba mientras se recorre la historia del consultorio. */
-      background: white;
-      padding: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    /* Contenedor del nav */
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
+      body {
+        font-family: Arial, sans-serif;
+        background: #f8f8f8;
+        color: #333;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
 
-    /* Logo del nav */
-    .nav-logo {
-      /* Ajusta el tamaño del logo que aparece arriba a la izquierda. */
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #1e40af;
-      text-decoration: none;
-    }
+      .main-nav {
+        background: white;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
 
-    /* En celular este boton guarda los enlaces para que la cabecera no se amontone. */
-    .menu-toggle {
-      display: none;
-      width: 44px;
-      height: 44px;
-      border: 2px solid #1e40af;
-      border-radius: 8px;
-      background: #ffffff;
-      color: #1e40af;
-      font-size: 1.35rem;
-      cursor: pointer;
-    }
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
 
-    /* Enlaces del nav */
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+      .nav-logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #1e40af;
+        text-decoration: none;
+      }
 
-    .nav-links a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 600;
-      padding: 8px 15px;
-      border-radius: 5px;
-      transition: all 0.3s;
-    }
-
-    .nav-links a:hover {
-      /* Indica visualmente cual enlace esta siendo señalado. */
-      background: #1e40af;
-      color: white;
-    }
-
-    /* Contenedor principal */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    /* Titulo de la pagina */
-    .page-title {
-      text-align: center;
-      color: #1e40af;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-      text-transform: uppercase;
-    }
-
-    /* Grilla de 4 cuadrantes (2x2) */
-    .grid-4 {
-      /* Dos columnas en computadora; en movil se convierten en una. */
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
-      margin-bottom: 30px;
-    }
-
-    /* Cada cuadrante */
-    .quadrant {
-      background: white;
-      border-radius: 10px;
-      /*
-        Espacio interno de la card.
-        Este padding evita que el texto quede pegado al borde y crea una
-        lectura mas comoda, especialmente en los bloques largos de historia.
-      */
-      padding: 30px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    /* Imagen dentro del cuadrante */
-    .quadrant img {
-      /* Todas las fotos de la pagina comparten el mismo tamaño y recorte. */
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
-
-    /* Titulo dentro del cuadrante */
-    .quadrant h2 {
-      color: #1e40af;
-      margin: 0 0 22px;
-      font-size: 1.5rem;
-      line-height: 1.2;
-    }
-
-    /* Texto del cuadrante */
-    .quadrant p {
-      color: #666;
-      margin: 0 0 16px;
-      line-height: 1.75;
-    }
-
-    /*
-      La lista de promesas tambien necesita separacion propia. Si no se define,
-      el navegador la deja demasiado cerca del texto anterior y de la card.
-    */
-    .quadrant ol,
-    .quadrant ul {
-      margin: 18px 0 20px;
-      padding-left: 24px;
-    }
-
-    .quadrant li {
-      margin-bottom: 10px;
-      padding-left: 4px;
-    }
-
-    /* Footer */
-    .footer {
-      background: #1e40af;
-      color: white;
-      padding: 40px 20px;
-      margin-top: 50px;
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    /* Redes sociales en footer */
-    .footer-socials {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      margin: 20px 0;
-    }
-
-    .footer-socials a {
-      /* Cada circulo contiene un SVG de una red social. */
-      width: 45px;
-      height: 45px;
-      border: 2px solid white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s;
-    }
-
-    .footer-socials a:hover {
-      background: white;
-      color: #1e40af;
-    }
-
-    .footer-info {
-      margin-top: 20px;
-      font-size: 0.9rem;
-      line-height: 1.8;
-    }
-
-    /* Responsive para movil */
-    @media (max-width: 768px) {
-      .main-nav { padding: 10px 16px; }
-      .nav-container { position: relative; min-height: 54px; }
-      .nav-logo img { width: 58px; height: 58px; object-fit: contain; }
-      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; }
-      /* El panel flota sobre el contenido, por eso al abrirlo nada se mueve. */
-      .nav-links {
-        position: absolute;
-        top: calc(100% + 10px);
-        right: 0;
-        z-index: 200;
+      .menu-toggle {
         display: none;
-        width: min(230px, calc(100vw - 32px));
-        padding: 8px;
-        gap: 0;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
+        width: 44px;
+        height: 44px;
+        border: 2px solid #1e40af;
         border-radius: 8px;
-        box-shadow: 0 14px 28px rgba(15, 23, 42, 0.16);
-      }
-      .nav-links.is-open { display: flex; }
-      .nav-links a { padding: 12px 14px; border-bottom: 1px solid #e2e8f0; }
-      .nav-links a:last-child { border-bottom: 0; }
-      .grid-4 {
-        grid-template-columns: 1fr;
-        gap: 18px;
+        background: #ffffff;
+        color: #1e40af;
+        font-size: 1.35rem;
+        cursor: pointer;
       }
 
-      /* En movil alternamos los bloques para que cada foto quede seguida de su propia informacion. */
-      .grid-4 .quadrant:nth-child(1) { order: 1; }
-      .grid-4 .quadrant:nth-child(3) { order: 2; }
-      .grid-4 .quadrant:nth-child(2) { order: 3; }
-      .grid-4 .quadrant:nth-child(4) { order: 4; }
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: all 0.3s;
+      }
+
+      .nav-links a:hover {
+        background: #1e40af;
+        color: white;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
 
       .page-title {
-        font-size: clamp(1.65rem, 8vw, 2.2rem);
-        margin-bottom: 24px;
+        text-align: center;
+        color: #1e40af;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        text-transform: uppercase;
       }
 
-      .container { padding: 28px 16px 36px; }
+      .grid-4 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .quadrant {
+        background: white;
+        border-radius: 10px;
+
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
 
       .quadrant img {
-        height: 200px;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 15px;
       }
 
-      /* En movil reducimos un poco el padding para aprovechar el ancho disponible. */
-      .quadrant {
-        padding: 20px;
+      .quadrant h2 {
+        color: #1e40af;
+        margin: 0 0 22px;
+        font-size: 1.5rem;
+        line-height: 1.2;
       }
-    }
-  </style>
-</head>
-<body>
-  <!-- Navegacion principal -->
-  <nav class="main-nav">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <!-- Aqui ponemos el logo en el main nav -->
-        <img src="assets/img/logo.png" alt="Logo SABIMEDIC JESUS" width="80" height="80" style="vertical-align: middle; margin-right: 8px;">
-      </a>
-      <!-- Al tocarlo se abre el menu movil sin cambiar la altura de la cabecera. -->
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu">☰</button>
-      <div class="nav-links">
-        <a href="index.html">Inicio</a>
-        <a href="nosotros.html">Nosotros</a>
-        <a href="especialidades.html">Especialidades</a>
-        <a href="contacto.html">Contacto</a>
+
+      .quadrant p {
+        color: #666;
+        margin: 0 0 16px;
+        line-height: 1.75;
+      }
+
+      .quadrant ol,
+      .quadrant ul {
+        margin: 18px 0 20px;
+        padding-left: 24px;
+      }
+
+      .quadrant li {
+        margin-bottom: 10px;
+        padding-left: 4px;
+      }
+
+      .footer {
+        background: #1e40af;
+        color: white;
+        padding: 40px 20px;
+        margin-top: 50px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .footer-socials {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .footer-socials a {
+        width: 45px;
+        height: 45px;
+        border: 2px solid white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s;
+      }
+
+      .footer-socials a:hover {
+        background: white;
+        color: #1e40af;
+      }
+
+      .footer-info {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        line-height: 1.8;
+      }
+
+      @media (max-width: 768px) {
+        .main-nav {
+          padding: 10px 16px;
+        }
+
+        .nav-container {
+          position: relative;
+          min-height: 54px;
+        }
+
+        .nav-logo img {
+          width: 58px;
+          height: 58px;
+          object-fit: contain;
+        }
+
+        .menu-toggle {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: auto;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: calc(100% + 10px);
+          right: 0;
+          z-index: 200;
+          display: none;
+          width: min(230px, calc(100vw - 32px));
+          padding: 8px;
+          gap: 0;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 8px;
+          box-shadow: 0 14px 28px rgba(15, 23, 42, 0.16);
+        }
+
+        .nav-links.is-open {
+          display: flex;
+        }
+
+        .nav-links a {
+          padding: 12px 14px;
+          border-bottom: 1px solid #e2e8f0;
+        }
+
+        .nav-links a:last-child {
+          border-bottom: 0;
+        }
+
+        .grid-4 {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+
+        .grid-4 .quadrant:nth-child(1) {
+          order: 1;
+        }
+        .grid-4 .quadrant:nth-child(3) {
+          order: 2;
+        }
+        .grid-4 .quadrant:nth-child(2) {
+          order: 3;
+        }
+        .grid-4 .quadrant:nth-child(4) {
+          order: 4;
+        }
+
+        .page-title {
+          font-size: clamp(1.65rem, 8vw, 2.2rem);
+          margin-bottom: 24px;
+        }
+
+        .container {
+          padding: 28px 16px 36px;
+        }
+
+        .quadrant img {
+          height: 200px;
+        }
+
+        .quadrant {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="main-nav">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <img
+            src="assets/img/logo.png"
+            alt="Logo SABIMEDIC JESUS"
+            width="80"
+            height="80"
+            style="vertical-align: middle; margin-right: 8px"
+          />
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-label="Abrir menu"
+        >
+          ☰
+        </button>
+        <div class="nav-links">
+          <a href="index.html">Inicio</a>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="especialidades.html">Especialidades</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">Sobre SABIMEDIC JESUS</h1>
+
+      <div class="grid-4">
+        <div class="quadrant">
+          <img
+            src="assets/img/profesional-responsable.jpg"
+            alt="Foto del profesional responsable"
+          />
+          <p style="text-align: center; color: #646363; font-size: 0.9rem">
+            Dr. Miguel Angel Escobar
+          </p>
+        </div>
+
+        <div class="quadrant">
+          <img src="assets/img/consultorio.jpg" alt="Foto del consultorio" />
+          <p style="text-align: center; color: #646363; font-size: 0.9rem">
+            SABIMEDIC JESUS - ORURO
+          </p>
+        </div>
+
+        <div class="quadrant">
+          <h2>Dr. Miguel Angel Escobar</h2>
+          <p><strong>Fundador y profesional responsable</strong></p>
+          <p><em>“Soy medico de vocación y de corazón.”</em></p>
+          <p>
+            Desde niño supe que queria ayudar a las personas. Creci viendo de cerca el
+            dolor, la preocupacion de las familias cuando un ser querido se enferma y
+            tambien la esperanza que da una buena atencion. Esa mezcla me marco. Decidi
+            estudiar medicina porque queria ser parte de la solucion, no solo ver el
+            problema.
+          </p>
+          <p>
+            La carrera fue dura, con noches sin dormir, guardias y mucha responsabilidad.
+            Pero cada paciente que se iba mejor de mi consulta me recordaba por que estaba
+            ahi. Me forme con una idea clara: la medicina no es solo recetar, es escuchar,
+            explicar y acompañar.
+          </p>
+          <p>
+            Con los años gane experiencia en hospitales y centros de salud. Ahi atendi de
+            todo: niños con fiebre, adultos con presion alta y abuelitos que solo
+            necesitaban que alguien les tuviera paciencia. Aprendi que en Oruro la gente
+            necesita un doctor cercano, que hable claro, sin tecnicismos y que no haga
+            sentir a nadie menos por no entender.
+          </p>
+          <p>
+            Pero tambien vi algo que me dolio: mucha gente posterga ir al medico por
+            miedo, por el costo o porque las consultas son muy frias e impersonales. Y
+            pense: “si yo puedo hacer un lugar distinto, lo voy a hacer”.
+          </p>
+        </div>
+
+        <div class="quadrant">
+          <h2>La historia de SABIMEDIC JESUS</h2>
+          <p>
+            SABIMEDIC JESUS nacio en Oruro en el año 2024 del sueño de servir y del amor
+            de una familia. Como medico vi que muchas personas necesitaban algo mas que
+            una receta: necesitaban ser escuchadas. Por eso decidi abrir un consultorio
+            donde la medicina sea cercana, clara y humana.
+          </p>
+          <p><strong>¿Por que ese nombre?</strong></p>
+          <p>
+            <strong>SABIMEDIC</strong>
+            representa una medicina con sabiduria, ciencia y humanidad.
+            <strong>SABI</strong>
+            nace de Sabina, mi madre, quien me enseño el cuidado, la paciencia y la
+            calidez humana.
+          </p>
+          <p>
+            <strong>JESUS</strong>
+            representa a Jesus, mi padre, quien me enseño el trabajo, la honestidad y el
+            compromiso de servir a los demas. Este consultorio es un homenaje a su
+            ejemplo.
+          </p>
+          <p>
+            <strong>Nuestra mision:</strong>
+            prevenir, explicar y acompañar, honrando el nombre que llevamos.
+          </p>
+          <ol>
+            <li>
+              <strong>Atencion humana:</strong>
+              el paciente es persona, no un numero.
+            </li>
+            <li>
+              <strong>Explicar bien:</strong>
+              salir de la consulta entendiendo y con tranquilidad.
+            </li>
+            <li>
+              <strong>Compromiso:</strong>
+              estar presentes en la prevencion, no solo cuando ya existe un problema.
+            </li>
+          </ol>
+          <p><strong>SABIMEDIC JESUS - Tu salud, nuestra prioridad.</strong></p>
+        </div>
       </div>
     </div>
-  </nav>
 
-  <!--
-    Contenido principal.
-    Esta pagina presenta primero las imagenes y luego la informacion escrita.
-    Para editar la historia, busca los parrafos dentro de cada .quadrant.
-  -->
-  <div class="container">
-    <!-- Titulo central de la pagina institucional. -->
-    <h1 class="page-title">Sobre SABIMEDIC JESUS</h1>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-socials">
+          <a href="https://wa.me/59172347510" title="WhatsApp" aria-label="WhatsApp">
+            <img src="assets/icons/whatsapp.svg" alt="" width="26" height="26" />
+          </a>
+          <a
+            href="https://www.facebook.com/sabimedic.jesus"
+            title="Facebook"
+            aria-label="Facebook"
+          >
+            <img src="assets/icons/facebook.svg" alt="" width="26" height="26" />
+          </a>
+          <a href="#" title="TikTok" aria-label="TikTok">
+            <img src="assets/icons/tiktok.svg" alt="" width="26" height="26" />
+          </a>
+          <a href="#" title="Instagram" aria-label="Instagram">
+            <img src="assets/icons/instagram.svg" alt="" width="26" height="26" />
+          </a>
+        </div>
 
-    <!-- Grilla de 4 cuadrantes -->
-    <div class="grid-4">
-      <!-- Cuadrante 1: imagen del profesional responsable. -->
-      <div class="quadrant">
-        <img src="assets/img/profesional-responsable.jpg" alt="Foto del profesional responsable">
-        <p style="text-align: center; color: #646363; font-size: 0.9rem;">Dr. Miguel Angel Escobar</p>
+        <div class="footer-info">
+          <p><strong>Consultorio Medico SABIMEDIC JESUS</strong></p>
+          <p>Telefono: +591 72347510 | WhatsApp: +591 72347510</p>
+          <p>Direccion: PEDRO FERRARI ORURO</p>
+        </div>
       </div>
+    </footer>
+    <script>
+      const menuToggle = document.querySelector(".menu-toggle");
+      const mobileMenu = document.querySelector(".nav-links");
 
-      <!-- Cuadrante 2: imagen de la institucion medica. -->
-      <div class="quadrant">
-        <img src="assets/img/consultorio.jpg" alt="Foto del consultorio">
-        <p style="text-align: center; color: #646363; font-size: 0.9rem;">SABIMEDIC JESUS - ORURO </p>
-      </div>
+      menuToggle.addEventListener("click", () => {
+        const menuIsOpen = mobileMenu.classList.toggle("is-open");
 
-      <!-- Cuadrante 3: historia personal y profesional del fundador. -->
-      <div class="quadrant">
-        <h2>Dr. Miguel Angel Escobar</h2>
-        <p><strong>Fundador y profesional responsable</strong></p>
-        <p><em>“Soy medico de vocación y de corazón.”</em></p>
-        <p>
-          Desde niño supe que queria ayudar a las personas. Creci viendo de cerca el dolor,
-          la preocupacion de las familias cuando un ser querido se enferma y tambien la esperanza
-          que da una buena atencion. Esa mezcla me marco. Decidi estudiar medicina porque queria
-          ser parte de la solucion, no solo ver el problema.
-        </p>
-        <p>
-          La carrera fue dura, con noches sin dormir, guardias y mucha responsabilidad. Pero cada
-          paciente que se iba mejor de mi consulta me recordaba por que estaba ahi. Me forme con
-          una idea clara: la medicina no es solo recetar, es escuchar, explicar y acompañar.
-        </p>
-        <p>
-          Con los años gane experiencia en hospitales y centros de salud. Ahi atendi de todo:
-          niños con fiebre, adultos con presion alta y abuelitos que solo necesitaban que alguien
-          les tuviera paciencia. Aprendi que en Oruro la gente necesita un doctor cercano,
-          que hable claro, sin tecnicismos y que no haga sentir a nadie menos por no entender.
-        </p>
-        <p>
-          Pero tambien vi algo que me dolio: mucha gente posterga ir al medico por miedo, por el
-          costo o porque las consultas son muy frias e impersonales. Y pense: “si yo puedo hacer
-          un lugar distinto, lo voy a hacer”.
-        </p>
-      </div>
+        menuToggle.setAttribute("aria-expanded", String(menuIsOpen));
 
-      <!-- Cuadrante 4: origen, significado y mision de la institucion. -->
-      <div class="quadrant">
-        <h2>La historia de SABIMEDIC JESUS</h2>
-        <p>
-          SABIMEDIC JESUS nacio en Oruro en el año 2024 del sueño de servir y del amor de una familia.
-          Como medico vi que muchas personas necesitaban algo mas que una receta: necesitaban ser
-          escuchadas. Por eso decidi abrir un consultorio donde la medicina sea cercana, clara y humana.
-        </p>
-        <p><strong>¿Por que ese nombre?</strong></p>
-        <p><strong>SABIMEDIC</strong> representa una medicina con sabiduria, ciencia y humanidad. <strong>SABI</strong> nace de Sabina, mi madre, quien me enseño el cuidado, la paciencia y la calidez humana.</p>
-        <p><strong>JESUS</strong> representa a Jesus, mi padre, quien me enseño el trabajo, la honestidad y el compromiso de servir a los demas. Este consultorio es un homenaje a su ejemplo.</p>
-        <p><strong>Nuestra mision:</strong> prevenir, explicar y acompañar, honrando el nombre que llevamos.</p>
-        <ol>
-          <li><strong>Atencion humana:</strong> el paciente es persona, no un numero.</li>
-          <li><strong>Explicar bien:</strong> salir de la consulta entendiendo y con tranquilidad.</li>
-          <li><strong>Compromiso:</strong> estar presentes en la prevencion, no solo cuando ya existe un problema.</li>
-        </ol>
-        <p><strong>SABIMEDIC JESUS - Tu salud, nuestra prioridad.</strong></p>
-      </div>
-    </div>
-  </div>
+        menuToggle.setAttribute("aria-label", menuIsOpen ? "Cerrar menu" : "Abrir menu");
 
- <footer class="footer">
-    <div class="footer-content">
-      <!-- Redes sociales -->
-      <div class="footer-socials">
-        <a href="https://wa.me/59172347510" title="WhatsApp" aria-label="WhatsApp">
-          <img src="assets/icons/whatsapp.svg" alt="" width="26" height="26">
-        </a>
-        <a href="https://www.facebook.com/sabimedic.jesus" title="Facebook" aria-label="Facebook">
-          <img src="assets/icons/facebook.svg" alt="" width="26" height="26">
-        </a>
-        <a href="#" title="TikTok" aria-label="TikTok">
-          <img src="assets/icons/tiktok.svg" alt="" width="26" height="26">
-        </a>
-        <a href="#" title="Instagram" aria-label="Instagram">
-          <img src="assets/icons/instagram.svg" alt="" width="26" height="26">
-        </a>
-      </div>
-
-      <!-- Informacion de contacto -->
-      <div class="footer-info">
-        <p><strong>Consultorio Medico SABIMEDIC JESUS</strong></p>
-        <p>Telefono: +591 72347510 | WhatsApp: +591 72347510</p>
-        <p>Direccion: PEDRO FERRARI ORURO </p>
-      </div>
-    </div>
-  </footer>
-  <script>
-    // Conectamos el boton con los enlaces que deben aparecer en el celular.
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mobileMenu = document.querySelector(".nav-links");
-
-    // Al tocar el boton, la clase is-open muestra u oculta el panel.
-    menuToggle.addEventListener("click", () => {
-      const menuIsOpen = mobileMenu.classList.toggle("is-open");
-      menuToggle.setAttribute("aria-expanded", String(menuIsOpen));
-      menuToggle.setAttribute("aria-label", menuIsOpen ? "Cerrar menu" : "Abrir menu");
-      menuToggle.textContent = menuIsOpen ? "×" : "☰";
-    });
-
-    // Al navegar a otra pagina, cerramos el panel para no cubrir el nuevo contenido.
-    mobileMenu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("is-open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Abrir menu");
-        menuToggle.textContent = "☰";
+        menuToggle.textContent = menuIsOpen ? "×" : "☰";
       });
-    });
-  </script>
-</body>
+
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("is-open");
+
+          menuToggle.setAttribute("aria-expanded", "false");
+
+          menuToggle.setAttribute("aria-label", "Abrir menu");
+
+          menuToggle.textContent = "☰";
+        });
+      });
+    </script>
+  </body>
 </html>
