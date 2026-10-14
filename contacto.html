@@ -1,696 +1,671 @@
-﻿<!DOCTYPE html>
-
+﻿<!-- El navegador lee esta pagina como un documento web actual. Esta linea se mantiene igual en todas las paginas. -->
+<!DOCTYPE html>
+<!-- Indicamos que el contenido esta en espanol para que las herramientas de lectura lo pronuncien correctamente. -->
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+  <!-- Permite que se vean bien las tildes, la letra enie y los simbolos escritos en los textos. -->
+<meta charset="UTF-8">
+  <!-- Hace que el ancho de la pagina se adapte al celular, en lugar de mostrar una computadora en miniatura. -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Lo que escribas aqui aparecera en la pestana del navegador; el titulo visible dentro de la pagina se cambia mas abajo. -->
+<title>SABIMEDIC JESUS | Contacto</title>
+  <!-- Aqui empieza la apariencia de esta pagina. Se definen colores, espacios y tamanos; los textos visibles estan despues de este bloque. -->
+<style>
+    /*
+      GUIA PARA EDITAR CONTACTO
+      Los datos visibles se encuentran mas abajo, dentro de los bloques
+      .contact-info. Cambia alli telefono, horarios, correo y direccion.
+      Los estilos de este bloque solo controlan la forma en que esos datos
+      aparecen en pantalla.
+    */
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    /* Reinicio basico */
+    /* Partimos sin espacios automaticos. Luego cada zona recibe su propia separacion para que el resultado sea parejo entre navegadores. */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <title>SABIMEDIC JESUS | Contacto</title>
+    /* La letra, el fondo y el color del texto definidos aqui se usan en toda esta pagina. */
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+    /* Navegacion principal */
+    /* Esta es la franja superior con el logo y el menu. Permanece visible al bajar por la pagina para que siempre puedas cambiar de seccion. */
+    .main-nav {
+      background: white;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-      body {
-        font-family: Arial, sans-serif;
-        background: #f8f8f8;
-        color: #333;
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
+    /* Ordenamos logo y enlaces en una misma fila. El espacio entre ellos evita que se amontonen. */
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
 
-      .main-nav {
-        background: white;
-        padding: 20px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
+    /* Aspecto del enlace que lleva al inicio. La imagen del logo se encuentra mas abajo en el contenido. */
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1e40af;
+      text-decoration: none;
+    }
 
-      .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 15px;
-      }
+    /* Boton compacto para abrir la navegacion cuando se visita desde un celular. */
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 2px solid #1e40af;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #1e40af;
+      font-size: 1.35rem;
+      cursor: pointer;
+    }
 
-      .nav-logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #1e40af;
-        text-decoration: none;
-      }
+    /* En computadora las opciones aparecen juntas. En celular se usa otra distribucion, definida al final de estos estilos. */
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-      .menu-toggle {
-        display: none;
-        width: 44px;
-        height: 44px;
-        border: 2px solid #1e40af;
-        border-radius: 8px;
-        background: #ffffff;
-        color: #1e40af;
-        font-size: 1.35rem;
-        cursor: pointer;
-      }
+    /* Cada opcion del menu tiene espacio alrededor de su texto para que sea facil seleccionarla. */
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
 
+    /* Estos colores aparecen cuando el mouse pasa sobre una opcion del menu. */
+    .nav-links a:hover {
+      background: #1e40af;
+      color: white;
+    }
+
+    /* Contenedor principal */
+    /* El contenido se centra y tiene un ancho limite. El espacio interior evita que los textos se acerquen al borde de la pantalla. */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Titulo de la pagina */
+    /* Tamano, color y separacion del titulo grande de esta pagina. */
+    .page-title {
+      text-align: center;
+      color: #1e40af;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+    }
+
+    /* Layout de dos columnas */
+    .contact-layout {
+      /* Divide contacto en informacion a la izquierda y formulario a la derecha. */
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    /* Seccion */
+    /* La informacion y el formulario tienen espacio interior propio. Aumenta padding para separar mas el contenido de sus bordes. */
+    .section {
+      /* Cada columna se presenta como una superficie blanca separada. */
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Los titulos de cada zona se resaltan en azul y se separan del texto que sigue. */
+    .section h2 {
+      color: #1e40af;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    /* Estas opciones hacen que los parrafos se distingan del titulo y no queden uno pegado al otro. */
+    .section p {
+      margin-bottom: 15px;
+      color: #666;
+    }
+
+    /* Formulario de contacto */
+    .form-group {
+      /* Separa un campo del siguiente para que el formulario respire. */
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      /* El texto del label explica que dato debe escribir la persona. */
+      display: block;
+      color: #1e40af;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      /* Regla comun para todos los campos del formulario. */
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+      transition: border-color 0.3s;
+    }
+
+    /* Al escribir en un campo, su borde cambia de color para indicar donde esta el cursor. */
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #06b6d4;
+    }
+
+    /* Boton de enviar */
+    /* Aspecto del boton que continua hacia WhatsApp. La accion al pulsarlo se define en assets/js/contact-form.js. */
+    .btn-enviar {
+      width: 100%;
+      padding: 15px;
+      background: #06b6d4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    /* Cuando se pasa el mouse por el boton, cambia ligeramente de color y se levanta unos pixeles. */
+    .btn-enviar:hover {
+      background: #0891b2;
+      transform: translateY(-2px);
+    }
+
+    /* Info de contacto */
+    .contact-info {
+      /* Pequeña ficha para leer telefono, horario y otros datos rapidamente. */
+      background: #f0f9ff;
+      padding: 15px;
+      border-left: 4px solid #1e40af;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+
+    /* Los nombres de los datos, como Telefono y Direccion, se muestran separados del valor que aparece debajo. */
+    .contact-info strong {
+      color: #1e40af;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    /* El mapa real aparece en este espacio; aqui se controla su alto y el borde que lo contiene. */
+    /* Espacio reservado al mapa real. Puedes cambiar height para hacerlo mas alto sin cambiar la ubicacion. */
+    .map-placeholder {
+      /* Aqui se muestra el mapa embebido de Google Maps. */
+      width: 100%;
+      height: 300px;
+      background: #e5e7eb;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-weight: 600;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    /* El mapa se ajusta al ancho de la tarjeta y asi no crea desplazamiento lateral. */
+    .map-placeholder iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Boton WhatsApp */
+    /* El boton verde se reconoce como acceso a WhatsApp. Cambiar sus colores aqui no modifica el numero al que se escribe. */
+    .btn-whatsapp {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #25d366;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+      transition: all 0.3s;
+    }
+
+    /* El boton se oscurece un poco al senalarlo con el mouse. */
+    .btn-whatsapp:hover {
+      background: #20ba5a;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    /* Esta zona final reune los enlaces sociales y los datos de contacto. El espacio de arriba la separa del resto de la pagina. */
+    .footer {
+      background: #1e40af;
+      color: white;
+      padding: 40px 20px;
+      margin-top: 50px;
+    }
+
+    /* Los elementos finales se mantienen dentro de un ancho controlado para que no se extiendan demasiado en computadora. */
+    /* Aqui se decide como se reparten los iconos sociales y los datos de contacto en la zona final. */
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Los dibujos de las redes quedan juntos, con la misma separacion entre cada uno. */
+    .footer-socials {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    /* Cada red se puede pulsar dentro de un circulo, no solamente sobre el pequeno dibujo. */
+    .footer-socials a {
+      width: 45px;
+      height: 45px;
+      border: 2px solid white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    /* Este cambio de fondo senala el enlace social que se encuentra bajo el mouse. */
+    .footer-socials a:hover {
+      background: white;
+      color: #1e40af;
+    }
+
+    /* Los datos finales llevan un tamano mas pequeno y espacio suficiente entre sus lineas. */
+    .footer-info {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    /* Mensaje de confirmacion */
+    /* El aviso del formulario comienza oculto. Se muestra cuando hace falta corregir datos o continuar hacia WhatsApp. */
+    .mensaje-confirmacion {
+      display: none;
+      padding: 15px;
+      background: #dcfce7;
+      color: #166534;
+      border-radius: 8px;
+      margin-top: 15px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Esta indicacion hace visible el aviso cuando el formulario lo solicita. */
+    .mensaje-confirmacion.show {
+      display: block;
+    }
+
+    /* Los avisos aparecen debajo del campo que hay que corregir. */
+    .field-error {
+      display: block;
+      color: #991b1b;
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+
+    /* Si un campo no tiene ningun aviso, no dejamos un hueco debajo de el. */
+    .field-error:empty {
+      display: none;
+    }
+
+    /* El borde rojo identifica un dato que hay que corregir. Al editarlo, el formulario retira esa senal. */
+    .form-group [aria-invalid="true"] {
+      border-color: #b91c1c;
+    }
+
+    /* Cuando hay errores, el aviso general se muestra en rojo suave. */
+    .mensaje-confirmacion[data-state="error"] {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    /* El verde indica que los datos estan listos, no que la cita ya este confirmada. */
+    .section .mensaje-confirmacion {
+      color: #166534;
+    }
+
+    .section .mensaje-confirmacion[data-state="error"] {
+      color: #991b1b;
+    }
+
+    /* El acceso alternativo a WhatsApp aparece en una linea propia dentro del aviso. */
+    .mensaje-confirmacion a {
+      display: block;
+      margin-top: 8px;
+      color: #1e3a8a;
+    }
+
+    /* La fecha se oculta cuando solo se quiere realizar una consulta. */
+    .reservation-fields[hidden] {
+      display: none;
+    }
+
+    /* Al llegar desde Agendar cita, dejamos espacio sobre el formulario para que la cabecera no tape su titulo. */
+    #formulario {
+      scroll-margin-top: 130px;
+      min-width: 0;
+    }
+
+    /* Estos ajustes permiten leer y usar la pagina en la pantalla mas pequena de un telefono. */
+    /* Estas indicaciones se aplican solo cuando la pantalla mide 768 pixeles de ancho o menos. Aqui se ajusta la version para celulares. */
+    @media (max-width: 768px) {
+      /* En telefono el espacio de la cabecera es menor para dejar mas sitio a la informacion. */
+      .main-nav { padding: 10px 16px; }
+      /* Esta fila da un lugar propio al logo y al boton, manteniendo el menu flotante unido a la cabecera. */
+      .nav-container { position: relative; min-height: 54px; }
+      /* El logo se reduce a 58 por 58 y sigue mostrandose completo. */
+      .nav-logo img { width: 58px; height: 58px; object-fit: contain; }
+      /* El boton aparece en telefono y su simbolo se centra dentro del espacio que se puede tocar. */
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; }
+      /* Este panel aparece por encima del contenido y no empuja el formulario. */
       .nav-links {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        z-index: 200;
+        display: none;
+        width: min(230px, calc(100vw - 32px));
+        padding: 8px;
+        gap: 0;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        box-shadow: 0 14px 28px rgba(15, 23, 42, 0.16);
       }
-
-      .nav-links a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 600;
-        padding: 8px 15px;
-        border-radius: 5px;
-        transition: all 0.3s;
-      }
-
-      .nav-links a:hover {
-        background: #1e40af;
-        color: white;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 40px 20px;
-      }
-
-      .page-title {
-        text-align: center;
-        color: #1e40af;
-        font-size: 2.5rem;
-        margin-bottom: 40px;
-        text-transform: uppercase;
-      }
-
+      /* Las opciones solo se muestran cuando se ha abierto el menu. */
+      .nav-links.is-open { display: flex; }
+      /* Cada opcion movil tiene espacio suficiente para tocarla y una linea que la separa de la siguiente. */
+      .nav-links a { padding: 12px 14px; border-bottom: 1px solid #e2e8f0; }
+      /* La ultima opcion no necesita una linea debajo. */
+      .nav-links a:last-child { border-bottom: 0; }
       .contact-layout {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-        margin-top: 30px;
+        grid-template-columns: 1fr;
+        gap: 18px;
       }
 
-      .section {
-        background: white;
-        border-radius: 10px;
-        padding: 30px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      /* El titulo se reduce para que entre mejor en la pantalla del telefono. */
+      .page-title {
+        font-size: clamp(1.65rem, 8vw, 2.2rem);
+        margin-bottom: 24px;
       }
 
-      .section h2 {
-        color: #1e40af;
-        margin-bottom: 20px;
-        font-size: 1.8rem;
-      }
-
-      .section p {
-        margin-bottom: 15px;
-        color: #666;
-      }
-
-      .form-group {
-        margin-bottom: 20px;
-      }
-
-      .form-group label {
-        display: block;
-        color: #1e40af;
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-
-      .form-group input,
-      .form-group textarea,
-      .form-group select {
-        width: 100%;
-        padding: 12px;
-        border: 2px solid #e5e7eb;
-        border-radius: 8px;
-        font-size: 1rem;
-        font-family: Arial, sans-serif;
-        transition: border-color 0.3s;
-      }
-
-      .form-group input:focus,
-      .form-group textarea:focus,
-      .form-group select:focus {
-        outline: none;
-        border-color: #06b6d4;
-      }
-
-      .btn-enviar {
-        width: 100%;
-        padding: 15px;
-        background: #06b6d4;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 1.1rem;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-
-      .btn-enviar:hover {
-        background: #0891b2;
-        transform: translateY(-2px);
-      }
-
-      .contact-info {
-        background: #f0f9ff;
-        padding: 15px;
-        border-left: 4px solid #1e40af;
-        margin-bottom: 15px;
-        border-radius: 5px;
-      }
-
-      .contact-info strong {
-        color: #1e40af;
-        display: block;
-        margin-bottom: 5px;
-      }
+      /* Dejamos un margen comodo alrededor de la informacion en una pantalla pequena. */
+      .container { padding: 28px 16px 36px; }
+      /* Las tarjetas del telefono conservan 20 pixeles entre el borde y su contenido. */
+      .section { padding: 20px; }
 
       .map-placeholder {
+        height: 240px;
+      }
+
+      .btn-whatsapp,
+      .btn-enviar {
         width: 100%;
-        height: 300px;
-        background: #e5e7eb;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #666;
-        font-weight: 600;
-        margin-top: 20px;
-        overflow: hidden;
-      }
-
-      .map-placeholder iframe {
-        width: 100%;
-        height: 100%;
-        display: block;
-      }
-
-      .btn-whatsapp {
-        display: inline-block;
-        padding: 12px 25px;
-        background: #25d366;
-        color: white;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 15px;
-        transition: all 0.3s;
-      }
-
-      .btn-whatsapp:hover {
-        background: #20ba5a;
-        transform: translateY(-2px);
-      }
-
-      .footer {
-        background: #1e40af;
-        color: white;
-        padding: 40px 20px;
-        margin-top: 50px;
-      }
-
-      .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
         text-align: center;
       }
-
-      .footer-socials {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        margin: 20px 0;
-      }
-
-      .footer-socials a {
-        width: 45px;
-        height: 45px;
-        border: 2px solid white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        transition: all 0.3s;
-      }
-
-      .footer-socials a:hover {
-        background: white;
-        color: #1e40af;
-      }
-
-      .footer-info {
-        margin-top: 20px;
-        font-size: 0.9rem;
-        line-height: 1.8;
-      }
-
-      .mensaje-confirmacion {
-        display: none;
-        padding: 15px;
-        background: #dcfce7;
-        color: #166534;
-        border-radius: 8px;
-        margin-top: 15px;
-        text-align: center;
-        font-weight: 600;
-      }
-
-      .mensaje-confirmacion.show {
-        display: block;
-      }
-
-      .field-error {
-        display: block;
-        color: #991b1b;
-        font-size: 0.9rem;
-        margin-top: 6px;
-      }
-
-      .field-error:empty {
-        display: none;
-      }
-
-      .form-group [aria-invalid="true"] {
-        border-color: #b91c1c;
-      }
-
-      .mensaje-confirmacion[data-state="error"] {
-        background: #fee2e2;
-        color: #991b1b;
-      }
-
-      .section .mensaje-confirmacion {
-        color: #166534;
-      }
-
-      .section .mensaje-confirmacion[data-state="error"] {
-        color: #991b1b;
-      }
-
-      .mensaje-confirmacion a {
-        display: block;
-        margin-top: 8px;
-        color: #1e3a8a;
-      }
-
-      .reservation-fields[hidden] {
-        display: none;
-      }
-
-      #formulario {
-        scroll-margin-top: 130px;
-        min-width: 0;
-      }
-
-      @media (max-width: 768px) {
-        .main-nav {
-          padding: 10px 16px;
-        }
-
-        .nav-container {
-          position: relative;
-          min-height: 54px;
-        }
-
-        .nav-logo img {
-          width: 58px;
-          height: 58px;
-          object-fit: contain;
-        }
-
-        .menu-toggle {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          margin-left: auto;
-        }
-
-        .nav-links {
-          position: absolute;
-          top: calc(100% + 10px);
-          right: 0;
-          z-index: 200;
-          display: none;
-          width: min(230px, calc(100vw - 32px));
-          padding: 8px;
-          gap: 0;
-          flex-direction: column;
-          flex-wrap: nowrap;
-          background: #ffffff;
-          border: 1px solid #e2e8f0;
-          border-radius: 8px;
-          box-shadow: 0 14px 28px rgba(15, 23, 42, 0.16);
-        }
-
-        .nav-links.is-open {
-          display: flex;
-        }
-
-        .nav-links a {
-          padding: 12px 14px;
-          border-bottom: 1px solid #e2e8f0;
-        }
-
-        .nav-links a:last-child {
-          border-bottom: 0;
-        }
-        .contact-layout {
-          grid-template-columns: 1fr;
-          gap: 18px;
-        }
-
-        .page-title {
-          font-size: clamp(1.65rem, 8vw, 2.2rem);
-          margin-bottom: 24px;
-        }
-
-        .container {
-          padding: 28px 16px 36px;
-        }
-
-        .section {
-          padding: 20px;
-        }
-
-        .map-placeholder {
-          height: 240px;
-        }
-
-        .btn-whatsapp,
-        .btn-enviar {
-          width: 100%;
-          text-align: center;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <nav class="main-nav">
-      <div class="nav-container">
-        <a href="index.html" class="nav-logo">
-          <img
-            src="assets/img/logo.png"
-            alt="Logo SABIMEDIC JESUS"
-            width="80"
-            height="80"
-            style="vertical-align: middle; margin-right: 8px"
-          />
-        </a>
-
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-label="Abrir menu"
-        >
-          ☰
-        </button>
-        <div class="nav-links">
-          <a href="index.html">Inicio</a>
-          <a href="nosotros.html">Nosotros</a>
-          <a href="especialidades.html">Especialidades</a>
-          <a href="contacto.html">Contacto</a>
-        </div>
-      </div>
-    </nav>
-
-    <div class="container">
-      <h1 class="page-title">Contacto</h1>
-
-      <div class="contact-layout">
-        <div class="section">
-          <h2>Datos de Contacto</h2>
-
-          <div class="contact-info">
-            <strong>Direccion:</strong>
-            PEDRO FERRARI ORURO
-          </div>
-
-          <div class="contact-info">
-            <strong>Horarios de Atencion:</strong>
-            Lunes a Viernes: 8:00 AM - 7:00 PM
-            <br />
-            Sabados: 9:00 AM - 2:00 PM
-            <br />
-            Domingos: Cerrado
-          </div>
-
-          <div class="contact-info">
-            <strong>Telefono:</strong>
-            +59172347510
-          </div>
-
-          <div class="contact-info">
-            <strong>WhatsApp:</strong>
-            +59172347510
-          </div>
-
-          <div class="contact-info">
-            <strong>Correo Electronico:</strong>
-            contacto@sabimedic.com
-          </div>
-
-          <a href="https://wa.me/59172347510" class="btn-whatsapp">
-            Contactar por WhatsApp
-          </a>
-
-          <div class="map-placeholder">
-            <iframe
-              src="https://www.google.com/maps?q=-17.9698045,-67.0841865&z=17&output=embed"
-              title="Ubicacion del consultorio en PEDRO FERRARI ORURO"
-              width="600"
-              height="450"
-              style="border: 0"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-            ></iframe>
-          </div>
-
-          <a
-            href="https://maps.app.goo.gl/fabpyxtggT1Txyvb6?g_st=aw"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ver ubicacion en Google Maps
-          </a>
-        </div>
-
-        <div class="section" id="formulario">
-          <h2>Reservas y consultas</h2>
-          <p>
-            Solicita una cita o realiza una consulta. La reserva queda sujeta a
-            confirmacion del consultorio.
-          </p>
-
-          <form id="contactForm">
-            <div class="form-group">
-              <label for="tipo">Motivo de contacto *</label>
-
-              <select id="tipo" name="tipo" required aria-describedby="tipo-error">
-                <option value="consulta">Realizar una consulta</option>
-                <option value="reserva">Solicitar una cita</option>
-              </select>
-              <span class="field-error" id="tipo-error"></span>
-            </div>
-
-            <div class="form-group">
-              <label for="nombre">Nombre completo *</label>
-
-              <input
-                type="text"
-                id="nombre"
-                name="nombre"
-                required
-                minlength="2"
-                maxlength="100"
-                autocomplete="name"
-                aria-describedby="nombre-error"
-              />
-              <span class="field-error" id="nombre-error"></span>
-            </div>
-
-            <div class="form-group">
-              <label for="telefono">Telefono *</label>
-
-              <input
-                type="tel"
-                id="telefono"
-                name="telefono"
-                required
-                maxlength="25"
-                autocomplete="tel"
-                inputmode="tel"
-                aria-describedby="telefono-error"
-              />
-              <span class="field-error" id="telefono-error"></span>
-            </div>
-
-            <div class="form-group">
-              <label for="email">Correo Electronico</label>
-
-              <input
-                type="email"
-                id="email"
-                name="email"
-                maxlength="254"
-                autocomplete="email"
-                aria-describedby="email-error"
-              />
-              <span class="field-error" id="email-error"></span>
-            </div>
-
-            <div class="form-group">
-              <label for="especialidad">Especialidad</label>
-
-              <select
-                id="especialidad"
-                name="especialidad"
-                aria-describedby="especialidad-error"
-              >
-                <option value="">Selecciona una especialidad</option>
-                <option value="medicina-general">Medicina General</option>
-                <option value="cirugia-general">Cirugia General y Laparoscopia</option>
-                <option value="ortopedia-traumatologia">Ortopedia y Traumatologia</option>
-                <option value="ginecologia-obstetricia">Ginecologia y Obstetricia</option>
-                <option value="neurociencia">Neurociencia</option>
-                <option value="medicina-interna">Medicina Interna</option>
-                <option value="pediatria">Pediatria</option>
-                <option value="fisioterapia-kinesiologia">
-                  Fisioterapia y Kinesiologia
-                </option>
-              </select>
-              <span class="field-error" id="especialidad-error"></span>
-            </div>
-
-            <div class="reservation-fields" id="reservationFields" hidden>
-              <div class="form-group">
-                <label for="fecha">Fecha preferida *</label>
-
-                <input
-                  type="date"
-                  id="fecha"
-                  name="fecha"
-                  disabled
-                  aria-describedby="fecha-error"
-                />
-                <span class="field-error" id="fecha-error"></span>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="mensaje">Mensaje *</label>
-
-              <textarea
-                id="mensaje"
-                name="mensaje"
-                rows="5"
-                required
-                minlength="10"
-                maxlength="2000"
-                placeholder="Escribe tu consulta o el motivo de tu cita..."
-                aria-describedby="mensaje-error"
-              ></textarea>
-              <span class="field-error" id="mensaje-error"></span>
-            </div>
-
-            <button type="submit" class="btn-enviar">Continuar en WhatsApp</button>
-
-            <div
-              id="mensajeConfirmacion"
-              class="mensaje-confirmacion"
-              role="status"
-              aria-live="polite"
-              aria-atomic="true"
-            ></div>
-
-            <noscript>
-              <p>
-                Para realizar tu consulta o solicitar una cita,
-                <a href="https://wa.me/59172347510">contactanos por WhatsApp</a>
-                .
-              </p>
-            </noscript>
-          </form>
-        </div>
+    }
+  </style>
+</head>
+<body>
+  <!-- Navegacion principal -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <!-- Aqui ponemos el logo en el main nav -->
+        <img src="assets/img/logo.png" alt="Logo SABIMEDIC JESUS" width="80" height="80" style="vertical-align: middle; margin-right: 8px;">
+      </a>
+      <!-- Al tocar este boton se abre el menu sin mover la cabecera ni el formulario. -->
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menu">☰</button>
+      <div class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="especialidades.html">Especialidades</a>
+        <a href="contacto.html">Contacto</a>
       </div>
     </div>
+  </nav>
 
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-socials">
-          <a href="https://wa.me/59172347510" title="WhatsApp" aria-label="WhatsApp">
-            <img src="assets/icons/whatsapp.svg" alt="" width="26" height="26" />
-          </a>
-          <a
-            href="https://www.facebook.com/sabimedic.jesus"
-            title="Facebook"
-            aria-label="Facebook"
-          >
-            <img src="assets/icons/facebook.svg" alt="" width="26" height="26" />
-          </a>
-          <a href="#" title="TikTok" aria-label="TikTok">
-            <img src="assets/icons/tiktok.svg" alt="" width="26" height="26" />
-          </a>
-          <a href="#" title="Instagram" aria-label="Instagram">
-            <img src="assets/icons/instagram.svg" alt="" width="26" height="26" />
-          </a>
+  <!-- Contenido principal -->
+  <!-- El contenido esta dividido en informacion y formulario para que sea facil de encontrar. -->
+  <div class="container">
+    <!-- Titulo de la pagina -->
+    <h1 class="page-title">Contacto</h1>
+
+    <!-- En computadora, los datos de contacto van al lado del formulario. En celular aparecen uno debajo del otro. -->
+    <div class="contact-layout">
+      <!-- Informacion de contacto -->
+      <div class="section">
+        <h2>Datos de Contacto</h2>
+
+        <div class="contact-info">
+          <strong>Direccion:</strong>
+          PEDRO FERRARI ORURO
         </div>
 
-        <div class="footer-info">
-          <p><strong>Consultorio Medico SABIMEDIC JESUS</strong></p>
-          <p>Telefono: +591 72347510 | WhatsApp: +591 72347510</p>
-          <p>Direccion: PEDRO FERRARI ORURO</p>
+        <div class="contact-info">
+          <strong>Horarios de Atencion:</strong>
+          Lunes a Viernes: 8:00 AM - 7:00 PM<br>
+          Sabados: 9:00 AM - 2:00 PM<br>
+          Domingos: Cerrado
         </div>
+
+        <div class="contact-info">
+          <strong>Telefono:</strong>
+          +59172347510
+        </div>
+
+        <div class="contact-info">
+          <strong>WhatsApp:</strong>
+          +59172347510
+        </div>
+
+        <div class="contact-info">
+          <strong>Correo Electronico:</strong>
+          contacto@sabimedic.com
+        </div>
+
+        <a href="https://wa.me/59172347510" class="btn-whatsapp">
+          Contactar por WhatsApp
+        </a>
+
+        <!-- Mapa de ubicacion -->
+        <div class="map-placeholder">
+          <!-- El mapa muestra el punto indicado por los dos numeros despues de q=. Son la ubicacion, no el telefono. Para trasladar el punto, usa las coordenadas del nuevo lugar. -->
+<iframe src="https://www.google.com/maps?q=-17.9698045,-67.0841865&z=17&output=embed" title="Ubicacion del consultorio en PEDRO FERRARI ORURO" width="600" height="450" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <!-- Este enlace abre el mapa completo en otra pestana para consultar la ruta, mientras la pagina del consultorio sigue abierta. -->
+<a href="https://maps.app.goo.gl/fabpyxtggT1Txyvb6?g_st=aw" target="_blank" rel="noopener noreferrer">Ver ubicacion en Google Maps</a>
       </div>
-    </footer>
-    <script>
-      const menuToggle = document.querySelector(".menu-toggle");
-      const mobileMenu = document.querySelector(".nav-links");
 
-      menuToggle.addEventListener("click", () => {
-        const menuIsOpen = mobileMenu.classList.toggle("is-open");
+      <!-- Formulario de contacto -->
+      <div class="section" id="formulario">
+        <h2>Reservas y consultas</h2>
+        <p>Solicita una cita o realiza una consulta. La reserva queda sujeta a confirmacion del consultorio.</p>
 
-        menuToggle.setAttribute("aria-expanded", String(menuIsOpen));
+        <!-- Los datos se preparan para WhatsApp; el envio se completa dentro de la conversacion. -->
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="tipo">Motivo de contacto *</label>
+            <!-- Las dos opciones permiten preguntar algo o pedir una cita. Los valores consulta y reserva se usan en el archivo que controla el formulario. -->
+<select id="tipo" name="tipo" required aria-describedby="tipo-error">
+              <option value="consulta">Realizar una consulta</option>
+              <option value="reserva">Solicitar una cita</option>
+            </select>
+            <span class="field-error" id="tipo-error"></span>
+          </div>
 
-        menuToggle.setAttribute("aria-label", menuIsOpen ? "Cerrar menu" : "Abrir menu");
+          <!-- Nombre completo -->
+          <div class="form-group">
+            <label for="nombre">Nombre completo *</label>
+            <!-- Aqui se escribe el nombre. Es obligatorio y admite hasta 100 caracteres; el archivo del formulario revisa ademas que contenga letras. -->
+<input type="text" id="nombre" name="nombre" required minlength="2" maxlength="100" autocomplete="name" aria-describedby="nombre-error">
+            <span class="field-error" id="nombre-error"></span>
+          </div>
 
-        menuToggle.textContent = menuIsOpen ? "×" : "☰";
+          <!-- Telefono -->
+          <div class="form-group">
+            <label for="telefono">Telefono *</label>
+            <!-- Este campo pide el telefono de la persona, no el del consultorio. Ayuda a que puedan responderle sobre su consulta o reserva. -->
+<input type="tel" id="telefono" name="telefono" required maxlength="25" autocomplete="tel" inputmode="tel" aria-describedby="telefono-error">
+            <span class="field-error" id="telefono-error"></span>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Correo Electronico</label>
+            <!-- El correo es opcional. Si la persona lo escribe, se comprueba su formato antes de continuar. -->
+<input type="email" id="email" name="email" maxlength="254" autocomplete="email" aria-describedby="email-error">
+            <span class="field-error" id="email-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="especialidad">Especialidad</label>
+            <!-- Cada opcion vincula un nombre visible con la especialidad que llega desde Agendar cita. Si agregas un servicio, agrega aqui su opcion. -->
+<select id="especialidad" name="especialidad" aria-describedby="especialidad-error">
+              <option value="">Selecciona una especialidad</option>
+              <option value="medicina-general">Medicina General</option>
+              <option value="cirugia-general">Cirugia General y Laparoscopia</option>
+              <option value="ortopedia-traumatologia">Ortopedia y Traumatologia</option>
+              <option value="ginecologia-obstetricia">Ginecologia y Obstetricia</option>
+              <option value="neurociencia">Neurociencia</option>
+              <option value="medicina-interna">Medicina Interna</option>
+              <option value="pediatria">Pediatria</option>
+              <option value="fisioterapia-kinesiologia">Fisioterapia y Kinesiologia</option>
+            </select>
+            <span class="field-error" id="especialidad-error"></span>
+          </div>
+
+          <!-- La fecha solo se pide cuando se solicita una cita, y es una preferencia por confirmar. -->
+          <!-- La fecha empieza oculta y se muestra al elegir una reserva. En una consulta general no se exige este dato. -->
+<div class="reservation-fields" id="reservationFields" hidden>
+            <div class="form-group">
+              <label for="fecha">Fecha preferida *</label>
+              <!-- Se elige una fecha preferida para la cita. El formulario limita la eleccion a hoy o despues; el consultorio confirma su disponibilidad. -->
+<input type="date" id="fecha" name="fecha" disabled aria-describedby="fecha-error">
+              <span class="field-error" id="fecha-error"></span>
+            </div>
+          </div>
+
+          <!-- Mensaje -->
+          <div class="form-group">
+            <label for="mensaje">Mensaje *</label>
+            <!-- Este espacio permite escribir varias lineas. El mensaje debe tener entre 10 y 2000 caracteres para poder continuar. -->
+<textarea id="mensaje" name="mensaje" rows="5" required minlength="10" maxlength="2000" placeholder="Escribe tu consulta o el motivo de tu cita..." aria-describedby="mensaje-error"></textarea>
+            <span class="field-error" id="mensaje-error"></span>
+          </div>
+
+          <!-- Boton enviar -->
+          <button type="submit" class="btn-enviar">Continuar en WhatsApp</button>
+
+          <!-- Mensaje de confirmacion -->
+          <!-- Esta zona comienza vacia. Aqui se muestra si hay datos por corregir o si el mensaje esta listo para abrirse en WhatsApp. -->
+<div id="mensajeConfirmacion" class="mensaje-confirmacion" role="status" aria-live="polite" aria-atomic="true"></div>
+          <!-- Si el navegador no puede ejecutar las acciones del formulario, este texto ofrece un enlace directo a WhatsApp. -->
+<noscript>
+            <p>Para realizar tu consulta o solicitar una cita, <a href="https://wa.me/59172347510">contactanos por WhatsApp</a>.</p>
+          </noscript>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <!-- Redes sociales -->
+      <div class="footer-socials">
+        <a href="https://wa.me/59172347510" title="WhatsApp" aria-label="WhatsApp">
+          <img src="assets/icons/whatsapp.svg" alt="" width="26" height="26">
+        </a>
+        <a href="https://www.facebook.com/sabimedic.jesus" title="Facebook" aria-label="Facebook">
+          <img src="assets/icons/facebook.svg" alt="" width="26" height="26">
+        </a>
+      </div>
+
+      <!-- Informacion de contacto -->
+      <div class="footer-info">
+        <p><strong>Consultorio Medico SABIMEDIC JESUS</strong></p>
+        <p>Telefono: +591 72347510 | WhatsApp: +591 72347510</p>
+        <p>Direccion: PEDRO FERRARI ORURO </p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Guardamos el boton y el panel de enlaces para poder controlarlos juntos.
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mobileMenu = document.querySelector(".nav-links");
+
+    // La clase is-open cambia el panel de cerrado a visible.
+    menuToggle.addEventListener("click", () => {
+      const menuIsOpen = mobileMenu.classList.toggle("is-open");
+      // Informamos si las opciones estan abiertas para las herramientas que leen la pagina en voz alta.
+      menuToggle.setAttribute("aria-expanded", String(menuIsOpen));
+      // El nombre del boton cambia segun la accion que puede realizar ahora.
+      menuToggle.setAttribute("aria-label", menuIsOpen ? "Cerrar menu" : "Abrir menu");
+      // Mostramos una X para cerrar o las tres lineas para abrir.
+      menuToggle.textContent = menuIsOpen ? "×" : "☰";
+    });
+
+    // Cuando se selecciona una seccion, cerramos el menu para dejar libre la pantalla.
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("is-open");
+        // Despues de elegir un destino, indicamos que el menu ya esta cerrado.
+        menuToggle.setAttribute("aria-expanded", "false");
+        // El boton vuelve a estar preparado para abrir las opciones.
+        menuToggle.setAttribute("aria-label", "Abrir menu");
+        // Restauramos el dibujo de tres lineas que identifica el menu.
+        menuToggle.textContent = "☰";
       });
-
-      mobileMenu.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.remove("is-open");
-
-          menuToggle.setAttribute("aria-expanded", "false");
-
-          menuToggle.setAttribute("aria-label", "Abrir menu");
-
-          menuToggle.textContent = "☰";
-        });
-      });
-    </script>
-
-    <script src="assets/js/contact-form.js"></script>
-  </body>
+    });
+  </script>
+  <!-- Aqui conectamos el formulario con su revision de datos y con WhatsApp. Para cambiar esas acciones, abre assets/js/contact-form.js. -->
+<script src="assets/js/contact-form.js"></script>
+</body>
 </html>

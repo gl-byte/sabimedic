@@ -1,3 +1,10 @@
+/*
+  Esta hoja de estilos acompana a especialidades.html y a sus ocho paginas
+  de detalle. Al estar compartida, un cambio de color o de espacio se aplica
+  a todas ellas y no hay que repetirlo en cada archivo.
+*/
+
+/* Esta es la paleta compartida. Cambia un color aqui para actualizar todas las partes que usan ese nombre: azul para titulos, turquesa para botones y gris para texto. */
 :root {
   --azul: #1e3a8a;
   --turquesa: #06b6d4;
@@ -9,16 +16,13 @@
   --rojo: #991b1b;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* Quitamos los espacios que cada navegador coloca por su cuenta. Asi las paginas parten de una misma distribucion. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  scroll-behavior: smooth;
-}
+/* Al ir a una parte de la misma pagina, el desplazamiento se hace suave. */
+html { scroll-behavior: smooth; }
 
+/* Estas opciones afectan a toda la pagina: fondo claro, letra Arial y espacio entre lineas. El ancho minimo esta pensado para celulares de al menos 320 pixeles. */
 body {
   min-width: 320px;
   overflow-x: hidden;
@@ -28,6 +32,7 @@ body {
   line-height: 1.6;
 }
 
+/* Cabecera comun: el logo identifica el consultorio y los enlaces llevan a cada seccion. */
 .site-header {
   position: sticky;
   top: 0;
@@ -37,6 +42,7 @@ body {
   box-shadow: 0 3px 14px rgba(15, 23, 42, 0.07);
 }
 
+/* Esta fila separa el logo y las opciones del menu. El limite de ancho evita que queden demasiado alejados en una pantalla grande. */
 .header-inner {
   width: min(1180px, calc(100% - 40px));
   min-height: 84px;
@@ -47,6 +53,7 @@ body {
   gap: 24px;
 }
 
+/* Aqui puedes cambiar el ancho y alto del logo. La imagen se conserva completa, sin cortar ninguna parte. */
 .brand img {
   display: block;
   width: 72px;
@@ -54,12 +61,14 @@ body {
   object-fit: contain;
 }
 
+/* Los enlaces del menu se colocan uno al lado del otro, separados por un espacio corto. */
 .site-nav {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
+/* Cada opcion tiene espacio alrededor para que sea facil pulsarla. El color y el grosor de letra se cambian aqui. */
 .site-nav a {
   padding: 10px 14px;
   border-radius: 8px;
@@ -69,12 +78,14 @@ body {
   text-decoration: none;
 }
 
+/* El azul suave indica la opcion senalada con el mouse o la pagina que esta abierta. */
 .site-nav a:hover,
 .site-nav a.active {
   background: #eff6ff;
   color: var(--azul);
 }
 
+/* El boton solo se ve en celular y permite guardar los enlaces en un espacio pequeno. */
 .menu-toggle {
   display: none;
   width: 44px;
@@ -88,18 +99,21 @@ body {
   line-height: 1;
 }
 
+/* Esta es la zona que contiene la informacion principal. Deja espacio a ambos lados y entre la cabecera y el contenido. */
 .page-shell {
   width: min(1180px, calc(100% - 40px));
   margin: 0 auto;
   padding: 54px 0 70px;
 }
 
+/* El titulo y su introduccion se centran y se mantienen dentro de un ancho comodo de leer. */
 .page-intro {
   max-width: 780px;
   margin: 0 auto 34px;
   text-align: center;
 }
 
+/* Es la pequena frase que va sobre el titulo. Su tamano y color hacen que acompañe al nombre del servicio sin competir con el. */
 .eyebrow {
   margin-bottom: 8px;
   color: var(--turquesa);
@@ -109,28 +123,22 @@ body {
   text-transform: uppercase;
 }
 
-h1,
-h2,
-h3 {
-  color: var(--azul);
-  line-height: 1.2;
-}
+/* Los titulos usan el azul del consultorio. La distancia entre sus lineas es menor que la de los parrafos. */
+h1, h2, h3 { color: var(--azul); line-height: 1.2; }
 
-.page-intro h1 {
-  margin-bottom: 14px;
-  font-size: clamp(2rem, 4vw, 3rem);
-}
+/* Tamano del titulo de Especialidades. Se limita entre un minimo y un maximo para que no crezca sin control. */
+.page-intro h1 { margin-bottom: 14px; font-size: clamp(2rem, 4vw, 3rem); }
+/* Tamano de la frase de presentacion que se encuentra debajo del titulo. */
+.page-intro p { font-size: 1.05rem; }
 
-.page-intro p {
-  font-size: 1.05rem;
-}
-
+/* Estas tarjetas presentan las ocho opciones de forma ordenada y facil de comparar. */
 .specialty-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
+/* Cada especialidad tiene una tarjeta blanca con espacio interior y sombra discreta. Aumenta padding para separar el texto del borde. */
 .specialty-card {
   min-width: 0;
   display: flex;
@@ -142,6 +150,7 @@ h3 {
   box-shadow: 0 7px 18px rgba(15, 23, 42, 0.06);
 }
 
+/* El numero de cada especialidad se muestra dentro de un circulo pequeno. Ancho y alto iguales mantienen su forma. */
 .specialty-number {
   width: 34px;
   height: 34px;
@@ -154,18 +163,12 @@ h3 {
   font-weight: 800;
 }
 
-.specialty-card h2 {
-  min-height: 48px;
-  margin-bottom: 10px;
-  font-size: 1.15rem;
-}
+/* Los nombres de los servicios reservan una altura parecida para que los botones de las tarjetas se vean alineados. */
+.specialty-card h2 { min-height: 48px; margin-bottom: 10px; font-size: 1.15rem; }
+/* La descripcion aprovecha el espacio restante; el boton queda al final aunque otro servicio tenga mas texto. */
+.specialty-card p { flex: 1; margin-bottom: 18px; font-size: 0.94rem; }
 
-.specialty-card p {
-  flex: 1;
-  margin-bottom: 18px;
-  font-size: 0.94rem;
-}
-
+/* Los botones dejan una altura comoda para el dedo y centran el texto. El aspecto compartido se define aqui. */
 .card-link,
 /* Agendar cita ocupa todo el ancho de la ficha y utiliza el turquesa del consultorio. */
 .primary-button {
@@ -180,334 +183,132 @@ h3 {
   text-decoration: none;
 }
 
-.card-link {
-  border: 1px solid var(--azul);
-  color: var(--azul);
-}
+/* El boton Ver especialidad lleva borde azul y fondo claro, para distinguirlo del boton de agenda. */
+.card-link { border: 1px solid var(--azul); color: var(--azul); }
+/* Este tono aparece al pasar el mouse sobre Ver especialidad. */
+.card-link:hover { background: #eff6ff; }
 
-.card-link:hover {
-  background: #eff6ff;
-}
+/* Lugar y logo se muestran juntos, pero cada uno tiene su propia superficie. */
+/* Separacion entre la lista de servicios y la zona donde se muestra el consultorio. */
+.visit-section { margin-top: 52px; }
+/* Tamano y espacio inferior del titulo Conoce nuestro consultorio. */
+.section-heading { margin-bottom: 18px; font-size: 1.55rem; }
+/* El mapa recibe mas ancho que el logo. Cambia los dos numeros para repartir el espacio de otra manera. */
+.visit-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 18px; }
+/* Las dos zonas del mapa y del logo llevan el mismo fondo, borde y espacio interior. */
+.surface { min-width: 0; padding: 22px; background: var(--blanco); border: 1px solid var(--borde); border-radius: 8px; box-shadow: 0 7px 18px rgba(15, 23, 42, 0.06); }
+/* Titulos pequenos que identifican la ubicacion y el logo dentro de sus respectivos espacios. */
+.surface h3 { margin-bottom: 8px; font-size: 1.1rem; }
+/* Este espacio conserva una proporcion ancha para el mapa. Recorta cualquier parte que se salga de los bordes redondeados. */
+.map-frame { overflow: hidden; aspect-ratio: 16 / 9; margin-top: 14px; border-radius: 8px; background: #e2e8f0; }
+/* El mapa de Google llena exactamente el ancho y el alto del espacio que lo contiene. */
+.map-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+/* El logo se centra dentro de su zona; se aprovecha la altura para dejarlo equilibrado respecto del mapa. */
+.logo-panel { display: grid; place-items: center; min-height: 100%; }
+/* Se limita el tamano del logo para que entre completo. La altura se ajusta sola y evita que la imagen se deforme. */
+.logo-panel img { display: block; width: min(220px, 80%); height: auto; object-fit: contain; }
 
-.visit-section {
-  margin-top: 52px;
-}
+/* Encabezado de cada especialidad: primero se entiende el servicio y despues sus datos. */
+/* El nombre y la descripcion van a la izquierda, y el precio a la derecha en computadora. */
+.detail-header { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 24px; margin-bottom: 24px; }
+/* El nombre de la especialidad es el titulo mas destacado de la pagina; aqui se controla su tamano. */
+.detail-header h1 { margin-bottom: 10px; font-size: clamp(2rem, 4vw, 3.1rem); }
+/* El parrafo inicial tiene un ancho limitado para que las lineas no sean demasiado largas. */
+.detail-header p { max-width: 720px; }
+/* El costo de consulta aparece en un recuadro celeste. Se mantiene en una linea cuando hay espacio suficiente. */
+.detail-badge { padding: 12px 16px; border: 1px solid #a5f3fc; border-radius: 8px; background: #ecfeff; color: #155e75; font-weight: 800; text-align: center; white-space: nowrap; }
 
-.section-heading {
-  margin-bottom: 18px;
-  font-size: 1.55rem;
-}
+/* La explicacion del servicio recibe mas ancho que la ficha del profesional. En celular ambos bloques aparecen uno debajo del otro. */
+.detail-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr); gap: 18px; }
+/* Espacio interior de la informacion y de la ficha del medico. El texto puede crecer sin quedar pegado a los bordes. */
+.detail-card { min-width: 0; padding: 26px; background: var(--blanco); border: 1px solid var(--borde); border-radius: 8px; box-shadow: 0 7px 18px rgba(15, 23, 42, 0.06); }
+/* Los subtitulos, como Que atendemos y Horario, son menores que el nombre de la especialidad. */
+.detail-card h2 { margin-bottom: 13px; font-size: 1.35rem; }
+/* Antes de un nuevo subtitulo se deja un espacio mayor para que cada tema se distinga del anterior. */
+.detail-card h2:not(:first-child) { margin-top: 26px; }
+/* Separacion entre parrafos dentro de la informacion del servicio. */
+.detail-card p { margin-bottom: 12px; }
+/* Dejamos espacio para los puntos que acompañan la lista de atenciones. */
+.detail-card ul { padding-left: 20px; }
+/* Cada punto de la lista se separa un poco del anterior. */
+.detail-card li + li { margin-top: 7px; }
+/* La ficha del profesional comienza arriba y conserva la altura de su propio contenido. */
+.doctor-card { align-self: start; }
+/* La frase Profesional asignado se ve pequena y en turquesa; el nombre del medico sigue siendo lo principal. */
+.doctor-card .doctor-label { margin-bottom: 6px; color: var(--turquesa); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+/* Separacion debajo del nombre del profesional. */
+.doctor-card h2 { margin-bottom: 10px; }
+/* Espacio antes y despues de los datos de experiencia y enfoque. */
+.doctor-card dl { margin: 20px 0; }
+/* Las palabras Experiencia y Enfoque se resaltan en azul para que sea facil encontrarlas. */
+.doctor-card dt { margin-top: 12px; color: var(--azul); font-size: 0.82rem; font-weight: 800; }
+/* La explicacion de cada dato queda alineada con su titulo. */
+.doctor-card dd { margin-left: 0; }
+.primary-button { width: 100%; border: 1px solid var(--turquesa); background: var(--turquesa); color: var(--blanco); }
+/* Al senalar Agendar cita con el mouse, su fondo se vuelve un poco mas oscuro. */
+.primary-button:hover { background: #0891b2; }
+/* El fondo amarillo y la linea de la izquierda hacen visible una recomendacion sin confundirla con el boton de agenda. */
+.notice { margin-top: 22px; padding: 14px 16px; border-left: 4px solid #f59e0b; border-radius: 8px; background: #fffbeb; color: #92400e; font-size: 0.92rem; }
 
-.visit-grid {
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 18px;
-}
+/* Pie comun: deja los iconos disponibles sin llenar de datos la pagina. */
+/* El fondo azul identifica el final de la pagina. Aqui puedes cambiar el espacio alrededor de las redes y la direccion. */
+.site-footer { padding: 34px 20px; background: var(--azul); color: var(--blanco); }
+/* Los datos finales se centran y conservan un ancho maximo, igual que el contenido superior. */
+.footer-inner { width: min(1180px, 100%); margin: 0 auto; text-align: center; }
+/* El nombre del consultorio tiene su propia linea y un pequeno espacio debajo. */
+.footer-inner strong { display: block; margin-bottom: 5px; }
+/* Los dos enlaces de Facebook y WhatsApp se centran en una fila y mantienen la misma separacion. */
+.footer-socials { display: flex; justify-content: center; gap: 12px; margin: 18px 0; }
+/* Cada red tiene un circulo de 44 por 44, suficientemente grande para pulsarlo en un telefono. */
+.footer-socials a { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,0.7); border-radius: 50%; background: var(--blanco); }
+/* El dibujo de la red ocupa menos espacio que su circulo para que no toque el borde. */
+.footer-socials img { width: 28px; height: 28px; }
+/* La direccion se presenta con letra mas pequena y un azul muy claro sobre el fondo oscuro. */
+.footer-address { color: #dbeafe; font-size: 0.9rem; }
 
-.surface {
-  min-width: 0;
-  padding: 22px;
-  background: var(--blanco);
-  border: 1px solid var(--borde);
-  border-radius: 8px;
-  box-shadow: 0 7px 18px rgba(15, 23, 42, 0.06);
-}
-
-.surface h3 {
-  margin-bottom: 8px;
-  font-size: 1.1rem;
-}
-
-.map-frame {
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-  margin-top: 14px;
-  border-radius: 8px;
-  background: #e2e8f0;
-}
-
-.map-frame iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.logo-panel {
-  display: grid;
-  place-items: center;
-  min-height: 100%;
-}
-
-.logo-panel img {
-  display: block;
-  width: min(220px, 80%);
-  height: auto;
-  object-fit: contain;
-}
-
-.detail-header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: end;
-  gap: 24px;
-  margin-bottom: 24px;
-}
-
-.detail-header h1 {
-  margin-bottom: 10px;
-  font-size: clamp(2rem, 4vw, 3.1rem);
-}
-
-.detail-header p {
-  max-width: 720px;
-}
-
-.detail-badge {
-  padding: 12px 16px;
-  border: 1px solid #a5f3fc;
-  border-radius: 8px;
-  background: #ecfeff;
-  color: #155e75;
-  font-weight: 800;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.detail-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
-  gap: 18px;
-}
-
-.detail-card {
-  min-width: 0;
-  padding: 26px;
-  background: var(--blanco);
-  border: 1px solid var(--borde);
-  border-radius: 8px;
-  box-shadow: 0 7px 18px rgba(15, 23, 42, 0.06);
-}
-
-.detail-card h2 {
-  margin-bottom: 13px;
-  font-size: 1.35rem;
-}
-
-.detail-card h2:not(:first-child) {
-  margin-top: 26px;
-}
-
-.detail-card p {
-  margin-bottom: 12px;
-}
-
-.detail-card ul {
-  padding-left: 20px;
-}
-
-.detail-card li + li {
-  margin-top: 7px;
-}
-
-.doctor-card {
-  align-self: start;
-}
-
-.doctor-card .doctor-label {
-  margin-bottom: 6px;
-  color: var(--turquesa);
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.doctor-card h2 {
-  margin-bottom: 10px;
-}
-
-.doctor-card dl {
-  margin: 20px 0;
-}
-
-.doctor-card dt {
-  margin-top: 12px;
-  color: var(--azul);
-  font-size: 0.82rem;
-  font-weight: 800;
-}
-
-.doctor-card dd {
-  margin-left: 0;
-}
-.primary-button {
-  width: 100%;
-  border: 1px solid var(--turquesa);
-  background: var(--turquesa);
-  color: var(--blanco);
-}
-
-.primary-button:hover {
-  background: #0891b2;
-}
-
-.notice {
-  margin-top: 22px;
-  padding: 14px 16px;
-  border-left: 4px solid #f59e0b;
-  border-radius: 8px;
-  background: #fffbeb;
-  color: #92400e;
-  font-size: 0.92rem;
-}
-
-.site-footer {
-  padding: 34px 20px;
-  background: var(--azul);
-  color: var(--blanco);
-}
-
-.footer-inner {
-  width: min(1180px, 100%);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.footer-inner strong {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.footer-socials {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin: 18px 0;
-}
-
-.footer-socials a {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 50%;
-  background: var(--blanco);
-}
-
-.footer-socials img {
-  width: 28px;
-  height: 28px;
-}
-
-.footer-address {
-  color: #dbeafe;
-  font-size: 0.9rem;
-}
-
+/* A partir de este ancho se muestran dos servicios por fila. Estas indicaciones solo se usan en pantallas medianas o menores. */
 @media (max-width: 900px) {
-  .specialty-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  .specialty-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+/* Todo lo que sigue dentro de este bloque es para pantallas pequenas. Cambiarlo afecta a celular, sin reemplazar el aspecto de computadora. */
 @media (max-width: 700px) {
-  .header-inner,
-  .page-shell {
-    width: min(100% - 32px, 560px);
-  }
-
-  .header-inner {
-    min-height: 72px;
-  }
-
-  .brand img {
-    width: 58px;
-    height: 58px;
-  }
-
-  .menu-toggle {
-    display: inline-grid;
-    place-items: center;
-    margin-left: auto;
-  }
-
-  .site-nav {
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 16px;
-    display: none;
-    width: min(230px, calc(100vw - 32px));
-    padding: 8px;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    border: 1px solid var(--borde);
-    border-radius: 8px;
-    background: var(--blanco);
-    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.16);
-  }
-
-  .site-nav.is-open {
-    display: flex;
-  }
-
-  .site-nav a {
-    border-bottom: 1px solid var(--borde);
-  }
-
-  .site-nav a:last-child {
-    border-bottom: 0;
-  }
-
-  .page-shell {
-    padding: 36px 0 48px;
-  }
-
-  .page-intro {
-    margin-bottom: 26px;
-  }
-
-  .page-intro h1 {
-    font-size: 2rem;
-  }
-
-  .specialty-grid,
-  .visit-grid,
-  .detail-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .specialty-card h2 {
-    min-height: auto;
-  }
-
-  .visit-section {
-    margin-top: 36px;
-  }
-
-  .surface,
-  .detail-card {
-    padding: 20px;
-  }
-
-  .detail-header {
-    display: block;
-    margin-bottom: 18px;
-  }
-
-  .detail-header h1 {
-    font-size: 2rem;
-  }
-
-  .detail-badge {
-    display: inline-block;
-    margin-top: 8px;
-    white-space: normal;
-  }
-
-  .map-frame {
-    aspect-ratio: 4 / 3;
-  }
+/* En celular dejamos 16 pixeles libres a cada lado para que la informacion no roce el borde de la pantalla. */
+  .header-inner, .page-shell { width: min(100% - 32px, 560px); }
+/* La cabecera del celular ocupa una altura menor, suficiente para el logo y la hamburguesa. */
+  .header-inner { min-height: 72px; }
+/* Version reducida del logo que aparece en telefonos. */
+  .brand img { width: 58px; height: 58px; }
+/* Mostramos el boton de tres lineas y lo colocamos a la derecha del logo. */
+  .menu-toggle { display: inline-grid; place-items: center; margin-left: auto; }
+  /* El menu se superpone debajo de la cabecera, por eso no desplaza el contenido. */
+  .site-nav { position: absolute; top: calc(100% + 8px); right: 16px; display: none; width: min(230px, calc(100vw - 32px)); padding: 8px; flex-direction: column; align-items: stretch; gap: 0; border: 1px solid var(--borde); border-radius: 8px; background: var(--blanco); box-shadow: 0 14px 28px rgba(15, 23, 42, 0.16); }
+/* El menu solo se hace visible despues de tocar la hamburguesa. */
+  .site-nav.is-open { display: flex; }
+/* Cada opcion movil tiene su propia linea y una separacion inferior. */
+  .site-nav a { border-bottom: 1px solid var(--borde); }
+/* Quitamos la linea de la ultima opcion porque ya termina el panel. */
+  .site-nav a:last-child { border-bottom: 0; }
+/* En celular reducimos el espacio superior e inferior para aprovechar mejor la pantalla. */
+  .page-shell { padding: 36px 0 48px; }
+/* Distancia entre la introduccion y la lista de servicios en celular. */
+  .page-intro { margin-bottom: 26px; }
+/* El titulo movil usa un tamano estable para evitar que ocupe demasiadas lineas. */
+  .page-intro h1 { font-size: 2rem; }
+/* En celular todas estas zonas pasan a una sola columna: cada elemento aparece debajo del anterior. */
+  .specialty-grid, .visit-grid, .detail-grid { grid-template-columns: 1fr; }
+/* Los nombres ya no necesitan una altura reservada porque las tarjetas se leen una por una. */
+  .specialty-card h2 { min-height: auto; }
+/* Se reduce el espacio antes del mapa cuando se usa un telefono. */
+  .visit-section { margin-top: 36px; }
+/* El texto mantiene 20 pixeles de espacio respecto de cada borde de la tarjeta. */
+  .surface, .detail-card { padding: 20px; }
+/* En celular el precio aparece debajo del nombre, sin disputar espacio con el titulo. */
+  .detail-header { display: block; margin-bottom: 18px; }
+/* Se reduce el titulo de la especialidad para que quepa mejor en el telefono. */
+  .detail-header h1 { font-size: 2rem; }
+/* El costo puede bajar de linea si fuera necesario en una pantalla pequena. */
+  .detail-badge { display: inline-block; margin-top: 8px; white-space: normal; }
+/* El mapa del celular queda algo mas alto para distinguir mejor las calles cercanas. */
+  .map-frame { aspect-ratio: 4 / 3; }
 }
