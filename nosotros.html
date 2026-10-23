@@ -1,21 +1,33 @@
-﻿<!DOCTYPE html>
-
+﻿<!-- El navegador lee esta pagina como un documento web actual. Esta linea se mantiene igual en todas las paginas. -->
+<!doctype html>
+<!-- Indicamos que el contenido esta en espanol para que las herramientas de lectura lo pronuncien correctamente. -->
 <html lang="es">
   <head>
+    <!-- Permite que se vean bien las tildes, la letra enie y los simbolos escritos en los textos. -->
     <meta charset="UTF-8" />
-
+    <!-- Hace que el ancho de la pagina se adapte al celular, en lugar de mostrar una computadora en miniatura. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <!-- Lo que escribas aqui aparecera en la pestana del navegador; el titulo visible dentro de la pagina se cambia mas abajo. -->
     <title>SABIMEDIC JESUS | Sobre Nosotros</title>
-
+    <!-- Aqui empieza la apariencia de esta pagina. Se definen colores, espacios y tamanos; los textos visibles estan despues de este bloque. -->
     <style>
+      /*
+      Esta pagina usa un estilo propio para mostrar la institucion en cuatro
+      bloques. Para personalizarla, normalmente solo tendras que cambiar:
+      las rutas de las imagenes, los textos de cada cuadrante y los colores.
+    */
+
+      /* Reinicio basico */
+      /* Partimos sin espacios automaticos. Luego cada zona recibe su propia separacion para que el resultado sea parejo entre navegadores. */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
+      /* La letra, el fondo y el color del texto definidos aqui se usan en toda esta pagina. */
       body {
+        /* Fondo claro para que las tarjetas blancas se distingan sin verse pesadas. */
         font-family: Arial, sans-serif;
         background: #f8f8f8;
         color: #333;
@@ -23,7 +35,10 @@
         overflow-x: hidden;
       }
 
+      /* Navegacion principal */
+      /* Esta es la franja superior con el logo y el menu. Permanece visible al bajar por la pagina para que siempre puedas cambiar de seccion. */
       .main-nav {
+        /* La barra permanece arriba mientras se recorre la historia del consultorio. */
         background: white;
         padding: 20px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -32,6 +47,8 @@
         z-index: 100;
       }
 
+      /* Contenedor del nav */
+      /* Ordenamos logo y enlaces en una misma fila. El espacio entre ellos evita que se amontonen. */
       .nav-container {
         max-width: 1200px;
         margin: 0 auto;
@@ -42,13 +59,17 @@
         gap: 15px;
       }
 
+      /* Logo del nav */
+      /* Aspecto del enlace que lleva al inicio. La imagen del logo se encuentra mas abajo en el contenido. */
       .nav-logo {
+        /* Ajusta el tamaño del logo que aparece arriba a la izquierda. */
         font-size: 1.5rem;
         font-weight: bold;
         color: #1e40af;
         text-decoration: none;
       }
 
+      /* En celular este boton guarda los enlaces para que la cabecera no se amontone. */
       .menu-toggle {
         display: none;
         width: 44px;
@@ -61,12 +82,15 @@
         cursor: pointer;
       }
 
+      /* Enlaces del nav */
+      /* En computadora las opciones aparecen juntas. En celular se usa otra distribucion, definida al final de estos estilos. */
       .nav-links {
         display: flex;
         gap: 20px;
         flex-wrap: wrap;
       }
 
+      /* Cada opcion del menu tiene espacio alrededor de su texto para que sea facil seleccionarla. */
       .nav-links a {
         text-decoration: none;
         color: #333;
@@ -76,17 +100,23 @@
         transition: all 0.3s;
       }
 
+      /* Estos colores aparecen cuando el mouse pasa sobre una opcion del menu. */
       .nav-links a:hover {
+        /* Indica visualmente cual enlace esta siendo señalado. */
         background: #1e40af;
         color: white;
       }
 
+      /* Contenedor principal */
+      /* El contenido se centra y tiene un ancho limite. El espacio interior evita que los textos se acerquen al borde de la pantalla. */
       .container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 40px 20px;
       }
 
+      /* Titulo de la pagina */
+      /* Tamano, color y separacion del titulo grande de esta pagina. */
       .page-title {
         text-align: center;
         color: #1e40af;
@@ -95,22 +125,31 @@
         text-transform: uppercase;
       }
 
+      /* Grilla de 4 cuadrantes (2x2) */
       .grid-4 {
+        /* Dos columnas en computadora; en movil se convierten en una. */
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
         margin-bottom: 30px;
       }
 
+      /* Cada cuadrante */
       .quadrant {
         background: white;
         border-radius: 10px;
-
+        /*
+        Espacio interno de la card.
+        Este padding evita que el texto quede pegado al borde y crea una
+        lectura mas comoda, especialmente en los bloques largos de historia.
+      */
         padding: 30px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
 
+      /* Imagen dentro del cuadrante */
       .quadrant img {
+        /* Todas las fotos de la pagina comparten el mismo tamaño y recorte. */
         width: 100%;
         height: 300px;
         object-fit: cover;
@@ -118,6 +157,8 @@
         margin-bottom: 15px;
       }
 
+      /* Titulo dentro del cuadrante */
+      /* Tamano y espacio de los titulos de la historia del doctor y del consultorio. */
       .quadrant h2 {
         color: #1e40af;
         margin: 0 0 22px;
@@ -125,12 +166,18 @@
         line-height: 1.2;
       }
 
+      /* Texto del cuadrante */
+      /* Dejamos aire entre los parrafos de la historia. Modifica line-height para separar mas o menos las lineas. */
       .quadrant p {
         color: #666;
         margin: 0 0 16px;
         line-height: 1.75;
       }
 
+      /*
+      La lista de promesas tambien necesita separacion propia. Si no se define,
+      el navegador la deja demasiado cerca del texto anterior y de la card.
+    */
       .quadrant ol,
       .quadrant ul {
         margin: 18px 0 20px;
@@ -142,6 +189,8 @@
         padding-left: 4px;
       }
 
+      /* Footer */
+      /* Esta zona final reune los enlaces sociales y los datos de contacto. El espacio de arriba la separa del resto de la pagina. */
       .footer {
         background: #1e40af;
         color: white;
@@ -149,67 +198,54 @@
         margin-top: 50px;
       }
 
+      /* Los elementos finales se mantienen dentro de un ancho controlado para que no se extiendan demasiado en computadora. */
+      /* Aqui se decide como se reparten los iconos sociales y los datos de contacto en la zona final. */
       .footer-content {
         max-width: 1200px;
         margin: 0 auto;
         text-align: center;
       }
 
-      .footer-socials {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        margin: 20px 0;
-      }
+      /* Redes sociales en footer */
+      /* Los dibujos de las redes quedan juntos, con la misma separacion entre cada uno. */
 
-      .footer-socials a {
-        width: 45px;
-        height: 45px;
-        border: 2px solid white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        transition: all 0.3s;
-      }
+      /* Cada red se puede pulsar dentro de un circulo, no solamente sobre el pequeno dibujo. */
 
-      .footer-socials a:hover {
-        background: white;
-        color: #1e40af;
-      }
+      /* Este cambio de fondo senala el enlace social que se encuentra bajo el mouse. */
 
+      /* Los datos finales llevan un tamano mas pequeno y espacio suficiente entre sus lineas. */
       .footer-info {
         margin-top: 20px;
         font-size: 0.9rem;
         line-height: 1.8;
       }
 
+      /* Estos ajustes permiten leer y usar la pagina en la pantalla mas pequena de un telefono. */
+      /* Estas indicaciones se aplican solo cuando la pantalla mide 768 pixeles de ancho o menos. Aqui se ajusta la version para celulares. */
       @media (max-width: 768px) {
+        /* En telefono el espacio de la cabecera es menor para dejar mas sitio a la informacion. */
         .main-nav {
           padding: 10px 16px;
         }
-
+        /* Esta fila da un lugar propio al logo y al boton, manteniendo el menu flotante unido a la cabecera. */
         .nav-container {
           position: relative;
           min-height: 54px;
         }
-
+        /* El logo se reduce a 58 por 58 y sigue mostrandose completo. */
         .nav-logo img {
           width: 58px;
           height: 58px;
           object-fit: contain;
         }
-
+        /* El boton aparece en telefono y su simbolo se centra dentro del espacio que se puede tocar. */
         .menu-toggle {
           display: inline-flex;
           align-items: center;
           justify-content: center;
           margin-left: auto;
         }
-
+        /* El panel flota sobre el contenido, por eso al abrirlo nada se mueve. */
         .nav-links {
           position: absolute;
           top: calc(100% + 10px);
@@ -226,25 +262,26 @@
           border-radius: 8px;
           box-shadow: 0 14px 28px rgba(15, 23, 42, 0.16);
         }
-
+        /* Las opciones solo se muestran cuando se ha abierto el menu. */
         .nav-links.is-open {
           display: flex;
         }
-
+        /* Cada opcion movil tiene espacio suficiente para tocarla y una linea que la separa de la siguiente. */
         .nav-links a {
           padding: 12px 14px;
           border-bottom: 1px solid #e2e8f0;
         }
-
+        /* La ultima opcion no necesita una linea debajo. */
         .nav-links a:last-child {
           border-bottom: 0;
         }
-
+        /* En telefono se lee una sola columna en lugar de dos. */
         .grid-4 {
           grid-template-columns: 1fr;
           gap: 18px;
         }
 
+        /* En movil alternamos los bloques para que cada foto quede seguida de su propia informacion. */
         .grid-4 .quadrant:nth-child(1) {
           order: 1;
         }
@@ -258,29 +295,39 @@
           order: 4;
         }
 
+        /* El titulo se reduce para que entre mejor en la pantalla del telefono. */
         .page-title {
           font-size: clamp(1.65rem, 8vw, 2.2rem);
           margin-bottom: 24px;
         }
 
+        /* Dejamos un margen comodo alrededor de la informacion en una pantalla pequena. */
         .container {
           padding: 28px 16px 36px;
         }
 
+        /* Las fotos se hacen menos altas en celular para llegar antes a la informacion que las acompana. */
         .quadrant img {
           height: 200px;
         }
 
+        /* En movil reducimos un poco el padding para aprovechar el ancho disponible. */
+        /* Conservamos espacio interior alrededor de los textos largos para que sea facil leerlos. */
         .quadrant {
           padding: 20px;
         }
       }
     </style>
+    <!-- Este archivo coloca Facebook y WhatsApp a un costado sin tapar el contenido. -->
+    <link rel="stylesheet" href="assets/css/redes-laterales.css" />
+    <link rel="stylesheet" href="assets/css/ubicacion.css" />
   </head>
   <body>
+    <!-- Navegacion principal -->
     <nav class="main-nav">
       <div class="nav-container">
         <a href="index.html" class="nav-logo">
+          <!-- Aqui ponemos el logo en el main nav -->
           <img
             src="assets/img/logo.png"
             alt="Logo SABIMEDIC JESUS"
@@ -289,7 +336,7 @@
             style="vertical-align: middle; margin-right: 8px"
           />
         </a>
-
+        <!-- Al tocarlo se abre el menu movil sin cambiar la altura de la cabecera. -->
         <button
           class="menu-toggle"
           type="button"
@@ -307,11 +354,20 @@
       </div>
     </nav>
 
+    <!--
+    Contenido principal.
+    Esta pagina presenta primero las imagenes y luego la informacion escrita.
+    Para editar la historia, busca los parrafos dentro de cada .quadrant.
+  -->
     <div class="container">
+      <!-- Titulo central de la pagina institucional. -->
       <h1 class="page-title">Sobre SABIMEDIC JESUS</h1>
 
+      <!-- Estos cuatro bloques contienen dos fotos y sus historias. En computadora se distribuyen en dos columnas y en celular se alterna foto e informacion. -->
       <div class="grid-4">
+        <!-- Cuadrante 1: imagen del profesional responsable. -->
         <div class="quadrant">
+          <!-- Para cambiar el retrato del doctor, reemplaza esta foto en assets/img o escribe aqui el nombre del nuevo archivo. -->
           <img
             src="assets/img/profesional-responsable.jpg"
             alt="Foto del profesional responsable"
@@ -321,65 +377,72 @@
           </p>
         </div>
 
+        <!-- Cuadrante 2: imagen de la institucion medica. -->
         <div class="quadrant">
+          <!-- Esta fotografia acompana la historia de la institucion. Su descripcion ayuda a quien no puede ver la imagen. -->
           <img src="assets/img/consultorio.jpg" alt="Foto del consultorio" />
           <p style="text-align: center; color: #646363; font-size: 0.9rem">
             SABIMEDIC JESUS - ORURO
           </p>
         </div>
 
+        <!-- Cuadrante 3: historia personal y profesional del fundador. -->
         <div class="quadrant">
           <h2>Dr. Miguel Angel Escobar</h2>
           <p><strong>Fundador y profesional responsable</strong></p>
           <p><em>“Soy medico de vocación y de corazón.”</em></p>
           <p>
-            Desde niño supe que queria ayudar a las personas. Creci viendo de cerca el
-            dolor, la preocupacion de las familias cuando un ser querido se enferma y
-            tambien la esperanza que da una buena atencion. Esa mezcla me marco. Decidi
-            estudiar medicina porque queria ser parte de la solucion, no solo ver el
-            problema.
+            Desde niño supe que queria ayudar a las personas. Creci viendo de
+            cerca el dolor, la preocupacion de las familias cuando un ser
+            querido se enferma y tambien la esperanza que da una buena atencion.
+            Esa mezcla me marco. Decidi estudiar medicina porque queria ser
+            parte de la solucion, no solo ver el problema.
           </p>
           <p>
-            La carrera fue dura, con noches sin dormir, guardias y mucha responsabilidad.
-            Pero cada paciente que se iba mejor de mi consulta me recordaba por que estaba
-            ahi. Me forme con una idea clara: la medicina no es solo recetar, es escuchar,
-            explicar y acompañar.
+            La carrera fue dura, con noches sin dormir, guardias y mucha
+            responsabilidad. Pero cada paciente que se iba mejor de mi consulta
+            me recordaba por que estaba ahi. Me forme con una idea clara: la
+            medicina no es solo recetar, es escuchar, explicar y acompañar.
           </p>
           <p>
-            Con los años gane experiencia en hospitales y centros de salud. Ahi atendi de
-            todo: niños con fiebre, adultos con presion alta y abuelitos que solo
-            necesitaban que alguien les tuviera paciencia. Aprendi que en Oruro la gente
-            necesita un doctor cercano, que hable claro, sin tecnicismos y que no haga
-            sentir a nadie menos por no entender.
+            Con los años gane experiencia en hospitales y centros de salud. Ahi
+            atendi de todo: niños con fiebre, adultos con presion alta y
+            abuelitos que solo necesitaban que alguien les tuviera paciencia.
+            Aprendi que en Oruro la gente necesita un doctor cercano, que hable
+            claro, sin tecnicismos y que no haga sentir a nadie menos por no
+            entender.
           </p>
           <p>
-            Pero tambien vi algo que me dolio: mucha gente posterga ir al medico por
-            miedo, por el costo o porque las consultas son muy frias e impersonales. Y
-            pense: “si yo puedo hacer un lugar distinto, lo voy a hacer”.
+            Pero tambien vi algo que me dolio: mucha gente posterga ir al medico
+            por miedo, por el costo o porque las consultas son muy frias e
+            impersonales. Y pense: “si yo puedo hacer un lugar distinto, lo voy
+            a hacer”.
           </p>
         </div>
 
+        <!-- Cuadrante 4: origen, significado y mision de la institucion. -->
         <div class="quadrant">
           <h2>La historia de SABIMEDIC JESUS</h2>
           <p>
-            SABIMEDIC JESUS nacio en Oruro en el año 2024 del sueño de servir y del amor
-            de una familia. Como medico vi que muchas personas necesitaban algo mas que
-            una receta: necesitaban ser escuchadas. Por eso decidi abrir un consultorio
-            donde la medicina sea cercana, clara y humana.
+            SABIMEDIC JESUS nacio en Oruro en el año 2024 del sueño de servir y
+            del amor de una familia. Como medico vi que muchas personas
+            necesitaban algo mas que una receta: necesitaban ser escuchadas. Por
+            eso decidi abrir un consultorio donde la medicina sea cercana, clara
+            y humana.
           </p>
           <p><strong>¿Por que ese nombre?</strong></p>
           <p>
             <strong>SABIMEDIC</strong>
             representa una medicina con sabiduria, ciencia y humanidad.
             <strong>SABI</strong>
-            nace de Sabina, mi madre, quien me enseño el cuidado, la paciencia y la
-            calidez humana.
+            nace de Sabina, mi madre, quien me enseño el cuidado, la paciencia y
+            la calidez humana.
           </p>
           <p>
             <strong>JESUS</strong>
-            representa a Jesus, mi padre, quien me enseño el trabajo, la honestidad y el
-            compromiso de servir a los demas. Este consultorio es un homenaje a su
-            ejemplo.
+            representa a Jesus, mi padre, quien me enseño el trabajo, la
+            honestidad y el compromiso de servir a los demas. Este consultorio
+            es un homenaje a su ejemplo.
           </p>
           <p>
             <strong>Nuestra mision:</strong>
@@ -396,29 +459,73 @@
             </li>
             <li>
               <strong>Compromiso:</strong>
-              estar presentes en la prevencion, no solo cuando ya existe un problema.
+              estar presentes en la prevencion, no solo cuando ya existe un
+              problema.
             </li>
           </ol>
           <p><strong>SABIMEDIC JESUS - Tu salud, nuestra prioridad.</strong></p>
         </div>
       </div>
+
+      <!-- El mapa que antes estaba en Especialidades se muestra aqui, junto a la historia del consultorio. -->
+      <section
+        class="clinic-location"
+        id="ubicacion"
+        aria-labelledby="ubicacion-title"
+      >
+        <h2 id="ubicacion-title">Visita nuestro consultorio</h2>
+        <p>PEDRO FERRARI ORURO</p>
+        <div class="clinic-location__layout">
+          <div>
+            <!-- Los dos numeros de q indican el punto exacto. El enlace inferior permite abrir la ruta en Google Maps. -->
+            <iframe
+              src="https://www.google.com/maps?q=-17.9698045,-67.0841865&z=17&output=embed"
+              title="Ubicacion de SABIMEDIC JESUS en PEDRO FERRARI ORURO"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+            <a
+              href="https://maps.app.goo.gl/fabpyxtggT1Txyvb6?g_st=aw"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver ubicacion en Google Maps
+            </a>
+          </div>
+          <img
+            class="clinic-location__logo"
+            src="assets/img/logo.png"
+            alt="Logo de SABIMEDIC JESUS"
+            width="180"
+            height="180"
+            loading="lazy"
+          />
+        </div>
+      </section>
     </div>
 
+    <!-- Facebook y WhatsApp quedan siempre a un costado. Los estilos reservan espacio para que no cubran el contenido. -->
+    <nav class="social-rail" aria-label="Facebook y WhatsApp">
+      <a
+        href="https://wa.me/59172347510"
+        title="WhatsApp"
+        aria-label="WhatsApp del consultorio"
+      >
+        <img src="assets/icons/whatsapp.svg" alt="" width="28" height="28" />
+      </a>
+      <a
+        href="https://www.facebook.com/sabimedic.jesus"
+        title="Facebook"
+        aria-label="Facebook del consultorio"
+      >
+        <img src="assets/icons/facebook.svg" alt="" width="28" height="28" />
+      </a>
+    </nav>
     <footer class="footer">
       <div class="footer-content">
-        <div class="footer-socials">
-          <a href="https://wa.me/59172347510" title="WhatsApp" aria-label="WhatsApp">
-            <img src="assets/icons/whatsapp.svg" alt="" width="26" height="26" />
-          </a>
-          <a
-            href="https://www.facebook.com/sabimedic.jesus"
-            title="Facebook"
-            aria-label="Facebook"
-          >
-            <img src="assets/icons/facebook.svg" alt="" width="26" height="26" />
-          </a>
-        </div>
+        <!-- Redes sociales -->
 
+        <!-- Informacion de contacto -->
         <div class="footer-info">
           <p><strong>Consultorio Medico SABIMEDIC JESUS</strong></p>
           <p>Telefono: +591 72347510 | WhatsApp: +591 72347510</p>
@@ -427,27 +534,33 @@
       </div>
     </footer>
     <script>
+      // Conectamos el boton con los enlaces que deben aparecer en el celular.
       const menuToggle = document.querySelector(".menu-toggle");
       const mobileMenu = document.querySelector(".nav-links");
 
+      // Al tocar el boton, la clase is-open muestra u oculta el panel.
       menuToggle.addEventListener("click", () => {
         const menuIsOpen = mobileMenu.classList.toggle("is-open");
-
+        // Informamos si las opciones estan abiertas para las herramientas que leen la pagina en voz alta.
         menuToggle.setAttribute("aria-expanded", String(menuIsOpen));
-
-        menuToggle.setAttribute("aria-label", menuIsOpen ? "Cerrar menu" : "Abrir menu");
-
+        // El nombre del boton cambia segun la accion que puede realizar ahora.
+        menuToggle.setAttribute(
+          "aria-label",
+          menuIsOpen ? "Cerrar menu" : "Abrir menu"
+        );
+        // Mostramos una X para cerrar o las tres lineas para abrir.
         menuToggle.textContent = menuIsOpen ? "×" : "☰";
       });
 
+      // Al navegar a otra pagina, cerramos el panel para no cubrir el nuevo contenido.
       mobileMenu.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => {
           mobileMenu.classList.remove("is-open");
-
+          // Despues de elegir un destino, indicamos que el menu ya esta cerrado.
           menuToggle.setAttribute("aria-expanded", "false");
-
+          // El boton vuelve a estar preparado para abrir las opciones.
           menuToggle.setAttribute("aria-label", "Abrir menu");
-
+          // Restauramos el dibujo de tres lineas que identifica el menu.
           menuToggle.textContent = "☰";
         });
       });

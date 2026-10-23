@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-
+<!-- El navegador lee esta pagina como un documento web actual. Esta linea se mantiene igual en todas las paginas. -->
+<!doctype html>
+<!-- Indicamos que el contenido esta en espanol para que las herramientas de lectura lo pronuncien correctamente. -->
 <html lang="es">
   <head>
+    <!-- Permite que se vean bien las tildes, la letra enie y los simbolos escritos en los textos. -->
     <meta charset="UTF-8" />
-
+    <!-- Hace que el ancho de la pagina se adapte al celular, en lugar de mostrar una computadora en miniatura. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <!-- Lo que escribas aqui aparecera en la pestana del navegador; el titulo visible dentro de la pagina se cambia mas abajo. -->
     <title>SABIMEDIC JESUS | Especialidades</title>
-
+    <!-- Esta pagina toma sus colores, tamanos y espacios de assets/css/especialidades.css. Puedes cambiarlos alli para todas las especialidades. -->
     <link rel="stylesheet" href="assets/css/especialidades.css" />
+    <!-- Este archivo coloca Facebook y WhatsApp a un costado sin tapar el contenido. -->
+    <link rel="stylesheet" href="assets/css/redes-laterales.css" />
   </head>
   <body>
+    <!-- Cabecera comun: conserva el mismo logo y las mismas rutas que el resto del sistema. -->
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="index.html" aria-label="Volver al inicio">
@@ -34,132 +39,345 @@
     </header>
 
     <main class="page-shell">
+      <!-- Esta introduccion presenta la lista. Edita el titulo grande y su parrafo para cambiar la forma de presentar los servicios. -->
       <section class="page-intro">
         <p class="eyebrow">Atencion medica en Oruro</p>
         <h1>Especialidades medicas</h1>
         <p>
-          Conoce nuestras areas de atencion, el profesional asignado, el horario y el
-          costo referencial de cada consulta.
+          Conoce nuestras areas de atencion, sus profesionales y los horarios de
+          consulta.
         </p>
       </section>
 
+      <!-- Cada tarjeta es un enlace completo hacia la informacion de su especialidad. -->
+      <!-- Cada fotografia se gira para mostrar un concepto; el boton inferior abre la informacion completa. -->
       <section class="specialty-grid" aria-label="Lista de especialidades">
         <article class="specialty-card">
-          <span class="specialty-number">01</span>
+          <!-- La foto y el concepto comparten un espacio fijo. El nombre y el enlace permanecen visibles debajo. -->
+          <div class="specialty-flip">
+            <button
+              class="specialty-flip-toggle"
+              type="button"
+              aria-pressed="false"
+              aria-label="Ver concepto de Medicina General"
+              aria-describedby="concepto-medicina-general"
+            >
+              <span class="specialty-flip-inner">
+                <span class="specialty-face specialty-front">
+                  <img
+                    src="assets/img/especialidades/medicina-general.jpg"
+                    alt="Medica conversando con una paciente durante una consulta general"
+                    width="900"
+                    height="675"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span class="specialty-face specialty-back">
+                  <span id="concepto-medicina-general">
+                    Una evaluacion integral para prevenir enfermedades, atender
+                    molestias frecuentes y cuidar la salud de toda la familia.
+                  </span>
+                </span>
+              </span>
+            </button>
+          </div>
           <h2>Medicina General</h2>
-          <p>
-            Evaluacion inicial, prevencion y seguimiento de la salud de toda la familia.
-          </p>
           <a class="card-link" href="especialidad-medicina-general.html">
             Ver especialidad
           </a>
         </article>
+
         <article class="specialty-card">
-          <span class="specialty-number">02</span>
+          <!-- La foto y el concepto comparten un espacio fijo. El nombre y el enlace permanecen visibles debajo. -->
+          <div class="specialty-flip">
+            <button
+              class="specialty-flip-toggle"
+              type="button"
+              aria-pressed="false"
+              aria-label="Ver concepto de Cirugia General y Laparoscopia"
+              aria-describedby="concepto-cirugia-general"
+            >
+              <span class="specialty-flip-inner">
+                <span class="specialty-face specialty-front">
+                  <img
+                    src="assets/img/especialidades/cirugia-general.jpg"
+                    alt="Equipo de cirugia trabajando en un quirofano"
+                    width="900"
+                    height="675"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span class="specialty-face specialty-back">
+                  <span id="concepto-cirugia-general">
+                    Valoracion de enfermedades que pueden requerir una operacion
+                    y seguimiento antes y despues de una intervencion.
+                  </span>
+                </span>
+              </span>
+            </button>
+          </div>
           <h2>Cirugia General y Laparoscopia</h2>
-          <p>Valoracion y orientacion para procedimientos quirurgicos generales.</p>
           <a class="card-link" href="especialidad-cirugia-general.html">
             Ver especialidad
           </a>
         </article>
+
         <article class="specialty-card">
-          <span class="specialty-number">03</span>
+          <!-- La foto y el concepto comparten un espacio fijo. El nombre y el enlace permanecen visibles debajo. -->
+          <div class="specialty-flip">
+            <button
+              class="specialty-flip-toggle"
+              type="button"
+              aria-pressed="false"
+              aria-label="Ver concepto de Ortopedia y Traumatologia"
+              aria-describedby="concepto-ortopedia-traumatologia"
+            >
+              <span class="specialty-flip-inner">
+                <span class="specialty-face specialty-front">
+                  <img
+                    src="assets/img/especialidades/ortopedia-traumatologia.jpg"
+                    alt="Medico revisando una radiografia de la rodilla"
+                    width="900"
+                    height="675"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span class="specialty-face specialty-back">
+                  <span id="concepto-ortopedia-traumatologia">
+                    Cuidado de huesos, musculos y articulaciones para tratar
+                    lesiones y recuperar el movimiento.
+                  </span>
+                </span>
+              </span>
+            </button>
+          </div>
           <h2>Ortopedia y Traumatologia</h2>
-          <p>Atencion de lesiones, dolor musculoesqueletico y recuperacion funcional.</p>
           <a class="card-link" href="especialidad-ortopedia-traumatologia.html">
             Ver especialidad
           </a>
         </article>
+
         <article class="specialty-card">
-          <span class="specialty-number">04</span>
+          <!-- La foto y el concepto comparten un espacio fijo. El nombre y el enlace permanecen visibles debajo. -->
+          <div class="specialty-flip">
+            <button
+              class="specialty-flip-toggle"
+              type="button"
+              aria-pressed="false"
+              aria-label="Ver concepto de Ginecologia y Obstetricia"
+              aria-describedby="concepto-ginecologia-obstetricia"
+            >
+              <span class="specialty-flip-inner">
+                <span class="specialty-face specialty-front">
+                  <img
+                    src="assets/img/especialidades/ginecologia-obstetricia.jpg"
+                    alt="Profesional realizando una ecografia durante un control prenatal"
+                    width="900"
+                    height="675"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span class="specialty-face specialty-back">
+                  <span id="concepto-ginecologia-obstetricia">
+                    Atencion de la salud femenina y acompanamiento durante el
+                    embarazo y las distintas etapas de la vida.
+                  </span>
+                </span>
+              </span>
+            </button>
+          </div>
           <h2>Ginecologia y Obstetricia</h2>
-          <p>Controles de salud femenina, embarazo y acompanamiento integral.</p>
           <a class="card-link" href="especialidad-ginecologia-obstetricia.html">
             Ver especialidad
           </a>
         </article>
+
         <article class="specialty-card">
-          <span class="specialty-number">05</span>
+          <!-- La foto y el concepto comparten un espacio fijo. El nombre y el enlace permanecen visibles debajo. -->
+          <div class="specialty-flip">
+            <button
+              class="specialty-flip-toggle"
+              type="button"
+              aria-pressed="false"
+              aria-label="Ver concepto de Neurociencia"
+              aria-describedby="concepto-neurociencia"
+            >
+              <span class="specialty-flip-inner">
+                <span class="specialty-face specialty-front">
+                  <img
+                    src="assets/img/especialidades/neurociencia.jpg"
+                    alt="Profesional revisando imagenes de una resonancia cerebral"
+                    width="900"
+                    height="675"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span class="specialty-face specialty-back">
+                  <span id="concepto-neurociencia">
+                    Evaluacion de sintomas relacionados con el cerebro y el
+                    sistema nervioso, como cambios de memoria, sueno o
+                    sensibilidad.
+                  </span>
+                </span>
+              </span>
+            </button>
+          </div>
           <h2>Neurociencia</h2>
-          <p>Orientacion sobre memoria, sueno, dolor de cabeza y sistema nervioso.</p>
-          <a class="card-link" href="especialidad-neurociencia.html">Ver especialidad</a>
+          <a class="card-link" href="especialidad-neurociencia.html">
+            Ver especialidad
+          </a>
         </article>
+
         <article class="specialty-card">
-          <span class="specialty-number">06</span>
+          <!-- La foto y el concepto comparten un espacio fijo. El nombre y el enlace permanecen visibles debajo. -->
+          <div class="specialty-flip">
+            <button
+              class="specialty-flip-toggle"
+              type="button"
+              aria-pressed="false"
+              aria-label="Ver concepto de Medicina Interna"
+              aria-describedby="concepto-medicina-interna"
+            >
+              <span class="specialty-flip-inner">
+                <span class="specialty-face specialty-front">
+                  <img
+                    src="assets/img/especialidades/medicina-interna.jpg"
+                    alt="Control de la presion arterial durante una consulta medica"
+                    width="900"
+                    height="675"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span class="specialty-face specialty-back">
+                  <span id="concepto-medicina-interna">
+                    Atencion integral de personas adultas y seguimiento de
+                    enfermedades cronicas, como diabetes o presion alta.
+                  </span>
+                </span>
+              </span>
+            </button>
+          </div>
           <h2>Medicina Interna</h2>
-          <p>Diagnostico y control de enfermedades que afectan a personas adultas.</p>
           <a class="card-link" href="especialidad-medicina-interna.html">
             Ver especialidad
           </a>
         </article>
+
         <article class="specialty-card">
-          <span class="specialty-number">07</span>
+          <!-- La foto y el concepto comparten un espacio fijo. El nombre y el enlace permanecen visibles debajo. -->
+          <div class="specialty-flip">
+            <button
+              class="specialty-flip-toggle"
+              type="button"
+              aria-pressed="false"
+              aria-label="Ver concepto de Pediatria"
+              aria-describedby="concepto-pediatria"
+            >
+              <span class="specialty-flip-inner">
+                <span class="specialty-face specialty-front">
+                  <img
+                    src="assets/img/especialidades/pediatria.jpg"
+                    alt="Profesional de pediatria atendiendo a una nina en el consultorio"
+                    width="900"
+                    height="675"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span class="specialty-face specialty-back">
+                  <span id="concepto-pediatria">
+                    Cuidado de la salud, el crecimiento y el desarrollo de ninas
+                    y ninos, con orientacion para sus familias.
+                  </span>
+                </span>
+              </span>
+            </button>
+          </div>
           <h2>Pediatria</h2>
-          <p>Seguimiento del crecimiento, desarrollo y salud de ninas y ninos.</p>
-          <a class="card-link" href="especialidad-pediatria.html">Ver especialidad</a>
+          <a class="card-link" href="especialidad-pediatria.html">
+            Ver especialidad
+          </a>
         </article>
+
         <article class="specialty-card">
-          <span class="specialty-number">08</span>
+          <!-- La foto y el concepto comparten un espacio fijo. El nombre y el enlace permanecen visibles debajo. -->
+          <div class="specialty-flip">
+            <button
+              class="specialty-flip-toggle"
+              type="button"
+              aria-pressed="false"
+              aria-label="Ver concepto de Fisioterapia y Kinesiologia"
+              aria-describedby="concepto-fisioterapia-kinesiologia"
+            >
+              <span class="specialty-flip-inner">
+                <span class="specialty-face specialty-front">
+                  <img
+                    src="assets/img/especialidades/fisioterapia-kinesiologia.jpg"
+                    alt="Fisioterapeuta guiando el movimiento de la pierna de un paciente"
+                    width="900"
+                    height="675"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span class="specialty-face specialty-back">
+                  <span id="concepto-fisioterapia-kinesiologia">
+                    Rehabilitacion con movimiento y ejercicios para aliviar
+                    molestias y recuperar fuerza, equilibrio y movilidad.
+                  </span>
+                </span>
+              </span>
+            </button>
+          </div>
           <h2>Fisioterapia y Kinesiologia</h2>
-          <p>
-            Rehabilitacion del movimiento, alivio del dolor y recuperacion progresiva.
-          </p>
-          <a class="card-link" href="especialidad-fisioterapia-kinesiologia.html">
+          <a
+            class="card-link"
+            href="especialidad-fisioterapia-kinesiologia.html"
+          >
             Ver especialidad
           </a>
         </article>
       </section>
-
-      <section class="visit-section">
-        <h2 class="section-heading">Conoce nuestro consultorio</h2>
-        <div class="visit-grid">
-          <article class="surface">
-            <h3>Donde atenderte</h3>
-            <p>Encuentranos en PEDRO FERRARI ORURO.</p>
-            <div class="map-frame">
-              <iframe
-                src="https://www.google.com/maps?q=-17.9698045,-67.0841865&z=17&output=embed"
-                title="Mapa del consultorio"
-                loading="lazy"
-                allowfullscreen
-              ></iframe>
-            </div>
-
-            <a
-              href="https://maps.app.goo.gl/fabpyxtggT1Txyvb6?g_st=aw"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ver ubicacion en Google Maps
-            </a>
-          </article>
-          <article class="surface logo-panel">
-            <h3>SABIMEDIC JESUS</h3>
-            <img src="assets/img/logo.png" alt="Logo del consultorio SABIMEDIC JESUS" />
-          </article>
-        </div>
-      </section>
     </main>
 
+    <!-- Footer comun con los mismos iconos SVG de redes sociales. -->
+
+    <!-- Facebook y WhatsApp quedan siempre a un costado. Los estilos reservan espacio para que no cubran el contenido. -->
+    <nav class="social-rail" aria-label="Facebook y WhatsApp">
+      <a
+        href="https://wa.me/59172347510"
+        title="WhatsApp"
+        aria-label="WhatsApp del consultorio"
+      >
+        <img src="assets/icons/whatsapp.svg" alt="" width="28" height="28" />
+      </a>
+      <a
+        href="https://www.facebook.com/sabimedic.jesus"
+        title="Facebook"
+        aria-label="Facebook del consultorio"
+      >
+        <img src="assets/icons/facebook.svg" alt="" width="28" height="28" />
+      </a>
+    </nav>
     <footer class="site-footer">
       <div class="footer-inner">
         <strong>Consultorio Medico SABIMEDIC JESUS</strong>
-        <div class="footer-socials">
-          <a href="https://wa.me/59172347510" title="WhatsApp" aria-label="WhatsApp">
-            <img src="assets/icons/whatsapp.svg" alt="" />
-          </a>
-          <a
-            href="https://www.facebook.com/sabimedic.jesus"
-            title="Facebook"
-            aria-label="Facebook"
-          >
-            <img src="assets/icons/facebook.svg" alt="" />
-          </a>
-        </div>
-        <p class="footer-address">PEDRO FERRARI ORURO | Tu salud, nuestra prioridad</p>
+
+        <p class="footer-address">
+          PEDRO FERRARI ORURO | Tu salud, nuestra prioridad
+        </p>
       </div>
     </footer>
 
+    <!-- Este archivo permite abrir y cerrar el menu del celular. Sus explicaciones estan en assets/js/mobile-menu.js. -->
     <script src="assets/js/mobile-menu.js"></script>
+    <!-- El giro tambien puede activarse tocando la foto o usando el teclado. -->
+    <script src="assets/js/specialty-cards.js"></script>
   </body>
 </html>

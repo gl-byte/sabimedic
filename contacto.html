@@ -1,422 +1,20 @@
-﻿<!DOCTYPE html>
-
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>SABIMEDIC JESUS | Contacto</title>
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: Arial, sans-serif;
-        background: #f8f8f8;
-        color: #333;
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-
-      .main-nav {
-        background: white;
-        padding: 20px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-
-      .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 15px;
-      }
-
-      .nav-logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #1e40af;
-        text-decoration: none;
-      }
-
-      .menu-toggle {
-        display: none;
-        width: 44px;
-        height: 44px;
-        border: 2px solid #1e40af;
-        border-radius: 8px;
-        background: #ffffff;
-        color: #1e40af;
-        font-size: 1.35rem;
-        cursor: pointer;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 600;
-        padding: 8px 15px;
-        border-radius: 5px;
-        transition: all 0.3s;
-      }
-
-      .nav-links a:hover {
-        background: #1e40af;
-        color: white;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 40px 20px;
-      }
-
-      .page-title {
-        text-align: center;
-        color: #1e40af;
-        font-size: 2.5rem;
-        margin-bottom: 40px;
-        text-transform: uppercase;
-      }
-
-      .contact-layout {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-        margin-top: 30px;
-      }
-
-      .section {
-        background: white;
-        border-radius: 10px;
-        padding: 30px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .section h2 {
-        color: #1e40af;
-        margin-bottom: 20px;
-        font-size: 1.8rem;
-      }
-
-      .section p {
-        margin-bottom: 15px;
-        color: #666;
-      }
-
-      .form-group {
-        margin-bottom: 20px;
-      }
-
-      .form-group label {
-        display: block;
-        color: #1e40af;
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-
-      .form-group input,
-      .form-group textarea,
-      .form-group select {
-        width: 100%;
-        padding: 12px;
-        border: 2px solid #e5e7eb;
-        border-radius: 8px;
-        font-size: 1rem;
-        font-family: Arial, sans-serif;
-        transition: border-color 0.3s;
-      }
-
-      .form-group input:focus,
-      .form-group textarea:focus,
-      .form-group select:focus {
-        outline: none;
-        border-color: #06b6d4;
-      }
-
-      .btn-enviar {
-        width: 100%;
-        padding: 15px;
-        background: #06b6d4;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 1.1rem;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-
-      .btn-enviar:hover {
-        background: #0891b2;
-        transform: translateY(-2px);
-      }
-
-      .contact-info {
-        background: #f0f9ff;
-        padding: 15px;
-        border-left: 4px solid #1e40af;
-        margin-bottom: 15px;
-        border-radius: 5px;
-      }
-
-      .contact-info strong {
-        color: #1e40af;
-        display: block;
-        margin-bottom: 5px;
-      }
-
-      .map-placeholder {
-        width: 100%;
-        height: 300px;
-        background: #e5e7eb;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #666;
-        font-weight: 600;
-        margin-top: 20px;
-        overflow: hidden;
-      }
-
-      .map-placeholder iframe {
-        width: 100%;
-        height: 100%;
-        display: block;
-      }
-
-      .btn-whatsapp {
-        display: inline-block;
-        padding: 12px 25px;
-        background: #25d366;
-        color: white;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 15px;
-        transition: all 0.3s;
-      }
-
-      .btn-whatsapp:hover {
-        background: #20ba5a;
-        transform: translateY(-2px);
-      }
-
-      .footer {
-        background: #1e40af;
-        color: white;
-        padding: 40px 20px;
-        margin-top: 50px;
-      }
-
-      .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .footer-socials {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        margin: 20px 0;
-      }
-
-      .footer-socials a {
-        width: 45px;
-        height: 45px;
-        border: 2px solid white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        transition: all 0.3s;
-      }
-
-      .footer-socials a:hover {
-        background: white;
-        color: #1e40af;
-      }
-
-      .footer-info {
-        margin-top: 20px;
-        font-size: 0.9rem;
-        line-height: 1.8;
-      }
-
-      .mensaje-confirmacion {
-        display: none;
-        padding: 15px;
-        background: #dcfce7;
-        color: #166534;
-        border-radius: 8px;
-        margin-top: 15px;
-        text-align: center;
-        font-weight: 600;
-      }
-
-      .mensaje-confirmacion.show {
-        display: block;
-      }
-
-      .field-error {
-        display: block;
-        color: #991b1b;
-        font-size: 0.9rem;
-        margin-top: 6px;
-      }
-
-      .field-error:empty {
-        display: none;
-      }
-
-      .form-group [aria-invalid="true"] {
-        border-color: #b91c1c;
-      }
-
-      .mensaje-confirmacion[data-state="error"] {
-        background: #fee2e2;
-        color: #991b1b;
-      }
-
-      .section .mensaje-confirmacion {
-        color: #166534;
-      }
-
-      .section .mensaje-confirmacion[data-state="error"] {
-        color: #991b1b;
-      }
-
-      .mensaje-confirmacion a {
-        display: block;
-        margin-top: 8px;
-        color: #1e3a8a;
-      }
-
-      .reservation-fields[hidden] {
-        display: none;
-      }
-
-      #formulario {
-        scroll-margin-top: 130px;
-        min-width: 0;
-      }
-
-      @media (max-width: 768px) {
-        .main-nav {
-          padding: 10px 16px;
-        }
-
-        .nav-container {
-          position: relative;
-          min-height: 54px;
-        }
-
-        .nav-logo img {
-          width: 58px;
-          height: 58px;
-          object-fit: contain;
-        }
-
-        .menu-toggle {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          margin-left: auto;
-        }
-
-        .nav-links {
-          position: absolute;
-          top: calc(100% + 10px);
-          right: 0;
-          z-index: 200;
-          display: none;
-          width: min(230px, calc(100vw - 32px));
-          padding: 8px;
-          gap: 0;
-          flex-direction: column;
-          flex-wrap: nowrap;
-          background: #ffffff;
-          border: 1px solid #e2e8f0;
-          border-radius: 8px;
-          box-shadow: 0 14px 28px rgba(15, 23, 42, 0.16);
-        }
-
-        .nav-links.is-open {
-          display: flex;
-        }
-
-        .nav-links a {
-          padding: 12px 14px;
-          border-bottom: 1px solid #e2e8f0;
-        }
-
-        .nav-links a:last-child {
-          border-bottom: 0;
-        }
-        .contact-layout {
-          grid-template-columns: 1fr;
-          gap: 18px;
-        }
-
-        .page-title {
-          font-size: clamp(1.65rem, 8vw, 2.2rem);
-          margin-bottom: 24px;
-        }
-
-        .container {
-          padding: 28px 16px 36px;
-        }
-
-        .section {
-          padding: 20px;
-        }
-
-        .map-placeholder {
-          height: 240px;
-        }
-
-        .btn-whatsapp,
-        .btn-enviar {
-          width: 100%;
-          text-align: center;
-        }
-      }
-    </style>
+    <!-- La apariencia comun mantiene el mismo encabezado y pie que las especialidades. -->
+    <link rel="stylesheet" href="assets/css/especialidades.css" />
+    <link rel="stylesheet" href="assets/css/contacto.css" />
+    <link rel="stylesheet" href="assets/css/redes-laterales.css" />
   </head>
   <body>
-    <nav class="main-nav">
-      <div class="nav-container">
-        <a href="index.html" class="nav-logo">
-          <img
-            src="assets/img/logo.png"
-            alt="Logo SABIMEDIC JESUS"
-            width="80"
-            height="80"
-            style="vertical-align: middle; margin-right: 8px"
-          />
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Volver al inicio">
+          <img src="assets/img/logo.png" alt="Logo de SABIMEDIC JESUS" />
         </a>
-
         <button
           class="menu-toggle"
           type="button"
@@ -425,266 +23,106 @@
         >
           ☰
         </button>
-        <div class="nav-links">
+        <nav class="site-nav" aria-label="Navegacion principal">
           <a href="index.html">Inicio</a>
           <a href="nosotros.html">Nosotros</a>
           <a href="especialidades.html">Especialidades</a>
-          <a href="contacto.html">Contacto</a>
-        </div>
+          <a class="active" href="contacto.html">Contacto</a>
+        </nav>
       </div>
+    </header>
+    <main class="page-shell contact-page">
+      <div class="page-intro"><h1>Contacto</h1></div>
+      <!-- Se conserva solamente la informacion del consultorio, sin el formulario que ocupaba la segunda columna. -->
+      <section
+        class="contact-panel"
+        id="datos-contacto"
+        aria-labelledby="contact-title"
+      >
+        <h2 id="contact-title">Datos de Contacto</h2>
+        <dl class="contact-details">
+          <div>
+            <dt>Direccion</dt>
+            <dd>PEDRO FERRARI ORURO</dd>
+          </div>
+          <div>
+            <dt>Horarios de Atencion</dt>
+            <dd>
+              Lunes a Viernes: 8:00 AM - 7:00 PM
+              <br />
+              Sabados: 9:00 AM - 2:00 PM
+              <br />
+              Domingos: Cerrado
+            </dd>
+          </div>
+          <div>
+            <dt>Telefono</dt>
+            <dd><a href="tel:+59172347510">+591 72347510</a></dd>
+          </div>
+          <div>
+            <dt>WhatsApp</dt>
+            <dd><a href="https://wa.me/59172347510">+591 72347510</a></dd>
+          </div>
+          <div>
+            <dt>Correo Electronico</dt>
+            <dd>
+              <a href="mailto:contacto@sabimedic.com">contacto@sabimedic.com</a>
+            </dd>
+          </div>
+        </dl>
+        <!-- Este boton abre la conversacion del propietario para consultar o coordinar una cita directamente. -->
+        <a class="contact-whatsapp" href="https://wa.me/59172347510">
+          <img src="assets/icons/whatsapp.svg" alt="" width="28" height="28" />
+          Contactar por WhatsApp
+        </a>
+        <!-- El mapa forma parte de los datos de contacto que ya estaban en la columna izquierda. -->
+        <iframe
+          class="contact-map"
+          src="https://www.google.com/maps?q=-17.9698045,-67.0841865&z=17&output=embed"
+          title="Ubicacion del consultorio en PEDRO FERRARI ORURO"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+        <a
+          class="contact-map-link"
+          href="https://maps.app.goo.gl/fabpyxtggT1Txyvb6?g_st=aw"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ver ubicacion en Google Maps
+        </a>
+      </section>
+    </main>
+
+    <!-- Facebook y WhatsApp quedan siempre a un costado. Los estilos reservan espacio para que no cubran el contenido. -->
+    <nav class="social-rail" aria-label="Facebook y WhatsApp">
+      <a
+        href="https://wa.me/59172347510"
+        title="WhatsApp"
+        aria-label="WhatsApp del consultorio"
+      >
+        <img src="assets/icons/whatsapp.svg" alt="" width="28" height="28" />
+      </a>
+      <a
+        href="https://www.facebook.com/sabimedic.jesus"
+        title="Facebook"
+        aria-label="Facebook del consultorio"
+      >
+        <img src="assets/icons/facebook.svg" alt="" width="28" height="28" />
+      </a>
     </nav>
 
-    <div class="container">
-      <h1 class="page-title">Contacto</h1>
-
-      <div class="contact-layout">
-        <div class="section">
-          <h2>Datos de Contacto</h2>
-
-          <div class="contact-info">
-            <strong>Direccion:</strong>
-            PEDRO FERRARI ORURO
-          </div>
-
-          <div class="contact-info">
-            <strong>Horarios de Atencion:</strong>
-            Lunes a Viernes: 8:00 AM - 7:00 PM
-            <br />
-            Sabados: 9:00 AM - 2:00 PM
-            <br />
-            Domingos: Cerrado
-          </div>
-
-          <div class="contact-info">
-            <strong>Telefono:</strong>
-            +59172347510
-          </div>
-
-          <div class="contact-info">
-            <strong>WhatsApp:</strong>
-            +59172347510
-          </div>
-
-          <div class="contact-info">
-            <strong>Correo Electronico:</strong>
-            contacto@sabimedic.com
-          </div>
-
-          <a href="https://wa.me/59172347510" class="btn-whatsapp">
-            Contactar por WhatsApp
-          </a>
-
-          <div class="map-placeholder">
-            <iframe
-              src="https://www.google.com/maps?q=-17.9698045,-67.0841865&z=17&output=embed"
-              title="Ubicacion del consultorio en PEDRO FERRARI ORURO"
-              width="600"
-              height="450"
-              style="border: 0"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-            ></iframe>
-          </div>
-
-          <a
-            href="https://maps.app.goo.gl/fabpyxtggT1Txyvb6?g_st=aw"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ver ubicacion en Google Maps
-          </a>
-        </div>
-
-        <div class="section" id="formulario">
-          <h2>Reservas y consultas</h2>
-          <p>
-            Solicita una cita o realiza una consulta. La reserva queda sujeta a
-            confirmacion del consultorio.
-          </p>
-
-          <form id="contactForm">
-            <div class="form-group">
-              <label for="tipo">Motivo de contacto *</label>
-
-              <select id="tipo" name="tipo" required aria-describedby="tipo-error">
-                <option value="consulta">Realizar una consulta</option>
-                <option value="reserva">Solicitar una cita</option>
-              </select>
-              <span class="field-error" id="tipo-error"></span>
-            </div>
-
-            <div class="form-group">
-              <label for="nombre">Nombre completo *</label>
-
-              <input
-                type="text"
-                id="nombre"
-                name="nombre"
-                required
-                minlength="2"
-                maxlength="100"
-                autocomplete="name"
-                aria-describedby="nombre-error"
-              />
-              <span class="field-error" id="nombre-error"></span>
-            </div>
-
-            <div class="form-group">
-              <label for="telefono">Telefono *</label>
-
-              <input
-                type="tel"
-                id="telefono"
-                name="telefono"
-                required
-                maxlength="25"
-                autocomplete="tel"
-                inputmode="tel"
-                aria-describedby="telefono-error"
-              />
-              <span class="field-error" id="telefono-error"></span>
-            </div>
-
-            <div class="form-group">
-              <label for="email">Correo Electronico</label>
-
-              <input
-                type="email"
-                id="email"
-                name="email"
-                maxlength="254"
-                autocomplete="email"
-                aria-describedby="email-error"
-              />
-              <span class="field-error" id="email-error"></span>
-            </div>
-
-            <div class="form-group">
-              <label for="especialidad">Especialidad</label>
-
-              <select
-                id="especialidad"
-                name="especialidad"
-                aria-describedby="especialidad-error"
-              >
-                <option value="">Selecciona una especialidad</option>
-                <option value="medicina-general">Medicina General</option>
-                <option value="cirugia-general">Cirugia General y Laparoscopia</option>
-                <option value="ortopedia-traumatologia">Ortopedia y Traumatologia</option>
-                <option value="ginecologia-obstetricia">Ginecologia y Obstetricia</option>
-                <option value="neurociencia">Neurociencia</option>
-                <option value="medicina-interna">Medicina Interna</option>
-                <option value="pediatria">Pediatria</option>
-                <option value="fisioterapia-kinesiologia">
-                  Fisioterapia y Kinesiologia
-                </option>
-              </select>
-              <span class="field-error" id="especialidad-error"></span>
-            </div>
-
-            <div class="reservation-fields" id="reservationFields" hidden>
-              <div class="form-group">
-                <label for="fecha">Fecha preferida *</label>
-
-                <input
-                  type="date"
-                  id="fecha"
-                  name="fecha"
-                  disabled
-                  aria-describedby="fecha-error"
-                />
-                <span class="field-error" id="fecha-error"></span>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="mensaje">Mensaje *</label>
-
-              <textarea
-                id="mensaje"
-                name="mensaje"
-                rows="5"
-                required
-                minlength="10"
-                maxlength="2000"
-                placeholder="Escribe tu consulta o el motivo de tu cita..."
-                aria-describedby="mensaje-error"
-              ></textarea>
-              <span class="field-error" id="mensaje-error"></span>
-            </div>
-
-            <button type="submit" class="btn-enviar">Continuar en WhatsApp</button>
-
-            <div
-              id="mensajeConfirmacion"
-              class="mensaje-confirmacion"
-              role="status"
-              aria-live="polite"
-              aria-atomic="true"
-            ></div>
-
-            <noscript>
-              <p>
-                Para realizar tu consulta o solicitar una cita,
-                <a href="https://wa.me/59172347510">contactanos por WhatsApp</a>
-                .
-              </p>
-            </noscript>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-socials">
-          <a href="https://wa.me/59172347510" title="WhatsApp" aria-label="WhatsApp">
-            <img src="assets/icons/whatsapp.svg" alt="" width="26" height="26" />
-          </a>
-          <a
-            href="https://www.facebook.com/sabimedic.jesus"
-            title="Facebook"
-            aria-label="Facebook"
-          >
-            <img src="assets/icons/facebook.svg" alt="" width="26" height="26" />
-          </a>
-        </div>
-
-        <div class="footer-info">
-          <p><strong>Consultorio Medico SABIMEDIC JESUS</strong></p>
-          <p>Telefono: +591 72347510 | WhatsApp: +591 72347510</p>
-          <p>Direccion: PEDRO FERRARI ORURO</p>
-        </div>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <strong>Consultorio Medico SABIMEDIC JESUS</strong>
+        <p class="footer-address">
+          Telefono: +591 72347510
+          <br />
+          PEDRO FERRARI ORURO | Tu salud, nuestra prioridad
+        </p>
       </div>
     </footer>
-    <script>
-      const menuToggle = document.querySelector(".menu-toggle");
-      const mobileMenu = document.querySelector(".nav-links");
-
-      menuToggle.addEventListener("click", () => {
-        const menuIsOpen = mobileMenu.classList.toggle("is-open");
-
-        menuToggle.setAttribute("aria-expanded", String(menuIsOpen));
-
-        menuToggle.setAttribute("aria-label", menuIsOpen ? "Cerrar menu" : "Abrir menu");
-
-        menuToggle.textContent = menuIsOpen ? "×" : "☰";
-      });
-
-      mobileMenu.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.remove("is-open");
-
-          menuToggle.setAttribute("aria-expanded", "false");
-
-          menuToggle.setAttribute("aria-label", "Abrir menu");
-
-          menuToggle.textContent = "☰";
-        });
-      });
-    </script>
-
-    <script src="assets/js/contact-form.js"></script>
+    <!-- Este archivo sigue controlando la hamburguesa en pantallas pequenas. -->
+    <script src="assets/js/mobile-menu.js"></script>
   </body>
 </html>

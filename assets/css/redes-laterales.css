@@ -1,0 +1,77 @@
+/* Reservamos espacio a la derecha para que los iconos no tapen fotos, texto ni botones. */
+body {
+  padding-right: 76px;
+}
+
+/* Estos dos accesos permanecen a un costado al recorrer la pagina. El telefono se cambia en el enlace de cada pagina. */
+.social-rail {
+  position: fixed;
+  top: 50%;
+  right: 12px;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 64px;
+  padding: 9px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgb(15 23 42 / 8%);
+  transform: translateY(-50%);
+}
+
+.social-rail a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  background: #f8fafc;
+}
+
+.social-rail a:hover {
+  background: #ecfeff;
+  border-color: #0891b2;
+}
+
+.social-rail a:focus-visible {
+  outline: 3px solid #0891b2;
+  outline-offset: 2px;
+}
+
+.social-rail img {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+/* En telefonos el espacio lateral es menor, pero cada acceso conserva una zona comoda para el dedo. */
+@media (max-width: 768px) {
+  body {
+    padding-right: 60px;
+  }
+
+  .social-rail {
+    right: 4px;
+    width: 52px;
+    padding: 3px;
+    gap: 8px;
+  }
+
+  /* Ajustamos el nombre de portada al ancho que queda disponible junto a los iconos. */
+  .main-container .titulo-principal h1 {
+    font-size: 2rem;
+    line-height: 1.05;
+  }
+
+  .main-container .titulo-principal .consultorio,
+  .main-container .titulo-principal .medico {
+    font-size: 1.25rem;
+    line-height: 1.15;
+    letter-spacing: 0;
+  }
+}

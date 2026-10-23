@@ -1,0 +1,67 @@
+/* El mapa se encuentra ahora en Sobre nosotros. Esta zona ocupa todo el ancho del contenido, debajo de las historias. */
+.clinic-location {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid #e2e8f0;
+  scroll-margin-top: 130px;
+}
+
+.clinic-location h2 {
+  margin-bottom: 8px;
+  color: #1e3a8a;
+  font-size: 1.7rem;
+  line-height: 1.3;
+}
+
+.clinic-location p {
+  margin-bottom: 18px;
+  color: #475569;
+}
+
+.clinic-location__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  align-items: center;
+  gap: 28px;
+}
+
+/* La altura cambia el espacio visible del mapa, no la ubicacion del consultorio. */
+.clinic-location iframe {
+  display: block;
+  width: 100%;
+  height: 340px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.clinic-location__logo {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.clinic-location a {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 0;
+  color: #1e3a8a;
+  font-weight: 700;
+}
+
+/* En celular el logo queda debajo para que el mapa tenga suficiente ancho. */
+@media (max-width: 768px) {
+  .clinic-location__layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .clinic-location iframe {
+    height: 280px;
+  }
+
+  .clinic-location__logo {
+    max-width: 130px;
+  }
+}
