@@ -1,4 +1,4 @@
-/* Reservamos espacio a la derecha para que los iconos no tapen fotos, texto ni botones. */
+/* En escritorio dejamos espacio junto a los iconos. En celular se muestran flotando sobre la pagina. */
 body {
   padding-right: 76px;
 }
@@ -49,10 +49,10 @@ body {
   height: 28px;
 }
 
-/* En telefonos el espacio lateral es menor, pero cada acceso conserva una zona comoda para el dedo. */
+/* En telefonos no se reserva una columna: el contenido usa todo el ancho y los iconos quedan por encima. */
 @media (max-width: 768px) {
   body {
-    padding-right: 60px;
+    padding-right: 0;
   }
 
   .social-rail {
@@ -60,18 +60,5 @@ body {
     width: 52px;
     padding: 3px;
     gap: 8px;
-  }
-
-  /* Ajustamos el nombre de portada al ancho que queda disponible junto a los iconos. */
-  .main-container .titulo-principal h1 {
-    font-size: 2rem;
-    line-height: 1.05;
-  }
-
-  .main-container .titulo-principal .consultorio,
-  .main-container .titulo-principal .medico {
-    font-size: 1.25rem;
-    line-height: 1.15;
-    letter-spacing: 0;
   }
 }
