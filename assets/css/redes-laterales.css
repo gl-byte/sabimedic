@@ -1,9 +1,7 @@
-/* En escritorio dejamos espacio junto a los iconos. En celular se muestran flotando sobre la pagina. */
 body {
   padding-right: 76px;
 }
 
-/* Estos dos accesos permanecen a un costado al recorrer la pagina. El telefono se cambia en el enlace de cada pagina. */
 .social-rail {
   position: fixed;
   top: 50%;
@@ -49,7 +47,6 @@ body {
   height: 28px;
 }
 
-/* En telefonos no se reserva una columna: el contenido usa todo el ancho y los iconos quedan por encima. */
 @media (max-width: 768px) {
   body {
     padding-right: 0;

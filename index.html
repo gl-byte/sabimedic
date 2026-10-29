@@ -1,39 +1,16 @@
-﻿<!-- El navegador lee esta pagina como un documento web actual. Esta linea se mantiene igual en todas las paginas. -->
-<!doctype html>
-<!-- Indicamos que el contenido esta en espanol para que las herramientas de lectura lo pronuncien correctamente. -->
+﻿<!doctype html>
 <html lang="es">
   <head>
-    <!-- Permite que se vean bien las tildes, la letra enie y los simbolos escritos en los textos. -->
     <meta charset="UTF-8" />
-    <!-- Hace que el ancho de la pagina se adapte al celular, en lugar de mostrar una computadora en miniatura. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Lo que escribas aqui aparecera en la pestana del navegador; el titulo visible dentro de la pagina se cambia mas abajo. -->
     <title>SABIMEDIC JESUS | Menu Principal</title>
-    <!-- Aqui empieza la apariencia de esta pagina. Se definen colores, espacios y tamanos; los textos visibles estan despues de este bloque. -->
     <style>
-      /*
-      GUIA RAPIDA PARA MODIFICAR ESTA PAGINA
-      --------------------------------------
-      - Los colores principales aparecen como valores hexadecimales.
-      - Los tamaños se pueden aumentar o disminuir cambiando font-size, width o height.
-      - Los nombres de las clases conectan el HTML con estos estilos.
-      - La parte final del archivo contiene el menu, el titulo y el pie de pagina.
-      Si cambias una clase en el HTML, debes cambiarla tambien aqui para que
-      el diseño siga funcionando.
-    */
-
-      /* Reinicio basico del navegador */
-      /* Partimos sin espacios automaticos. Luego cada zona recibe su propia separacion para que el resultado sea parejo entre navegadores. */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
-      /* Configuracion del body:
-       Aqui se define la fuente general, el color base del texto y el fondo.
-       Como es un consultorio medico, usamos un fondo claro para que se vea limpio. */
-      /* La letra, el fondo y el color del texto definidos aqui se usan en toda esta pagina. */
       body {
         font-family: Arial, sans-serif;
         background: #f8fafc;
@@ -42,10 +19,6 @@
         overflow-x: hidden;
       }
 
-      /* Contenedor principal que ocupa toda la pantalla:
-       Se divide en 3 filas: header arriba, contenido central y footer abajo.
-       Esto ayuda a que el menu principal no se vea amontonado. */
-      /* Este marco reparte la pantalla entre la cabecera, el titulo con sus botones y la zona final. */
       .main-container {
         min-height: 100vh;
         display: grid;
@@ -54,10 +27,6 @@
         max-width: 100%;
       }
 
-      /* Header con navegacion y fotos:
-       grid-template-columns: auto 1fr auto deja foto a la izquierda,
-       menu al centro y logo a la derecha. */
-      /* La cabecera del inicio deja un lugar para la foto del edificio, otro para los enlaces y otro para el logo. */
       .header {
         display: grid;
         grid-template-columns: auto 1fr auto;
@@ -70,10 +39,6 @@
         z-index: 20;
       }
 
-      /*
-      Boton hamburguesa para celular.
-      En escritorio no se necesita porque los enlaces se muestran directamente.
-    */
       .menu-toggle {
         display: none;
         border: 2px solid #1e3a8a;
@@ -87,9 +52,6 @@
         line-height: 1;
       }
 
-      /* Foto izquierda (consultorio):
-       Esta imagen da contexto visual del lugar. Se mantiene grande para que
-       el usuario identifique rapido que se trata de un centro medico real. */
       .foto-izquierda {
         width: 230px;
         height: 205px;
@@ -104,9 +66,6 @@
         text-align: center;
         padding: 3px;
       }
-      /* Foto derecha (logo):
-       Es el espacio para la identidad del consultorio. El object-fit de img
-       se controla con el propio tamaño de la imagen y el marco definido aqui. */
       .foto-derecha {
         width: 230px;
         height: 205px;
@@ -122,8 +81,6 @@
         padding: 3px;
       }
 
-      /* Navegacion central del header */
-      /* Menu superior del inicio: sus destinos se cambian en los enlaces que aparecen despues de los estilos. */
       .nav-header {
         display: flex;
         gap: 15px;
@@ -132,13 +89,10 @@
       }
 
       .nav-header.is-open {
-        /* JavaScript agrega esta clase cuando la persona toca la hamburguesa. */
         display: flex;
       }
-      /* Cada enlace de la navegacion */
 
       .nav-header a {
-        /* Cada enlace hereda este mismo aspecto para que el menu se vea parejo. */
         text-decoration: none;
         color: #1e3a8a;
         font-weight: bold;
@@ -149,13 +103,9 @@
       }
 
       .nav-header a:hover {
-        /* Este efecto aparece solo al pasar el mouse por encima del enlace. */
         border-bottom-color: #06b6d4;
       }
 
-      /* Seccion central con titulo y botones:
-       Esta es la parte mas importante del menu principal. Por eso se centra
-       vertical y horizontalmente. */
       .seccion-central {
         display: flex;
         flex-direction: column;
@@ -165,8 +115,6 @@
         padding: 20px;
       }
 
-      /* Titulo principal grande:
-       El ancho maximo evita que el texto se estire demasiado en pantallas grandes. */
       .titulo-principal {
         text-align: center;
         color: #1e3a8a;
@@ -177,10 +125,7 @@
         text-shadow: 0 2px 0 rgba(255, 255, 255, 0.9);
       }
 
-      /* Este pseudo-elemento crea una linea turquesa sutil debajo del titulo.
-       No es decoracion exagerada: sirve para anclar visualmente la marca. */
       .titulo-principal::after {
-        /* La linea de abajo es un detalle visual que refuerza el nombre de la marca. */
         content: "";
         display: block;
         width: min(520px, 72vw);
@@ -190,7 +135,6 @@
         background: linear-gradient(90deg, transparent, #06b6d4, transparent);
       }
 
-      /* h1 se usa para SABIMEDIC y JESUS, las palabras con mas jerarquia. */
       .titulo-principal h1 {
         font-size: 3.5rem;
         font-weight: 900;
@@ -199,7 +143,6 @@
         letter-spacing: 0;
       }
 
-      /* CONSULTORIO y MEDICO son parte del nombre visual, pero un poco menores. */
       .titulo-principal .consultorio {
         font-size: clamp(2.5rem, 5vw, 4.8rem);
         font-weight: 900;
@@ -212,9 +155,6 @@
         letter-spacing: 0.04em;
       }
 
-      /* Contenedor de botones tipo rotulo:
-       flex-wrap permite que los botones bajen de linea si la pantalla es chica. */
-      /* Este grupo organiza los botones centrales. La separacion permite distinguir las opciones al mirar o tocar la pantalla. */
       .botones-menu {
         display: flex;
         flex-wrap: wrap;
@@ -223,10 +163,6 @@
         max-width: 900px;
       }
 
-      /* Estilo de cada boton tipo rotulo:
-       Fondo blanco + borde azul mantiene el estilo institucional.
-       La sombra turquesa da sensacion de boton sin abusar del color de acento. */
-      /* Aspecto comun de las opciones del inicio. El espacio interior agranda la zona que se puede tocar. */
       .boton-menu {
         padding: 14px 25px;
         background: #ffffff;
@@ -242,16 +178,13 @@
         box-shadow: 4px 4px 0 rgba(6, 182, 212, 0.2);
       }
 
-      /* Al senalar una opcion con el mouse, el boton se desplaza ligeramente y su sombra se hace mas visible. */
       .boton-menu:hover {
         transform: translate(-2px, -2px);
         box-shadow: 6px 6px 0 rgba(6, 182, 212, 0.3);
         background: #f8fafc;
       }
 
-      /* Boton especial de reservar */
       .boton-reservar {
-        /* Este es el llamado a la accion principal del sitio. */
         background: #06b6d4;
         color: #ffffff;
         border-color: #06b6d4;
@@ -261,7 +194,6 @@
         background: #0891b2;
         box-shadow: 6px 6px 0 rgba(6, 182, 212, 0.4);
       }
-      /* El verde identifica el boton que abre WhatsApp. La imagen acompana al texto sin cambiar el destino. */
       .boton-whatsapp {
         display: inline-flex;
         align-items: center;
@@ -276,17 +208,12 @@
         background: #bbf7d0;
       }
 
-      /* Footer con redes sociales:
-       Se separa del contenido central con una linea clara para ordenar la lectura. */
-      /* Esta zona final reune los enlaces sociales y los datos de contacto. El espacio de arriba la separa del resto de la pagina. */
       .footer {
         padding: 20px 0;
         border-top: 2px solid #e2e8f0;
         margin-top: 30px;
       }
 
-      /* Los elementos finales se mantienen dentro de un ancho controlado para que no se extiendan demasiado en computadora. */
-      /* Aqui se decide como se reparten los iconos sociales y los datos de contacto en la zona final. */
       .footer-content {
         display: flex;
         justify-content: space-between;
@@ -295,20 +222,11 @@
         flex-wrap: wrap;
       }
 
-      /* Iconos de redes sociales:
-       Aqui solo se ordenan los enlaces; los dibujos reales son SVG en assets/icons. */
-      /* Los enlaces de redes se muestran juntos para encontrarlos de un vistazo. */
-
-      /* El fondo cambia al senalar una red, indicando que ese circulo es un enlace. */
-
-      /* Informacion de contacto en footer */
-      /* Los datos del contacto se alinean a la derecha en computadora; en celular se centran. */
       .info-contacto {
         text-align: right;
       }
 
       .info-contacto a {
-        /* Este bloque lleva al visitante a la pagina con los datos de contacto. */
         display: inline-block;
         padding: 12px 20px;
         background: #ffffff;
@@ -320,18 +238,11 @@
         transition: all 0.3s;
       }
 
-      /* El acceso a Contacto cambia a fondo azul cuando el mouse pasa por encima. */
       .info-contacto a:hover {
         background: #1e3a8a;
         color: #ffffff;
       }
 
-      /* Responsive para moviles:
-       En una pantalla pequena las tres partes del header se ordenan asi:
-       fotos arriba, navegacion debajo y luego el contenido principal.
-       No ocultamos las fotos, porque tambien forman parte de la identidad
-       visual del consultorio. */
-      /* Estas indicaciones se aplican solo cuando la pantalla mide 768 pixeles de ancho o menos. Aqui se ajusta la version para celulares. */
       @media (max-width: 768px) {
         .header {
           display: flex;
@@ -348,14 +259,12 @@
           flex: 0 0 calc(50% - 32px);
         }
 
-        /* El orden pone primero las dos fotos, luego deja el boton en su propio espacio y debajo el menu. */
         .header > div:first-child {
           order: 1;
         }
         .header > div:last-child {
           order: 2;
         }
-        /* El boton aparece en telefono y su simbolo se centra dentro del espacio que se puede tocar. */
         .menu-toggle {
           order: 3;
           position: static;
@@ -379,11 +288,6 @@
           background: #ffffff;
         }
 
-        /*
-        La cabecera conserva su altura al abrir el menu.
-        position: absolute saca los enlaces del flujo normal y evita que las
-        fotos o el titulo se muevan hacia abajo.
-      */
         .menu-toggle {
           display: inline-flex;
           align-items: center;
@@ -468,19 +372,12 @@
         }
       }
     </style>
-    <!-- Este archivo coloca Facebook y WhatsApp a un costado sin tapar el contenido. -->
     <link rel="stylesheet" href="assets/css/redes-laterales.css" />
   </head>
   <body>
     <div class="main-container">
-      <!--
-      Header con fotos y navegacion.
-      Para cambiar las fotos, modifica solamente el valor de src de cada img.
-    -->
       <header class="header">
-        <!-- Foto izquierda: consultorio -->
         <div>
-          <!-- Esta foto muestra el edificio del consultorio. Cambia solo su nombre junto a src si deseas usar otra imagen de assets/img. -->
           <img
             src="assets/img/consultorio.jpg"
             alt="Foto del consultorio"
@@ -488,10 +385,6 @@
           />
         </div>
 
-        <!--
-        En celular este boton reemplaza a los enlaces visibles del nav.
-        aria-expanded comunica si el menu esta abierto o cerrado.
-      -->
         <button
           class="menu-toggle"
           type="button"
@@ -501,14 +394,12 @@
           ☰
         </button>
 
-        <!-- Navegacion central: los href indican a que pagina lleva cada opcion. -->
         <nav class="nav-header" aria-label="Navegacion principal">
           <a href="nosotros.html">Nosotros</a>
           <a href="especialidades.html">Especialidades</a>
           <a href="contacto.html">Contacto</a>
         </nav>
 
-        <!-- Foto derecha: logo -->
         <div>
           <img
             src="assets/img/logo.png"
@@ -518,12 +409,7 @@
         </div>
       </header>
 
-      <!-- Seccion central con titulo y botones -->
       <section class="seccion-central">
-        <!-- Titulo principal:
-           Estas cuatro lineas forman la marca visual del menu principal.
-           CONSULTORIO y MEDICO explican el tipo de institucion;
-           SABIMEDIC JESUS es el nombre que debe tener mas fuerza visual. -->
         <div class="titulo-principal">
           <p class="consultorio">CONSULTORIO</p>
           <p class="medico">MEDICO</p>
@@ -531,23 +417,16 @@
           <h1>JESUS</h1>
         </div>
 
-        <!--
-        Botones tipo rotulo.
-        Si necesitas cambiar el texto de un boton, edita el texto entre <a> y </a>.
-        Si necesitas cambiar su destino, edita href="...".
-      -->
         <nav class="botones-menu">
           <a href="index.html" class="boton-menu">INICIO</a>
           <a href="nosotros.html" class="boton-menu">SOBRE NOSOTROS</a>
           <a href="especialidades.html" class="boton-menu">ESPECIALIDADES</a>
-          <!-- Este enlace abre los datos de Contacto para coordinar la cita con el consultorio. -->
           <a
             href="contacto.html#datos-contacto"
             class="boton-menu boton-reservar"
           >
             RESERVAR CITA
           </a>
-          <!-- El boton principal abre directamente el WhatsApp del propietario. -->
           <a href="https://wa.me/59172347510" class="boton-menu boton-whatsapp">
             <img
               src="assets/icons/whatsapp.svg"
@@ -560,12 +439,6 @@
         </nav>
       </section>
 
-      <!--
-      Footer con redes sociales.
-      Los archivos SVG se cargan dentro de cada enlace mediante la etiqueta img.
-    -->
-
-      <!-- Facebook y WhatsApp quedan siempre a un costado. Los estilos reservan espacio para que no cubran el contenido. -->
       <nav class="social-rail" aria-label="Facebook y WhatsApp">
         <a
           href="https://wa.me/59172347510"
@@ -584,9 +457,7 @@
       </nav>
       <footer class="footer">
         <div class="footer-content">
-          <!-- Redes sociales -->
 
-          <!-- Informacion de contacto -->
           <div class="info-contacto">
             <a href="contacto.html">
               <strong>Numero del Consultorio: 72347510</strong>
@@ -599,50 +470,28 @@
     </div>
 
     <script>
-      /*
-      Este pequeño script controla la hamburguesa.
-      Al hacer clic, alterna la clase is-open del menu. CSS decide si se muestra
-      o se oculta, mientras la cabecera permanece en el mismo sitio.
-    */
-      // Buscamos el boton de tres lineas que la persona toca en el celular.
-      // Si quieres cambiar su aspecto, busca la clase .menu-toggle en los estilos.
       const menuToggle = document.querySelector(".menu-toggle");
 
-      // Buscamos el grupo de enlaces que debe aparecer u ocultarse.
-      // El nombre .nav-header conecta este codigo con el menu escrito arriba.
       const mobileMenu = document.querySelector(".nav-header");
 
-      // Cada vez que se toca el boton, se cambia el menu entre abierto y cerrado.
       menuToggle.addEventListener("click", () => {
-        // is-open es una marca que el CSS interpreta para mostrar el menu.
         const menuIsOpen = mobileMenu.classList.toggle("is-open");
 
-        // Este dato ayuda a lectores de pantalla a saber si el menu esta abierto.
-        // Informamos si las opciones estan abiertas para las herramientas que leen la pagina en voz alta.
         menuToggle.setAttribute("aria-expanded", String(menuIsOpen));
 
-        // Cambiamos la descripcion para que el boton diga lo que puede hacer ahora.
-        // El nombre del boton cambia segun la accion que puede realizar ahora.
         menuToggle.setAttribute(
           "aria-label",
           menuIsOpen ? "Cerrar menu" : "Abrir menu"
         );
 
-        // Mostramos una X cuando esta abierto y volvemos a las tres lineas al cerrarlo.
-        // Mostramos una X para cerrar o las tres lineas para abrir.
         menuToggle.textContent = menuIsOpen ? "×" : "☰";
       });
 
-      // Cuando se elige una pagina, cerramos el menu para que no tape el contenido.
       mobileMenu.querySelectorAll("a").forEach((link) => {
-        // Esta accion se ejecuta solamente al tocar uno de los enlaces del menu.
         link.addEventListener("click", () => {
           mobileMenu.classList.remove("is-open");
-          // Despues de elegir un destino, indicamos que el menu ya esta cerrado.
           menuToggle.setAttribute("aria-expanded", "false");
-          // El boton vuelve a estar preparado para abrir las opciones.
           menuToggle.setAttribute("aria-label", "Abrir menu");
-          // Restauramos el dibujo de tres lineas que identifica el menu.
           menuToggle.textContent = "☰";
         });
       });

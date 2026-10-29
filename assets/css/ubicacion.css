@@ -1,4 +1,3 @@
-/* El mapa se encuentra ahora en Sobre nosotros. Esta zona ocupa todo el ancho del contenido, debajo de las historias. */
 .clinic-location {
   margin-top: 40px;
   padding-top: 28px;
@@ -25,7 +24,6 @@
   gap: 28px;
 }
 
-/* La altura cambia el espacio visible del mapa, no la ubicacion del consultorio. */
 .clinic-location iframe {
   display: block;
   width: 100%;
@@ -50,7 +48,6 @@
   font-weight: 700;
 }
 
-/* En celular el logo queda debajo para que el mapa tenga suficiente ancho. */
 @media (max-width: 768px) {
   .clinic-location__layout {
     grid-template-columns: 1fr;
